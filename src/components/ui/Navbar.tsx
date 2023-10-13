@@ -1,7 +1,49 @@
 import Link from "next/link";
 import React from "react";
+import img from "../../assets/home.png";
+import Image from "next/image";
 
 const Navbar = () => {
+  const currentDate = new Date();
+
+  // Format the current date as "Month Day, Year"
+  const formattedDate = currentDate.toLocaleDateString("en-US", {
+    year: "numeric",
+    month: "long",
+    day: "numeric",
+  });
+
+  const navOption = (
+    <>
+      <ul className="lg:flex justify-center space-x-6 text-black ">
+        <div className="dropdown mt-1">
+          <li tabIndex={0} className="text-xl m-1 hover:text-indigo-700 ">
+            signup
+          </li>
+          <ul
+            tabIndex={0}
+            className="dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-52"
+          >
+            <Link href={"/signup"}>
+              <li>
+                <h1>signup</h1>
+              </li>
+            </Link>
+            <Link href={"/login"}>
+              <li>
+                <h1>Login</h1>
+              </li>
+            </Link>
+          </ul>
+        </div>
+
+        <li>
+          <button className="text-black text-xl">hello</button>
+        </li>
+      </ul>
+    </>
+  );
+
   return (
     <div className="navbar bg-base-100">
       <div className="navbar-start">
@@ -26,54 +68,26 @@ const Navbar = () => {
             tabIndex={0}
             className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52"
           >
-            <li>
-              <a>Item 1</a>
-            </li>
-            <li>
-              <a>Parent</a>
-              <ul className="p-2">
-                <li>
-                  <a>Submenu 1</a>
-                </li>
-                <li>
-                  <a>Submenu 2</a>
-                </li>
-              </ul>
-            </li>
-            <li>
-              <a>Item 3</a>
-            </li>
+            {navOption}
           </ul>
         </div>
-        <a className="btn btn-ghost normal-case text-xl">daisyUI</a>
+
+        <div>
+          <Image src={img} alt=""></Image>
+        </div>
       </div>
       <div className="navbar-center hidden lg:flex">
         <ul className="menu menu-horizontal px-1">
-          <li>
-            <a>Item 1</a>
-          </li>
-          <li tabIndex={0}>
-            <details>
-              <summary>Parent</summary>
-              <ul className="p-2">
-                <li>
-                  <a>Submenu 1</a>
-                </li>
-                <li>
-                  <a>Submenu 2</a>
-                </li>
-              </ul>
-            </details>
-          </li>
-          <li>
-            <a>Item 3</a>
-          </li>
+          <li tabIndex={0}>{navOption}</li>
         </ul>
       </div>
       <div className="navbar-end">
-        <Link href="/signup">
-          <h1 className="btn">SignUp</h1>
-        </Link>
+        <h1
+          className="btn w-2/12 h-16 text-white"
+          style={{ backgroundColor: "#3f37c9" }}
+        >
+          GET FREE QUOTE
+        </h1>
       </div>
     </div>
   );
