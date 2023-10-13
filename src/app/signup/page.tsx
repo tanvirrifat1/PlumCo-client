@@ -3,31 +3,60 @@ import Form from "@/components/forms/Form";
 import FormInput from "@/components/forms/FormIntput";
 import { useUserSignupMutation } from "@/redux/api/authApi";
 import { useRouter } from "next/navigation";
+import { useState } from "react";
 import Swal from "sweetalert2";
 
 const SignupPage = () => {
   const [userSignup] = useUserSignupMutation();
-
   const router = useRouter();
+  const [image, setImage] = useState<File | null>(null);
+  const [loading, setLoading] = useState<boolean>(false);
+
+  const handleImageChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files && e.target.files[0];
+    setImage(file);
+  };
+
+  const IMAGEURL = process.env.NEXT_PUBLIC_IMBB_KEY;
 
   const onSubmit = async (data: any) => {
-    console.log(data);
-    try {
-      const res = await userSignup(data);
-      if (res) {
-        router.push("/profile");
-        Swal.fire({
-          title: "signup Successfully",
-          showClass: {
-            popup: "animate__animated animate__fadeInDown",
-          },
-          hideClass: {
-            popup: "animate__animated animate__fadeOutUp",
-          },
-        });
+    setLoading(true);
+
+    if (!image) {
+      console.log("Please select image!");
+      return;
+    }
+
+    const formData = new FormData();
+    formData.append("image", image);
+
+    const url = `https://api.imgbb.com/1/upload?key=${IMAGEURL}`;
+    const response = await fetch(url, {
+      method: "POST",
+      body: formData,
+    });
+
+    if (response.ok) {
+      const responseData = await response.json();
+      if (responseData.data) {
+        data.profileImage = responseData.data.display_url;
+        const res = await userSignup(data);
+        if (res) {
+          Swal.fire("user signup successfully!!");
+          router.push("/login");
+          setLoading(false);
+        }
       }
-    } catch (error) {}
+    }
   };
+
+  if (loading) {
+    return (
+      <div className="flex justify-center items-center h-screen">
+        <div className="text-5xl loading loading-spinner text-info"></div>
+      </div>
+    );
+  }
   return (
     <div className="container xl:w-[40%] px-20 py-5 mt-5 border">
       <Form submitHandler={onSubmit}>
@@ -42,10 +71,10 @@ const SignupPage = () => {
 
             <div className="col-span-2">
               <div className="mt-2 flex justify-center rounded-lg border border-dashed border-gray-900/25 px-6 py-10">
-                <FormInput
-                  name="profileImage"
+                <input
                   type="file"
-                  label="profile photo"
+                  accept="image/*"
+                  onChange={handleImageChange}
                   className="file-input file-input-bordered w-full"
                 />
               </div>
