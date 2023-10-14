@@ -1,7 +1,7 @@
 "use client";
 
 import { useGetAllServicesQuery } from "@/redux/api/serviceApi";
-import { ArrowRightIcon } from "@heroicons/react/20/solid";
+
 import Image from "next/image";
 
 import React from "react";
@@ -11,7 +11,7 @@ const Services = () => {
   const { data, isLoading } = useGetAllServicesQuery({ ...arg });
 
   return (
-    <section className="py-20">
+    <section className="py-20 w-full lg:w-[1440px] mx-auto">
       <div className="flex flex-wrap">
         <div className="w-full px-4">
           <div className="mx-auto mb-12 max-w-[510px] text-center lg:mb-20">
@@ -28,7 +28,14 @@ const Services = () => {
           </div>
         </div>
       </div>
-      <div className="container grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3 md:gap-5">
+      <div className="m-6">
+        <input
+          type="text"
+          placeholder="Type here"
+          className="input input-primary w-full max-w-xs"
+        />
+      </div>
+      <div className=" grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3 md:gap-5">
         {isLoading ? (
           <>
             <p>Loading...</p>

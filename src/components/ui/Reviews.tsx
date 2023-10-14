@@ -1,8 +1,6 @@
 "use client";
 import { Swiper, SwiperSlide } from "swiper/react";
-
 import "../../styles/Reviews.modules.css";
-
 import {
   Navigation,
   Autoplay,
@@ -10,16 +8,12 @@ import {
   Pagination,
   Scrollbar,
 } from "swiper/modules";
-
 import "swiper/css";
-
 import { useState } from "react";
 import { FaQuoteLeft, FaQuoteRight } from "react-icons/fa";
 import { AiOutlineLeft, AiOutlineRight } from "react-icons/ai";
-
 import Image from "next/image";
 import { StarIcon } from "@heroicons/react/20/solid";
-import { useGetAllUserQuery } from "@/redux/api/userApi";
 import { useGetAllReviewQuery } from "@/redux/api/reviewApi";
 
 const Reviews = () => {
@@ -27,7 +21,7 @@ const Reviews = () => {
   const { data, isLoading } = useGetAllReviewQuery({ ...arg });
 
   const SERVICE = data?.review;
-  console.log(SERVICE);
+
   const [isModalOpen, setIsModalOpen] = useState(false);
   const openModal = () => {
     setIsModalOpen(true);
@@ -36,65 +30,6 @@ const Reviews = () => {
     setIsModalOpen(false);
   };
 
-  // const reviews = [
-  //   {
-  //     id: 1,
-  //     name: "Masud Rana",
-  //     rating: 5,
-  //     description:
-  //       "Moving to a new house can be an exciting milestone in life but the process",
-  //   },
-  //   {
-  //     id: 2,
-  //     name: "Rifat Hossain",
-  //     rating: 5,
-  //     description:
-  //       "Moving to a new house can be an exciting milestone in life but the process",
-  //   },
-  //   {
-  //     id: 3,
-  //     name: "Sazzad Hossain",
-  //     rating: 5,
-  //     description:
-  //       "Moving to a new house can be an exciting milestone in life but the process",
-  //   },
-  //   {
-  //     id: 4,
-  //     name: "Munna Raj",
-  //     rating: 5,
-  //     title: "International Move",
-  //     description:
-  //       "Moving to a new house can be an exciting milestone in life but the process",
-  //   },
-  //   {
-  //     id: 5,
-  //     name: "Sannot Sarkar",
-  //     rating: 5,
-  //     description:
-  //       "Moving to a new house can be an exciting milestone in life but the process",
-  //   },
-  //   {
-  //     id: 6,
-  //     name: "Rakib Mollah",
-  //     rating: 5,
-  //     description:
-  //       "Moving to a new house can be an exciting milestone in life but the process",
-  //   },
-  //   {
-  //     id: 7,
-  //     name: "Alomgir Zahid",
-  //     rating: 5,
-  //     description:
-  //       "Moving to a new house can be an exciting milestone in life but the process",
-  //   },
-  //   {
-  //     id: 8,
-  //     name: "Ujjal Shah",
-  //     rating: 5,
-  //     description:
-  //       "Moving to a new house can be an exciting milestone in life but the process",
-  //   },
-  // ];
   return (
     <div className="bg-[#F5F8FE]">
       <section className="container relative py-20">
@@ -162,7 +97,7 @@ const Reviews = () => {
                     </p>
                     <div className="relative text-center">
                       <FaQuoteLeft className="absolute quote top-0 -left-2 w-4 h-4 text-gray-900" />
-                      <p className="inline">{review?.description}</p>
+                      <p className="inline">{review?.review}</p>
                       <FaQuoteRight className="absolute quote bottom-0 right-0 w-4 h-4 text-gray-900" />
                     </div>
 
