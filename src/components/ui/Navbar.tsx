@@ -31,7 +31,7 @@ const Navbar = () => {
       <ul className="lg:flex justify-center font-semibold space-x-6 text-black ">
         <div className="dropdown mt-1">
           <li tabIndex={0} className="text-xl m-1 hover:text-indigo-700 ">
-            signup
+            SignUp
           </li>
           <ul
             tabIndex={0}
@@ -52,7 +52,12 @@ const Navbar = () => {
 
         <Link href={"/home"}>
           <li>
-            <li className="text-black text-xl">Header</li>
+            <li className="text-black text-xl">Home</li>
+          </li>
+        </Link>
+        <Link href={"/contact"}>
+          <li>
+            <li className="text-black text-xl">contact</li>
           </li>
         </Link>
       </ul>
@@ -60,7 +65,7 @@ const Navbar = () => {
   );
 
   return (
-    <div className="sticky top-0 z-50">
+    <div className="sticky top-0 z-50  ">
       <div className="navbar bg-base-100 ">
         <div className="navbar-start">
           <div className="dropdown">
@@ -110,7 +115,7 @@ const Navbar = () => {
                   src={data?.profile?.profileImage as string}
                 />
               </div>
-              <p className="ml-2">{data?.profile?.fullName as string}</p>
+              <p className="m-2">{data?.profile?.fullName as string}</p>
             </div>
             <ul
               tabIndex={0}

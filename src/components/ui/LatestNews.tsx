@@ -48,7 +48,7 @@ const LatestNews = () => {
                       ? blog?.content.slice(0, 100)
                       : blog?.content}
                   </p>
-                  <div className="card-actions justify-end">
+                  <div className="card-actions justify-start">
                     <div className="badge badge-outline">
                       {blog?.author?.fullName}
                     </div>
