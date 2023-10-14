@@ -4,10 +4,12 @@ import FormInput from "@/components/forms/FormIntput";
 import LoadingButton from "@/components/ui/LoginSpinner";
 import SmallSpinner from "@/components/ui/SmallSpinner";
 import { useUserLoginMutation } from "@/redux/api/authApi";
+import { getUserInfo, isLoggedIn, storeUserInfo } from "@/service/auth.service";
 
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
+import Swal from "sweetalert2";
 
 const LoginPage = () => {
   const [loading, setLoading] = useState<Boolean>(false);
@@ -17,14 +19,13 @@ const LoginPage = () => {
     try {
       setLoading(true);
       const res = await userLogin({ ...data }).unwrap();
-      console.log(res);
-      //   const res = await userSignin(data).unwrap();
 
-      //   if (res?.token) {
-      //     router.push("/");
-      //     Swal.fire("User Login successfully!");
-      //     storeUserInfo({ accessToken: res?.token });
-      //   }
+      if (res?.accessToken) {
+        router.push("/profile");
+        Swal.fire("User Login successfully!");
+      }
+
+      storeUserInfo({ accessToken: res?.accessToken });
 
       setLoading(false);
     } catch (error: any) {
