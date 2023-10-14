@@ -50,9 +50,11 @@ const Navbar = () => {
           </ul>
         </div>
 
-        <li>
-          <button className="text-black text-xl">hello</button>
-        </li>
+        <Link href={"/home"}>
+          <li>
+            <li className="text-black text-xl">Header</li>
+          </li>
+        </Link>
       </ul>
     </>
   );

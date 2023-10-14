@@ -14,7 +14,7 @@ const ProfilePage = () => {
 
   return (
     <div className="w-[700px] mx-auto flex space-x-10 my-10 ring p-5 rounded">
-      <div>
+      <div className="rounded-xl">
         <Image
           src={profile?.profileImage as string}
           alt={profile?.fullName}
