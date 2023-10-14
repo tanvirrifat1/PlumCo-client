@@ -31,7 +31,7 @@ const Reviews = () => {
   };
 
   return (
-    <div className="bg-[#F5F8FE]">
+    <div className="bg-[#F5F8FE] w-full lg:w-[1440px] mx-auto">
       <section className="container relative py-20">
         <div className="flex flex-wrap">
           <div className="w-full px-4">
