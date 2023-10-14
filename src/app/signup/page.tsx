@@ -2,6 +2,7 @@
 import Form from "@/components/forms/Form";
 import FormInput from "@/components/forms/FormIntput";
 import { useUserSignupMutation } from "@/redux/api/authApi";
+import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 import Swal from "sweetalert2";
@@ -52,13 +53,13 @@ const SignupPage = () => {
 
   if (loading) {
     return (
-      <div className="flex justify-center items-center h-screen">
-        <div className="text-5xl loading loading-spinner text-info"></div>
+      <div className="flex justify-center items-center h-screen text-4xl">
+        <div className=" loading loading-spinner text-info"></div>
       </div>
     );
   }
   return (
-    <div className="container xl:w-[40%] px-20 py-5 mt-5 border">
+    <div className="container xl:w-[40%] px-20 py-5 border-gray-900 mt-5 border">
       <Form submitHandler={onSubmit}>
         <div className="space-y-12">
           <div className="border-b border-gray-900/10 pb-12">
@@ -93,6 +94,7 @@ const SignupPage = () => {
               <div className="sm:col-span-3">
                 <div className="mt-2">
                   <FormInput
+                    id=""
                     type="text"
                     name="fullName"
                     placeholder="type your name"
@@ -105,6 +107,7 @@ const SignupPage = () => {
               <div className="sm:col-span-3">
                 <div className="mt-2">
                   <FormInput
+                    id=""
                     name="password"
                     type="password"
                     placeholder="*****"
@@ -117,6 +120,7 @@ const SignupPage = () => {
               <div className="sm:col-span-3">
                 <div className="mt-2">
                   <FormInput
+                    id=""
                     name="email"
                     type="email"
                     label="Your email"
@@ -128,6 +132,7 @@ const SignupPage = () => {
               <div className="sm:col-span-3">
                 <div className="mt-2">
                   <FormInput
+                    id=""
                     name="address"
                     label="Address"
                     type="text"
@@ -140,6 +145,7 @@ const SignupPage = () => {
               <div className="sm:col-span-3">
                 <div className="mt-2">
                   <FormInput
+                    id=""
                     name="contactNo"
                     type="text"
                     label="Number"
@@ -158,6 +164,15 @@ const SignupPage = () => {
           </button>
         </div>
       </Form>
+      <p className="mt-10 text-center text-sm text-gray-500">
+        Already you have an account?{" "}
+        <Link
+          href="/login"
+          className="font-semibold leading-6 text-secondary hover:text-indigo-500"
+        >
+          Login
+        </Link>
+      </p>
     </div>
   );
 };
