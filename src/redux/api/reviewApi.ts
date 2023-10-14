@@ -2,29 +2,29 @@ import { IMeta } from "@/types";
 import { tagTypes } from "../tag-types";
 import { baseApi } from "./baseApi";
 
-const USER_URL = "/user";
+const REVIEW_API = "/review";
 
-const userApi = baseApi.injectEndpoints({
+const reviewApi = baseApi.injectEndpoints({
   endpoints: (build) => ({
     //user create
-    getAllUser: build.query({
+    getAllReview: build.query({
       query: (arg: Record<string, any>) => {
         return {
-          url: USER_URL,
+          url: REVIEW_API,
           method: "GET",
           params: arg,
         };
       },
       transformResponse: (response: any, meta: IMeta) => {
         return {
-          admins: response,
+          review: response,
           meta,
         };
       },
-      providesTags: [tagTypes.user],
+      providesTags: [tagTypes.review],
     }),
     //user login
   }),
 });
 
-export const { useGetAllUserQuery } = userApi;
+export const { useGetAllReviewQuery } = reviewApi;

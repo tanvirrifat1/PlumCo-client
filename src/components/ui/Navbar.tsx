@@ -28,7 +28,7 @@ const Navbar = () => {
 
   const navOption = (
     <>
-      <ul className="lg:flex justify-center font-semibold space-x-6 text-black ">
+      <ul className="lg:flex justify-center font-semibold space-x-6 text-black overflow-visible">
         <div className="dropdown mt-1">
           <li tabIndex={0} className="text-xl m-1 hover:text-indigo-700 ">
             signup

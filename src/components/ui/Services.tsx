@@ -3,13 +3,13 @@
 import { useGetAllServicesQuery } from "@/redux/api/serviceApi";
 import { ArrowRightIcon } from "@heroicons/react/20/solid";
 import Image from "next/image";
-import Link from "next/link";
+
 import React from "react";
 
 const Services = () => {
   const arg = {};
   const { data, isLoading } = useGetAllServicesQuery({ ...arg });
-  console.log(data);
+
   return (
     <section className="py-20">
       <div className="flex flex-wrap">
@@ -62,28 +62,6 @@ const Services = () => {
                     </div>
                   </div>
                 </div>
-
-                {/* <div className="p-1 md:p-2 lg:p-4 mt-1 md:mt-3 space-y-2">
-                  <h2 className="text-xl md:text-2xl lg:text-3xl font-bold text-gray-800">
-                    {service.title}
-                  </h2>
-                  <p className="text-xs md:text-base">{service.description}</p>
-                </div> */}
-                {/* <div className="text-center flex justify-center ">
-                  <Link
-                    className="py-2 mr-3 text-[18px] text-blue-500 "
-                    href="#"
-                  >
-                    <button className="btn btn-outline rounded-full">
-                      Read more
-                    </button>
-                  </Link>
-                  <Link className="py-2 text-[18px] text-blue-500" href="#">
-                    <button className="btn btn-outline rounded-full">
-                      Add Cart
-                    </button>
-                  </Link>
-                </div> */}
               </div>
             </>
           ))
