@@ -3,6 +3,7 @@ import Header from "@/components/ui/Header";
 import LatestNews from "@/components/ui/LatestNews";
 import Reviews from "@/components/ui/Reviews";
 import Services from "@/components/ui/Services";
+import Upcoming from "@/components/ui/Upcoming";
 import React from "react";
 
 const page = () => {
@@ -10,6 +11,7 @@ const page = () => {
     <div>
       <Header />
       <Services />
+      <Upcoming />
       <Reviews />
       <LatestNews />
       <AddServiceCart />

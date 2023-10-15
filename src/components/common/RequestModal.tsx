@@ -98,11 +98,11 @@ const RequestModal = ({ isOpen, onClose }: ModalProps) => {
                     >
                       Choice your area
                     </label>
-                    <div className="inline-block relative">
+                    <div className="">
                       <select
                         id="area"
                         name="area"
-                        className="appearance-none w-full bg-white border border-gray-400 hover:border-gray-500 px-4 py-2 pr-8 rounded shadow leading-tight focus:outline-none focus:shadow-outline"
+                        className="input input-bordered input-info"
                       >
                         <option>select Location</option>
                         {areas.map((area, i) => (
@@ -128,7 +128,7 @@ const RequestModal = ({ isOpen, onClose }: ModalProps) => {
                       Your Email
                     </label>
                     <input
-                      className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
+                      className="input input-bordered input-info"
                       id="email"
                       name="email"
                       type="text"
@@ -144,9 +144,9 @@ const RequestModal = ({ isOpen, onClose }: ModalProps) => {
                   <textarea
                     name="service"
                     id="type-of-service"
-                    className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white resize-none"
+                    className="textarea textarea-info w-full"
                     rows={2}
-                    placeholder="example: I want to shifting my office"
+                    placeholder="Example: I want to shifting my office"
                   ></textarea>
                   <div className="flex gap-3 pt-5">
                     <div className="w-full md:w-1/2 mb-6 md:mb-0">
@@ -157,7 +157,7 @@ const RequestModal = ({ isOpen, onClose }: ModalProps) => {
                         Your name
                       </label>
                       <input
-                        className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
+                        className="input input-bordered input-info"
                         id="username"
                         name="username"
                         type="text"
@@ -172,7 +172,7 @@ const RequestModal = ({ isOpen, onClose }: ModalProps) => {
                         Your number
                       </label>
                       <input
-                        className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-500 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+                        className="input input-bordered input-info"
                         id="phone-number"
                         type="text"
                         placeholder="Enter your number"
