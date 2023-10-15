@@ -55,6 +55,11 @@ const Navbar = () => {
             <li className="text-black text-xl">Home</li>
           </li>
         </Link>
+        <Link href={"/service"}>
+          <li>
+            <li className="text-black text-xl">Service</li>
+          </li>
+        </Link>
         <Link href={"/Contacts"}>
           <li>
             <li className="text-black text-xl">Contact</li>
@@ -63,6 +68,11 @@ const Navbar = () => {
         <Link href={"/feedback"}>
           <li>
             <li className="text-black text-xl">Feedback</li>
+          </li>
+        </Link>
+        <Link href={"/faq"}>
+          <li>
+            <li className="text-black text-xl">Faq</li>
           </li>
         </Link>
         {data?.profile?.role === "admin" ? (
