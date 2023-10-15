@@ -5,7 +5,7 @@ const LoadingButton = ({ children, classes, handler, disabled }: any) => {
     <button
       onClick={handler}
       disabled={disabled}
-      className={`hover:text-gray-100 w-full btn bg-gradient-to-r from-primary to-secondary text-white ${classes}`}
+      className={`btn btn-outline rounded-full w-full hover:bg-white hover:text-black hover:shadow-lg ${classes}`}
     >
       {children}
     </button>

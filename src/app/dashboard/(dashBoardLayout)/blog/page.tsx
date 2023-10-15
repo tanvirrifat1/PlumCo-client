@@ -3,7 +3,6 @@
 import Loading from "@/app/loading";
 import Image from "next/image";
 import Link from "next/link";
-
 import { format, parseISO } from "date-fns";
 import {
   useAddAllBlogsQuery,
@@ -69,10 +68,10 @@ const DashboardServicePage = () => {
   return (
     <div className="pr-20 pl-5 py-10">
       <div className="flex justify-between border-b-2 pb-1">
-        <h1 className="text-4xl font-bold">Service List</h1>
+        <h1 className="text-4xl font-bold">Blogs List</h1>
         <Link
           href="/dashBoard/blog/create"
-          className="btn btn-outline rounded-full  hover:bg-white hover:text-black hover:shadow-lg"
+          className="btn btn-outline rounded-full hover:bg-white hover:text-black hover:shadow-lg"
         >
           Add Service
         </Link>

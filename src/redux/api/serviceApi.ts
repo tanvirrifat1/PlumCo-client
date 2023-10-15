@@ -31,7 +31,29 @@ const serviceApi = baseApi.injectEndpoints({
       }),
       invalidatesTags: [tagTypes.service],
     }),
+
+    getSingleData: build.query({
+      query: (id) => ({
+        url: `${SERVICE_API}/${id}`,
+        method: "GET",
+      }),
+      providesTags: [tagTypes.service],
+    }),
+
+    updateData: build.mutation({
+      query: (data) => ({
+        url: `${SERVICE_API}/${data?.id}`,
+        method: "PATCH",
+        data: data.body,
+      }),
+      invalidatesTags: [tagTypes.service],
+    }),
   }),
 });
 
-export const { useGetAllServicesQuery, useCreateServiceMutation } = serviceApi;
+export const {
+  useGetAllServicesQuery,
+  useCreateServiceMutation,
+  useGetSingleDataQuery,
+  useUpdateDataMutation,
+} = serviceApi;

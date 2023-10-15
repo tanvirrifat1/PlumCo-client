@@ -3,13 +3,17 @@
 import Loading from "@/app/loading";
 import Form from "@/components/forms/Form";
 import FormInput from "@/components/forms/FormIntput";
+import LoadingButton from "@/components/ui/LoginSpinner";
+import SmallSpinner from "@/components/ui/SmallSpinner";
 import { useCreateServiceMutation } from "@/redux/api/serviceApi";
+import { useRouter } from "next/navigation";
 import React, { useState } from "react";
 import { toast } from "react-toastify";
 
 const CreateServices = () => {
   const [image, setImage] = useState<File | null>(null);
   const [loading, setLoading] = useState<boolean>(false);
+  const router = useRouter();
   const [createService] = useCreateServiceMutation();
   const IMAGEURL = process.env.NEXT_PUBLIC_IMBB_KEY;
   const handleImageChange = async (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -47,14 +51,11 @@ const CreateServices = () => {
             theme: "light",
           });
         }
+        router.push("/dashBoard/service");
         setLoading(false);
       }
     }
   };
-
-  if (loading) {
-    return <Loading />;
-  }
 
   return (
     <div>
@@ -118,13 +119,14 @@ const CreateServices = () => {
               </div>
             </div>
 
-            <div className="flex justify-center">
-              <button
+            <div className="mt-4">
+              <LoadingButton
                 type="submit"
-                className="btn btn-outline w-72 rounded-full"
+                className="btn btn-accent mt-3 w-full"
+                value="Login"
               >
-                Submit
-              </button>
+                {loading ? <SmallSpinner /> : "submit"}
+              </LoadingButton>
             </div>
           </Form>
         </div>
