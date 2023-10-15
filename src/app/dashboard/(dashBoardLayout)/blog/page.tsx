@@ -5,17 +5,63 @@ import Image from "next/image";
 import Link from "next/link";
 
 import { format, parseISO } from "date-fns";
-import { useAddAllBlogsQuery } from "@/redux/api/blogApi";
+import {
+  useAddAllBlogsQuery,
+  useDeleteBlogMutation,
+} from "@/redux/api/blogApi";
 import {
   AiFillDelete,
   AiOutlineDelete,
   AiOutlineEdit,
   AiOutlineEye,
 } from "react-icons/ai";
+import Swal from "sweetalert2";
 
 const DashboardServicePage = () => {
   const arg: any = {};
   const { data, isLoading } = useAddAllBlogsQuery({ ...arg });
+
+  const [deleteBlog] = useDeleteBlogMutation();
+
+  const handleDelete = async (id: string) => {
+    const swalWithBootstrapButtons = Swal.mixin({
+      customClass: {
+        confirmButton: "btn btn-success",
+        cancelButton: "btn btn-danger",
+      },
+      buttonsStyling: false,
+    });
+
+    swalWithBootstrapButtons
+      .fire({
+        title: "Are you sure?",
+        text: "You won't be able to revert this!",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonText: "Yes, delete it!",
+        cancelButtonText: "No, cancel!",
+        reverseButtons: true,
+      })
+      .then((result) => {
+        if (result.isConfirmed) {
+          deleteBlog(id);
+          swalWithBootstrapButtons.fire(
+            "Deleted!",
+            "Your file has been deleted.",
+            "success"
+          );
+        } else if (
+          /* Read more about handling dismissals below */
+          result.dismiss === Swal.DismissReason.cancel
+        ) {
+          swalWithBootstrapButtons.fire(
+            "Cancelled",
+            "Your imaginary file is safe :)",
+            "error"
+          );
+        }
+      });
+  };
 
   if (isLoading) {
     return <Loading />;
@@ -84,7 +130,10 @@ const DashboardServicePage = () => {
                   </Link>
                 </td>
                 <td className="whitespace-nowrap  py-2">
-                  <AiFillDelete className="text-3xl text-red-500" />
+                  <AiFillDelete
+                    onClick={() => handleDelete(service?.id)}
+                    className="text-3xl text-red-500"
+                  />
                 </td>
               </tr>
             ))}
