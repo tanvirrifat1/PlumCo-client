@@ -20,6 +20,7 @@ const blogApi = baseApi.injectEndpoints({
           meta,
         };
       },
+      providesTags: [tagTypes.blog],
     }),
 
     createBlog: build.mutation({
