@@ -1,11 +1,14 @@
+"use client";
+
+import CreateServices from "@/components/dashBoard/ui/createService";
 import React from "react";
 
-const page = () => {
+const CreateService = () => {
   return (
     <div>
-      <h1>hello</h1>
+      <CreateServices />
     </div>
   );
 };
 
-export default page;
+export default CreateService;

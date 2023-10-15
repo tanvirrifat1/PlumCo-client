@@ -14,6 +14,7 @@ const page = () => {
   const { userId } = getUserInfo() as any;
   const [createBlog] = useCreateBlogMutation();
   const router = useRouter();
+
   const handleImageChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files && e.target.files[0];
     setImage(file);
@@ -27,13 +28,8 @@ const page = () => {
       data.authorId = userId;
     }
 
-    if (!image) {
-      console.log("Please select image!");
-      return;
-    }
-
     const formData = new FormData();
-    formData.append("image", image);
+    formData.append("image", image as File);
 
     const url = `https://api.imgbb.com/1/upload?key=${IMAGEURL}`;
     const response = await fetch(url, {

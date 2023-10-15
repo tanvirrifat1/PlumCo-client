@@ -1,5 +1,6 @@
 import { IMeta, IService } from "@/types";
 import { baseApi } from "./baseApi";
+import { tagTypes } from "../tag-types";
 
 const SERVICE_API = "/service";
 
@@ -19,8 +20,18 @@ const serviceApi = baseApi.injectEndpoints({
           meta,
         };
       },
+      providesTags: [tagTypes.service],
+    }),
+
+    createService: build.mutation({
+      query: (data) => ({
+        url: SERVICE_API,
+        method: "POST",
+        data,
+      }),
+      invalidatesTags: [tagTypes.service],
     }),
   }),
 });
 
-export const { useGetAllServicesQuery } = serviceApi;
+export const { useGetAllServicesQuery, useCreateServiceMutation } = serviceApi;

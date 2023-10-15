@@ -71,17 +71,7 @@ const Navbar = () => {
             <li className="text-black text-xl">Feedback</li>
           </li>
         </Link>
-        {data?.profile?.role === "admin" ? (
-          <>
-            <Link href={"/dashBoard"}>
-              <li>
-                <li className="text-black text-xl">DashBoard</li>
-              </li>
-            </Link>
-          </>
-        ) : (
-          <></>
-        )}
+
         <Link href={"/faq"}>
           <li>
             <li className="text-black text-xl">Faq</li>
@@ -92,6 +82,19 @@ const Navbar = () => {
             <Link href={"/blog"}>
               <li>
                 <li className="text-black text-xl">Blog</li>
+              </li>
+            </Link>
+          </>
+        ) : (
+          <></>
+        )}
+
+        {/*  */}
+        {data?.profile?.role === "admin" ? (
+          <>
+            <Link href={"/dashBoard"}>
+              <li>
+                <li className="text-black text-xl">DashBoard</li>
               </li>
             </Link>
           </>
