@@ -2,6 +2,7 @@
 
 import Form from "@/components/forms/Form";
 import FormInput from "@/components/forms/FormIntput";
+import FormTextArea from "@/components/forms/FormTextArea";
 import SelectFormField from "@/components/forms/SeleteFormField";
 import { useFeedbackMutation } from "@/redux/api/feedbackApi";
 import { useGetAllServicesQuery } from "@/redux/api/serviceApi";
@@ -11,7 +12,7 @@ import { toast } from "react-toastify";
 
 const page = () => {
   const { userId } = getUserInfo() as any;
-  console.log(userId);
+
   const arg = {};
   const { data: Service } = useGetAllServicesQuery({ ...arg });
 
@@ -87,13 +88,12 @@ const page = () => {
                     />
                   </div>
                 </div>
-                <div className="sm:col-span-3">
-                  <div className="mt-2">
-                    <FormInput
+                <div className="sm:col-span-6 w-full">
+                  <div className="mt-2 w-full">
+                    <FormTextArea
                       id=""
                       name="suggestions"
                       label="Suggestions"
-                      type="text"
                       placeholder="write your suggestions"
                       className="block w-full rounded-md border-0 py-1.5 px-2  text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                     />

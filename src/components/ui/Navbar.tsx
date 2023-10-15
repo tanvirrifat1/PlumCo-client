@@ -17,7 +17,7 @@ const Navbar = () => {
   //   day: "numeric",
   // });
   const { userId } = getUserInfo() as any;
-  const { data, isLoading, isError, error } = useProfileQuery(userId);
+  const { data } = useProfileQuery(userId);
 
   const router = useRouter();
 
@@ -65,6 +65,17 @@ const Navbar = () => {
             <li className="text-black text-xl">Feedback</li>
           </li>
         </Link>
+        {data?.profile?.role === "admin" ? (
+          <>
+            <Link href={"/blog"}>
+              <li>
+                <li className="text-black text-xl">Blog</li>
+              </li>
+            </Link>
+          </>
+        ) : (
+          <></>
+        )}
       </ul>
     </>
   );
