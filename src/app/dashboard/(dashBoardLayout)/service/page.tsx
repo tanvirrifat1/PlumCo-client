@@ -1,15 +1,61 @@
 "use client";
 
-import { useGetAllServicesQuery } from "@/redux/api/serviceApi";
+import {
+  useDeleteDataMutation,
+  useGetAllServicesQuery,
+} from "@/redux/api/serviceApi";
 import { format, parseISO } from "date-fns";
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
 import { AiFillDelete, AiOutlineEdit, AiOutlineEye } from "react-icons/ai";
+import Swal from "sweetalert2";
 
 const ServicePage = () => {
   const arg = {};
   const { data, isLoading } = useGetAllServicesQuery({ ...arg });
+
+  const [deleteData] = useDeleteDataMutation();
+
+  const handleDelete = async (id: string) => {
+    const swalWithBootstrapButtons = Swal.mixin({
+      customClass: {
+        confirmButton: "btn btn-success",
+        cancelButton: "btn btn-danger",
+      },
+      buttonsStyling: false,
+    });
+
+    swalWithBootstrapButtons
+      .fire({
+        title: "Are you sure?",
+        text: "You won't be able to revert this!",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonText: "Yes, delete it!",
+        cancelButtonText: "No, cancel!",
+        reverseButtons: true,
+      })
+      .then((result) => {
+        if (result.isConfirmed) {
+          deleteData(id);
+          swalWithBootstrapButtons.fire(
+            "Deleted!",
+            "Your file has been deleted.",
+            "success"
+          );
+        } else if (
+          /* Read more about handling dismissals below */
+          result.dismiss === Swal.DismissReason.cancel
+        ) {
+          swalWithBootstrapButtons.fire(
+            "Cancelled",
+            "Your imaginary file is safe :)",
+            "error"
+          );
+        }
+      });
+  };
 
   return (
     <div>
@@ -83,7 +129,7 @@ const ServicePage = () => {
                   </td>
                   <td className="whitespace-nowrap ">
                     <AiFillDelete
-                      // onClick={() => handleDelete(service?.id)}
+                      onClick={() => handleDelete(service?.id)}
                       className="text-3xl text-red-500"
                     />
                   </td>
