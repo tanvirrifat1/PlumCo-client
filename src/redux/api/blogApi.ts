@@ -31,7 +31,29 @@ const blogApi = baseApi.injectEndpoints({
       }),
       invalidatesTags: [tagTypes.blog],
     }),
+
+    getSingleBlogs: build.query({
+      query: (id) => ({
+        url: `${BLOG_API}/${id}`,
+        method: "GET",
+      }),
+      providesTags: [tagTypes.blog],
+    }),
+
+    updateBlog: build.mutation({
+      query: (data) => ({
+        url: `${BLOG_API}/${data?.id}`,
+        method: "PATCH",
+        data: data.body,
+      }),
+      invalidatesTags: [tagTypes.blog],
+    }),
   }),
 });
 
-export const { useAddAllBlogsQuery, useCreateBlogMutation } = blogApi;
+export const {
+  useAddAllBlogsQuery,
+  useCreateBlogMutation,
+  useGetSingleBlogsQuery,
+  useUpdateBlogMutation,
+} = blogApi;

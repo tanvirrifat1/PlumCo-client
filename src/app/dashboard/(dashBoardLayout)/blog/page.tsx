@@ -79,7 +79,9 @@ const DashboardServicePage = () => {
                   <AiOutlineEye className="text-3xl" />
                 </td>
                 <td className="whitespace-nowrap  py-2">
-                  <AiOutlineEdit className="text-3xl" />
+                  <Link href={`/dashBoard/blog/edit/${service?.id}`}>
+                    <AiOutlineEdit className="text-3xl" />
+                  </Link>
                 </td>
                 <td className="whitespace-nowrap  py-2">
                   <AiFillDelete className="text-3xl text-red-500" />
