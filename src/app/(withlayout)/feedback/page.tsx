@@ -2,9 +2,22 @@
 
 import Form from "@/components/forms/Form";
 import FormInput from "@/components/forms/FormIntput";
+import { useGetAllUserQuery } from "@/redux/api/userApi";
 import React from "react";
 
 const page = () => {
+  const arg = {};
+  const { data, isLoading } = useGetAllUserQuery({ ...arg });
+
+  const admins = data?.admins;
+
+  const feedbackOptions = admins?.map((feedback: any) => {
+    return {
+      label: feedback?.fullName,
+      value: feedback?.id,
+    };
+  });
+  console.log(feedbackOptions);
   const onSubmit = async (data: any) => {
     console.log(data);
   };
