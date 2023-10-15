@@ -2,22 +2,16 @@
 
 import Form from "@/components/forms/Form";
 import FormInput from "@/components/forms/FormIntput";
-import { useGetAllUserQuery } from "@/redux/api/userApi";
+import { useProfileQuery } from "@/redux/api/profileApi";
+import { useGetAllUserQuery, useGetSingleUserQuery } from "@/redux/api/userApi";
+import { getUserInfo } from "@/service/auth.service";
 import React from "react";
 
 const page = () => {
-  const arg = {};
-  const { data, isLoading } = useGetAllUserQuery({ ...arg });
+  const { userId } = getUserInfo() as any;
+  const { data, isLoading } = useProfileQuery(userId);
 
-  const admins = data?.admins;
-
-  const feedbackOptions = admins?.map((feedback: any) => {
-    return {
-      label: feedback?.fullName,
-      value: feedback?.id,
-    };
-  });
-  console.log(feedbackOptions);
+  console.log(data);
   const onSubmit = async (data: any) => {
     console.log(data);
   };
@@ -37,32 +31,6 @@ const page = () => {
               </p>
 
               <div className="mt-10 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
-                <div className="sm:col-span-3">
-                  <div className="mt-2">
-                    <FormInput
-                      id=""
-                      type="text"
-                      name="userId"
-                      placeholder="Select your id"
-                      label="UserId"
-                      className="block w-full rounded-md border-0 py-1.5 px-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-                    />
-                  </div>
-                </div>
-
-                <div className="sm:col-span-3">
-                  <div className="mt-2">
-                    <FormInput
-                      id=""
-                      name="serviceId"
-                      type="text"
-                      placeholder="your serviceId"
-                      label="your serviceId"
-                      className="block w-full rounded-md border-0 py-1.5 px-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-                    />
-                  </div>
-                </div>
-
                 <div className="sm:col-span-3">
                   <div className="mt-2">
                     <FormInput
