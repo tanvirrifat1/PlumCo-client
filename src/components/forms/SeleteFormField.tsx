@@ -39,7 +39,7 @@ const SelectFormField = ({
         render={({ field }) => (
           <select className={className} required {...field}>
             <option value="">{placeholder}</option>
-            {options.map((option, index) => (
+            {options?.map((option, index) => (
               <option value={option.value} key={index}>
                 {option.label}
               </option>

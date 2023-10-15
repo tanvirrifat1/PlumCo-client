@@ -2,18 +2,51 @@
 
 import Form from "@/components/forms/Form";
 import FormInput from "@/components/forms/FormIntput";
-import { useProfileQuery } from "@/redux/api/profileApi";
-import { useGetAllUserQuery, useGetSingleUserQuery } from "@/redux/api/userApi";
+import SelectFormField from "@/components/forms/SeleteFormField";
+import { useFeedbackMutation } from "@/redux/api/feedbackApi";
+import { useGetAllServicesQuery } from "@/redux/api/serviceApi";
 import { getUserInfo } from "@/service/auth.service";
 import React from "react";
+import { toast } from "react-toastify";
 
 const page = () => {
   const { userId } = getUserInfo() as any;
-  const { data, isLoading } = useProfileQuery(userId);
+  console.log(userId);
+  const arg = {};
+  const { data: Service } = useGetAllServicesQuery({ ...arg });
 
-  console.log(data);
+  const serviceOption = Service?.map((field: any) => {
+    return {
+      label: field?.title,
+      value: field?.id,
+    };
+  });
+
+  const [feedback] = useFeedbackMutation();
+
   const onSubmit = async (data: any) => {
-    console.log(data);
+    if (userId) {
+      data.userId = userId;
+    }
+    try {
+      const res = await feedback(data);
+
+      if (res) {
+        toast("Feedback successfully!", {
+          position: "top-right",
+          autoClose: 1000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "light",
+        });
+      }
+      console.log(data);
+    } catch (error) {
+      console.error(error);
+    }
   };
 
   return (
@@ -31,6 +64,17 @@ const page = () => {
               </p>
 
               <div className="mt-10 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
+                <div className="sm:col-span-3">
+                  <div className="mt-2">
+                    <SelectFormField
+                      id=""
+                      options={serviceOption}
+                      name="serviceId"
+                      label="Your service"
+                      className="block w-full rounded-md border-0 py-1.5 px-2  text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                    />
+                  </div>
+                </div>
                 <div className="sm:col-span-3">
                   <div className="mt-2">
                     <FormInput
