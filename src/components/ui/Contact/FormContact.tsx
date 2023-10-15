@@ -1,8 +1,36 @@
 import Image from "next/image";
-import React from "react";
+import React, { useRef } from "react";
 import img from "../../../assets/service/Contact us-bro.png";
-
+import emailjs from "@emailjs/browser";
+import Swal from "sweetalert2";
 const FormContact = () => {
+  const form = useRef<HTMLFormElement>(null);
+  const sendEmail = (e: any) => {
+    e.preventDefault();
+    // service_swt84fh;
+    if (form.current) {
+      emailjs
+        .sendForm(
+          "service_vw7flis",
+          "template_757l3hu",
+          form.current,
+          "ftumh3iw7skXi5eFi"
+        )
+        .then(
+          (result) => {
+            console.log(result.text);
+            console.log("message sent");
+          },
+          (error) => {
+            console.log(error.text);
+            console.log("Error sending message");
+          }
+        );
+      Swal.fire(" Message Send!");
+      e.target.reset();
+    }
+  };
+
   return (
     <div className="mt-10 py-4">
       <div>
@@ -31,13 +59,13 @@ const FormContact = () => {
             height={500}
           />
         </div>
-        <form className="space-y-6">
+        <form ref={form} onSubmit={sendEmail} className="space-y-6">
           <div>
             <label className="text-sm">Full name</label>
             <input
               id="name"
-              type="text"
-              placeholder="name"
+              name="user_name"
+              placeholder="Enter your name"
               className="input input-bordered w-full"
             />
           </div>
@@ -45,8 +73,8 @@ const FormContact = () => {
             <label className="text-sm">Email</label>
             <input
               id="email"
-              type="email"
-              placeholder="email"
+              name="user_email"
+              placeholder="Enter your email"
               className="input input-bordered w-full"
             />
           </div>
@@ -54,11 +82,13 @@ const FormContact = () => {
             <label className="text-sm">Message</label>
             <textarea
               className="textarea textarea-bordered w-full"
-              placeholder="Bio"
+              name="message"
+              placeholder="Enter your message"
             ></textarea>
           </div>
           <button
             type="submit"
+            value="Send"
             className="btn btn-outline rounded-full w-full hover:bg-white hover:text-black hover:shadow-lg"
           >
             Send Message
