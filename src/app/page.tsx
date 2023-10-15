@@ -1,12 +1,7 @@
-import Footer from "@/components/ui/Footer";
-import Navbar from "@/components/ui/Navbar";
+import { redirect } from "next/navigation";
 
-export default function Home({ children }: any) {
-  return (
-    <main>
-      <Navbar />
-      {children}
-      <Footer />
-    </main>
-  );
-}
+const HomePage = () => {
+  return redirect("/home");
+};
+
+export default HomePage;
