@@ -29,6 +29,12 @@ const Navbar = () => {
   const navOption = (
     <>
       <ul className="lg:flex justify-center font-semibold space-x-6 text-black ">
+        <Link href={"/home"}>
+          <li>
+            <li className="text-black text-xl">Home</li>
+          </li>
+        </Link>
+
         <div className="dropdown mt-1">
           <li tabIndex={0} className="text-xl m-1 hover:text-indigo-700 ">
             SignUp
@@ -50,11 +56,6 @@ const Navbar = () => {
           </ul>
         </div>
 
-        <Link href={"/home"}>
-          <li>
-            <li className="text-black text-xl">Home</li>
-          </li>
-        </Link>
         <Link href={"/service"}>
           <li>
             <li className="text-black text-xl">Service</li>
@@ -70,6 +71,17 @@ const Navbar = () => {
             <li className="text-black text-xl">Feedback</li>
           </li>
         </Link>
+        {data?.profile?.role === "admin" ? (
+          <>
+            <Link href={"/dashBoard"}>
+              <li>
+                <li className="text-black text-xl">DashBoard</li>
+              </li>
+            </Link>
+          </>
+        ) : (
+          <></>
+        )}
         <Link href={"/faq"}>
           <li>
             <li className="text-black text-xl">Faq</li>
