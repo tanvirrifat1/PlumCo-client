@@ -95,6 +95,14 @@ const Sidebar = () => {
                 <AiOutlineUser className="w-5 h-5 inline-block " /> Add Admin
               </Link>
             </li>
+            <li>
+              <Link
+                className="hover:text-white hover:bg-gray-600 hover:rounded-lg my-1"
+                href="/dashBoard/booking"
+              >
+                <RiReservedFill className="w-5 h-5 inline-block " /> Booking
+              </Link>
+            </li>
           </>
         )}
       </ul>

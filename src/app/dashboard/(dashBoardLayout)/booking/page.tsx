@@ -3,13 +3,169 @@
 import React from "react";
 import { format, parseISO } from "date-fns";
 import Image from "next/image";
-import { useGetAllBookedQuery } from "@/redux/api/bookingApi";
+import {
+  useDeleteBooksMutation,
+  useGetAllBookedQuery,
+  useUpdateBooksMutation,
+} from "@/redux/api/bookingApi";
 import Loading from "@/app/loading";
+import { getUserInfo } from "@/service/auth.service";
+import Swal from "sweetalert2";
+import { ENUM_STATUS, ENUM_USER_ROLE } from "@/enum/user";
 
 const page = () => {
   const arg = {};
   const { data, isLoading } = useGetAllBookedQuery({ ...arg });
-  console.log(data);
+  const [deleteBooks] = useDeleteBooksMutation();
+  const [updateBooks] = useUpdateBooksMutation();
+
+  const { role } = getUserInfo() as any;
+
+  const handleCancel = (id: string) => {
+    console.log(id);
+    const swalWithBootstrapButtons = Swal.mixin({
+      customClass: {
+        confirmButton: "btn btn-success",
+        cancelButton: "btn btn-danger",
+      },
+      buttonsStyling: false,
+    });
+
+    swalWithBootstrapButtons
+      .fire({
+        title: "Are you sure?",
+        text: "You won't be able to revert this!",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonText: "Yes, Cancel it!",
+        cancelButtonText: "No, cancel!",
+        reverseButtons: true,
+      })
+      .then((result) => {
+        if (result.isConfirmed) {
+          const res = deleteBooks(id);
+          if (res.arg.track) {
+            swalWithBootstrapButtons.fire(
+              "Cancel!",
+              "Your booking service has been cancel!.",
+              "success"
+            );
+          } else {
+            swalWithBootstrapButtons.fire(
+              "Not Cancel!",
+              "Something is wrong!!!",
+              "error"
+            );
+          }
+        } else if (
+          /* Read more about handling dismissals below */
+          result.dismiss === Swal.DismissReason.cancel
+        ) {
+          swalWithBootstrapButtons.fire(
+            "Cancelled",
+            "Your imaginary service is safe :)",
+            "error"
+          );
+        }
+      });
+  };
+
+  const handleDelete = (id: string) => {
+    console.log(id);
+    const swalWithBootstrapButtons = Swal.mixin({
+      customClass: {
+        confirmButton: "btn btn-success",
+        cancelButton: "btn btn-danger",
+      },
+      buttonsStyling: false,
+    });
+
+    swalWithBootstrapButtons
+      .fire({
+        title: "Are you sure?",
+        text: "You won't be able to revert this!",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonText: "Yes, Delete it!",
+        cancelButtonText: "No, cancel!",
+        reverseButtons: true,
+      })
+      .then((result) => {
+        if (result.isConfirmed) {
+          const res = deleteBooks(id);
+          if (res.arg.track) {
+            swalWithBootstrapButtons.fire(
+              "Deleted!",
+              "Your booking service has been Deleted!.",
+              "success"
+            );
+          } else {
+            swalWithBootstrapButtons.fire(
+              "Not Cancel!",
+              "Something is wrong!!!",
+              "error"
+            );
+          }
+        } else if (
+          /* Read more about handling dismissals below */
+          result.dismiss === Swal.DismissReason.cancel
+        ) {
+          swalWithBootstrapButtons.fire(
+            "Cancelled",
+            "Your imaginary service is safe :)",
+            "error"
+          );
+        }
+      });
+  };
+
+  const handleAccept = (id: string) => {
+    const swalWithBootstrapButtons = Swal.mixin({
+      customClass: {
+        confirmButton: "btn btn-success",
+        cancelButton: "btn btn-danger",
+      },
+      buttonsStyling: false,
+    });
+
+    swalWithBootstrapButtons
+      .fire({
+        title: "Are you sure?",
+        text: "Make a confirm then accept!",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonText: "Yes, Accept it!",
+        cancelButtonText: "No, Accept!",
+        reverseButtons: true,
+      })
+      .then((result) => {
+        if (result.isConfirmed) {
+          const res = updateBooks({ id, body: { status: "APPROVED" } });
+          if (res.arg.track) {
+            swalWithBootstrapButtons.fire(
+              "Confirm!",
+              "Client booking service has been confirm!.",
+              "success"
+            );
+          } else {
+            swalWithBootstrapButtons.fire(
+              "Not Accept!",
+              "Something is wrong!!!",
+              "error"
+            );
+          }
+        } else if (
+          /* Read more about handling dismissals below */
+          result.dismiss === Swal.DismissReason.cancel
+        ) {
+          swalWithBootstrapButtons.fire(
+            "Not Confirm",
+            "Please confirm then accept :)",
+            "error"
+          );
+        }
+      });
+  };
 
   if (isLoading) {
     return <Loading />;
@@ -36,9 +192,9 @@ const page = () => {
               <th className="whitespace-nowrap px-4 py-2 font-medium text-gray-900">
                 Date
               </th>
-              {/* <th className="whitespace-nowrap px-4 py-2 font-medium text-gray-900">
-                Price
-              </th> */}
+              <th className="whitespace-nowrap px-4 py-2 font-medium text-gray-900">
+                Status
+              </th>
               <th className="px-4 py-2"></th>
             </tr>
           </thead>
@@ -67,15 +223,37 @@ const page = () => {
                 <td className="whitespace-nowrap px-4 py-2 text-gray-700">
                   {format(parseISO(service?.createdAt), "PP")}
                 </td>
+                <td className="whitespace-nowrap px-4 py-2 text-gray-700">
+                  {service?.status}
+                </td>
 
-                <div className="whitespace-nowrap ">
-                  <button className="btn  py-2 mr-3 bg-purple-700 text-white hover:text-black">
-                    pending
-                  </button>
-                  <button className="btn  bg-green-700 text-white hover:text-black">
-                    accept
-                  </button>
-                </div>
+                <td className="whitespace-nowrap px-4 py-2">
+                  {role !== ENUM_USER_ROLE.USER ? (
+                    <>
+                      <button
+                        onClick={() => handleAccept(service?.id)}
+                        disabled={service?.status === "APPROVED"}
+                        className="btn inline-block rounded bg-indigo-600 px-4 py-2 text-xs font-medium text-white hover:bg-indigo-700"
+                      >
+                        accept
+                      </button>
+                      <button
+                        onClick={() => handleDelete(service?.id)}
+                        className="btn btn-error inline-block rounded px-4 py-2 text-xs font-medium text-white mx-2"
+                      >
+                        Reject
+                      </button>
+                    </>
+                  ) : (
+                    <button
+                      onClick={() => handleCancel(service?.id)}
+                      disabled={service?.status === ENUM_STATUS.APPROVED}
+                      className="btn btn-error inline-block rounded px-4 py-2 text-xs font-medium text-white "
+                    >
+                      Cancel
+                    </button>
+                  )}
+                </td>
               </tr>
             ))}
           </tbody>
