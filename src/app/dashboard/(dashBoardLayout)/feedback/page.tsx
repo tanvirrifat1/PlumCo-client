@@ -9,6 +9,7 @@ import { AiFillDelete, AiOutlineEye } from "react-icons/ai";
 import Image from "next/image";
 import Loading from "@/app/loading";
 import Swal from "sweetalert2";
+import Link from "next/link";
 
 const page = () => {
   const arg = {};
@@ -105,7 +106,9 @@ const page = () => {
                   {service?.suggestions.slice(0, 50)}...
                 </td>
                 <td className="whitespace-nowrap py-2">
-                  <AiOutlineEye className="text-3xl" />
+                  <Link href={`/dashBoard/feedback/${service?.id}`}>
+                    <AiOutlineEye className="text-3xl" />
+                  </Link>
                 </td>
 
                 <td className="whitespace-nowrap  py-2">
