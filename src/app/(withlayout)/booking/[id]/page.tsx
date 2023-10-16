@@ -1,5 +1,6 @@
 "use client";
 
+import DatePickerField from "@/components/forms/DatePickerField";
 import Form from "@/components/forms/Form";
 import FormInput from "@/components/forms/FormIntput";
 import LoadingButton from "@/components/ui/LoginSpinner";
@@ -11,10 +12,10 @@ import { useState } from "react";
 
 const page = ({ params }: { params: any }) => {
   const { id } = params;
+  const [startDate, setStartDate] = useState(new Date());
   const [loading, setLoading] = useState<boolean>(false);
   const { userId } = getUserInfo() as any;
-  const { data } = useGetSingleDataQuery(id);
-
+  const { data: service } = useGetSingleDataQuery(id);
   const { data: user } = useProfileQuery(userId);
 
   const defaultValues = {
@@ -22,11 +23,20 @@ const page = ({ params }: { params: any }) => {
     email: user?.profile?.email,
     address: user?.profile?.address,
     contactNo: user?.profile?.contactNo,
-    title: data?.title,
+    title: service?.title,
   };
 
   const onSubmit = (data: any) => {
-    console.log(data);
+    const BookData = {
+      serviceId: service?.id,
+      data,
+    };
+
+    console.log(BookData);
+  };
+
+  const handleDateChange = (newDate: Date) => {
+    setStartDate(newDate);
   };
 
   return (
@@ -78,7 +88,7 @@ const page = ({ params }: { params: any }) => {
                 className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
               />
             </div>
-            <div className="w-full md:w-1/2 mb-6 md:mb-0">
+            <div className="w-full md:w-1/2  md:mb-0">
               <FormInput
                 name="address"
                 label="Address"
@@ -102,7 +112,21 @@ const page = ({ params }: { params: any }) => {
                 className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
               />
             </div>
+            <div className="w-full md:w-1/2">
+              <label
+                htmlFor="date"
+                className="block text-sm font-medium leading-6 text-gray-900"
+              >
+                Date
+              </label>
+              <DatePickerField
+                className="appearance-none block cursor-pointer w-full bg-gray-200 text-gray-700 border border-gray-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
+                selectedDate={startDate as Date}
+                onChange={(date) => handleDateChange(date as Date)}
+              />
+            </div>
           </div>
+
           <div className="mt-4">
             <LoadingButton
               type="submit"
