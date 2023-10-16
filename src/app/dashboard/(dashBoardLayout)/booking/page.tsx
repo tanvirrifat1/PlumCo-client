@@ -22,7 +22,6 @@ const page = () => {
   const { role } = getUserInfo() as any;
 
   const handleCancel = (id: string) => {
-    console.log(id);
     const swalWithBootstrapButtons = Swal.mixin({
       customClass: {
         confirmButton: "btn btn-success",
@@ -71,7 +70,6 @@ const page = () => {
   };
 
   const handleDelete = (id: string) => {
-    console.log(id);
     const swalWithBootstrapButtons = Swal.mixin({
       customClass: {
         confirmButton: "btn btn-success",
@@ -239,6 +237,7 @@ const page = () => {
                       </button>
                       <button
                         onClick={() => handleDelete(service?.id)}
+                        disabled={service?.status === "APPROVED"}
                         className="btn btn-error inline-block rounded px-4 py-2 text-xs font-medium text-white mx-2"
                       >
                         Reject
