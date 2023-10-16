@@ -5,10 +5,13 @@ import Form from "@/components/forms/Form";
 import FormInput from "@/components/forms/FormIntput";
 import LoadingButton from "@/components/ui/LoginSpinner";
 import SmallSpinner from "@/components/ui/SmallSpinner";
+import { useCreateBookedMutation } from "@/redux/api/bookingApi";
 import { useProfileQuery } from "@/redux/api/profileApi";
 import { useGetSingleDataQuery } from "@/redux/api/serviceApi";
 import { getUserInfo } from "@/service/auth.service";
+import { format } from "date-fns";
 import { useState } from "react";
+import { toast } from "react-toastify";
 
 const page = ({ params }: { params: any }) => {
   const { id } = params;
@@ -17,6 +20,7 @@ const page = ({ params }: { params: any }) => {
   const { userId } = getUserInfo() as any;
   const { data: service } = useGetSingleDataQuery(id);
   const { data: user } = useProfileQuery(userId);
+  const date = format(startDate, "PP");
 
   const defaultValues = {
     fullName: user?.profile?.fullName,
@@ -26,13 +30,38 @@ const page = ({ params }: { params: any }) => {
     title: service?.title,
   };
 
-  const onSubmit = (data: any) => {
+  const [createBooked] = useCreateBookedMutation();
+
+  const onSubmit = async () => {
     const BookData = {
       serviceId: service?.id,
-      data,
+      userId,
+      date: date,
     };
-
-    console.log(BookData);
+    const res: any = await createBooked(BookData);
+    if (res?.data) {
+      toast("booking successfully!", {
+        position: "top-right",
+        autoClose: 1000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+      });
+    } else {
+      toast("Already booked!", {
+        position: "top-right",
+        autoClose: 1000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+      });
+    }
   };
 
   const handleDateChange = (newDate: Date) => {

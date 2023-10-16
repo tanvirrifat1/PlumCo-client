@@ -105,13 +105,13 @@ const Services = () => {
                         onClick={() => handleAddToCart(service?.id)}
                         className="btn btn-outline rounded-full w-48 h-6 bg-slate-600 text-white hover:bg-white hover:text-black hover:shadow-lg"
                       >
-                        <CiSaveUp2 className="text-2xl" /> Book
+                        <CiSaveUp2 className="text-2xl" /> Add
                       </button>
                       <button
                         onClick={() => handleBook(service?.id)}
                         className="btn btn-outline rounded-full  w-48 h-6 hover:bg-white hover:text-black hover:shadow-lg"
                       >
-                        <BiSolidCartAdd className="text-2xl" /> Add
+                        <BiSolidCartAdd className="text-2xl" /> Book
                       </button>
                     </div>
                   </div>

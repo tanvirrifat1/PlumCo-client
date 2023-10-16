@@ -59,4 +59,4 @@ const blogApi = baseApi.injectEndpoints({
   }),
 });
 
-export const { useGetAllBookedQuery } = blogApi;
+export const { useGetAllBookedQuery, useCreateBookedMutation } = blogApi;

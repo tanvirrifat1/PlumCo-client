@@ -1,4 +1,5 @@
 import Sidebar from "@/components/ui/Sidebar";
+import PrivateRoute from "../../../middleware";
 
 export default function DashboardLayout({
   children, // will be a page or nested layout

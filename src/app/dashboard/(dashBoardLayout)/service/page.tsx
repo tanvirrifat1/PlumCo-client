@@ -85,9 +85,9 @@ const ServicePage = () => {
                 <th className="whitespace-nowrap px-4 py-2 font-medium text-gray-900">
                   Date
                 </th>
-                {/* <th className="whitespace-nowrap px-4 py-2 font-medium text-gray-900">
-                Price
-              </th> */}
+                <th className="whitespace-nowrap px-4 py-2 font-medium text-gray-900">
+                  Update Here
+                </th>
                 <th className="px-4 py-2"></th>
               </tr>
             </thead>
@@ -116,22 +116,19 @@ const ServicePage = () => {
                   <td className="whitespace-nowrap px-4 py-2 text-gray-700">
                     {format(parseISO(service?.createdAt), "PP")}
                   </td>
-                  {/* <td className="whitespace-nowrap px-4 py-2 text-primary">
-                  {service?.price} ৳
-                </td> */}
-                  <td className="whitespace-nowrap ">
-                    <AiOutlineEye className="text-3xl" />
-                  </td>
-                  <td className="whitespace-nowrap ">
-                    <Link href={`/dashBoard/service/edit/${service?.id}`}>
-                      <AiOutlineEdit className="text-3xl" />
-                    </Link>
-                  </td>
-                  <td className="whitespace-nowrap ">
-                    <AiFillDelete
-                      onClick={() => handleDelete(service?.id)}
-                      className="text-3xl text-red-500"
-                    />
+
+                  <td className="flex gap-2">
+                    <button className="btn btn-secondary ">
+                      <Link href={`/dashBoard/service/edit/${service?.id}`}>
+                        <AiOutlineEdit className="text-3xl" />
+                      </Link>
+                    </button>
+                    <button className="btn bg-red-600">
+                      <AiFillDelete
+                        onClick={() => handleDelete(service?.id)}
+                        className="text-3xl text-white hover:text-black"
+                      />
+                    </button>
                   </td>
                 </tr>
               ))}
