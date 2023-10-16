@@ -7,6 +7,7 @@ import { useRouter } from "next/navigation";
 import { useState, useEffect } from "react";
 
 import Loading from "../loading";
+import NavHeader from "@/components/ui/NavHeader";
 export default function DashboardLayout({
   children, // will be a page or nested layout
 }: {

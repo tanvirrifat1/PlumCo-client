@@ -8,14 +8,9 @@ import { getUserInfo, removeUserInfo } from "@/service/auth.service";
 import { authKey } from "@/constants/storageKey";
 import { useRouter } from "next/navigation";
 import { useProfileQuery } from "@/redux/api/profileApi";
+import NavHeader from "./NavHeader";
 
 const Navbar = () => {
-  // const currentDate = new Date();
-  // const formattedDate = currentDate.toLocaleDateString("en-US", {
-  //   year: "numeric",
-  //   month: "long",
-  //   day: "numeric",
-  // });
   const { userId } = getUserInfo() as any;
   const { data } = useProfileQuery(userId);
 
@@ -107,6 +102,9 @@ const Navbar = () => {
 
   return (
     <div className="sticky top-0 z-50  ">
+      <div>
+        <NavHeader />
+      </div>
       <div className="navbar bg-base-100 ">
         <div className="navbar-start">
           <div className="dropdown">

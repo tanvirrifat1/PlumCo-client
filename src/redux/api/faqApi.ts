@@ -20,6 +20,7 @@ const faqApi = baseApi.injectEndpoints({
           meta,
         };
       },
+      providesTags: [tagTypes.faq],
     }),
   }),
 });

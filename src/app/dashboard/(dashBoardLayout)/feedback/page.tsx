@@ -1,21 +1,20 @@
 "use client";
 
-import Loading from "@/app/loading";
-import Image from "next/image";
-import Link from "next/link";
-import { format, parseISO } from "date-fns";
 import {
-  useAddAllBlogsQuery,
-  useDeleteBlogMutation,
-} from "@/redux/api/blogApi";
-import { AiFillDelete, AiOutlineEdit, AiOutlineEye } from "react-icons/ai";
+  useDeleteFeedbackMutation,
+  useGetAllFeedBackQuery,
+} from "@/redux/api/feedbackApi";
+import React from "react";
+import { AiFillDelete, AiOutlineEye } from "react-icons/ai";
+import Image from "next/image";
+import Loading from "@/app/loading";
 import Swal from "sweetalert2";
 
-const DashboardServicePage = () => {
-  const arg: any = {};
-  const { data, isLoading } = useAddAllBlogsQuery({ ...arg });
+const page = () => {
+  const arg = {};
+  const { data, isLoading } = useGetAllFeedBackQuery({ ...arg });
 
-  const [deleteBlog] = useDeleteBlogMutation();
+  const [deleteFeedback] = useDeleteFeedbackMutation();
 
   const handleDelete = async (id: string) => {
     const swalWithBootstrapButtons = Swal.mixin({
@@ -38,7 +37,7 @@ const DashboardServicePage = () => {
       })
       .then((result) => {
         if (result.isConfirmed) {
-          deleteBlog(id);
+          deleteFeedback(id);
           swalWithBootstrapButtons.fire(
             "Deleted!",
             "Your file has been deleted.",
@@ -63,13 +62,7 @@ const DashboardServicePage = () => {
   return (
     <div className="pr-20 pl-5 py-10">
       <div className="flex justify-between border-b-2 pb-1">
-        <h1 className="text-4xl font-bold">Blogs List</h1>
-        <Link
-          href="/dashBoard/blog/create"
-          className="btn btn-outline rounded-full hover:bg-white hover:text-black hover:shadow-lg"
-        >
-          Add Service
-        </Link>
+        <h1 className="text-4xl font-bold">Feedbacks List</h1>
       </div>
       <div className="overflow-x-auto mt-10">
         <table className="min-w-full divide-y-2 divide-gray-200 bg-white text-sm">
@@ -79,14 +72,12 @@ const DashboardServicePage = () => {
                 Image
               </th>
               <th className="whitespace-nowrap px-4 py-2 font-medium text-gray-900">
-                Title
+                comments
               </th>
               <th className="whitespace-nowrap px-4 py-2 font-medium text-gray-900">
-                Date
+                suggestions
               </th>
-              {/* <th className="whitespace-nowrap px-4 py-2 font-medium text-gray-900">
-                Price
-              </th> */}
+
               <th className="px-4 py-2"></th>
             </tr>
           </thead>
@@ -99,7 +90,7 @@ const DashboardServicePage = () => {
                     <div className="w-8 rounded">
                       <Image
                         alt={service?.title}
-                        src={service?.image}
+                        src={service?.User?.profileImage}
                         width={32}
                         height={32}
                       />
@@ -107,22 +98,16 @@ const DashboardServicePage = () => {
                   </div>
                 </td>
                 <td className="whitespace-nowrap px-4 py-2 text-gray-700">
-                  {service?.title}
+                  {service?.comments.slice(0, 50)}...
                 </td>
+
                 <td className="whitespace-nowrap px-4 py-2 text-gray-700">
-                  {format(parseISO(service?.createdAt), "PP")}
+                  {service?.suggestions.slice(0, 50)}...
                 </td>
-                {/* <td className="whitespace-nowrap px-4 py-2 text-primary">
-                  {service?.price} ৳
-                </td> */}
                 <td className="whitespace-nowrap py-2">
                   <AiOutlineEye className="text-3xl" />
                 </td>
-                <td className="whitespace-nowrap  py-2">
-                  <Link href={`/dashBoard/blog/edit/${service?.id}`}>
-                    <AiOutlineEdit className="text-3xl" />
-                  </Link>
-                </td>
+
                 <td className="whitespace-nowrap  py-2">
                   <AiFillDelete
                     onClick={() => handleDelete(service?.id)}
@@ -138,4 +123,4 @@ const DashboardServicePage = () => {
   );
 };
 
-export default DashboardServicePage;
+export default page;

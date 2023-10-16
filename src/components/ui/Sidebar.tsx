@@ -27,7 +27,8 @@ const Sidebar = () => {
             className="hover:text-white hover:bg-gray-600 hover:rounded-lg"
             href="/dashBoard/service"
           >
-            <WrenchScrewdriverIcon className="w-5 h-5 inline-block " /> Service
+            <WrenchScrewdriverIcon className="w-5 h-5 inline-block font-semibold" />{" "}
+            Service
           </Link>
         </li>
         <li>

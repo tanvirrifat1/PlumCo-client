@@ -13,7 +13,7 @@ import Swal from "sweetalert2";
 
 const ServicePage = () => {
   const arg = {};
-  const { data, isLoading } = useGetAllServicesQuery({ ...arg });
+  const { data } = useGetAllServicesQuery({ ...arg });
 
   const [deleteData] = useDeleteDataMutation();
 
