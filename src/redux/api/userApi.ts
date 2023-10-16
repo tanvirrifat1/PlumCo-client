@@ -1,4 +1,4 @@
-import { IMeta } from "@/types";
+import { IMeta, IUserProfile, PaginationInfo } from "@/types";
 import { tagTypes } from "../tag-types";
 import { baseApi } from "./baseApi";
 
@@ -15,7 +15,7 @@ const userApi = baseApi.injectEndpoints({
           params: arg,
         };
       },
-      transformResponse: (response: any, meta: IMeta) => {
+      transformResponse: (response: any, meta: PaginationInfo) => {
         return {
           admins: response,
           meta,

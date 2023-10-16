@@ -4,7 +4,11 @@ export interface IMeta {
   total: number;
   totalPage: number;
 }
-
+export type PaginationInfo = {
+  total: number;
+  page: number;
+  limit: number;
+};
 export type ResponseSuccessType = {
   data: any;
   meta?: IMeta;

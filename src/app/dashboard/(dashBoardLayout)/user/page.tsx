@@ -1,16 +1,23 @@
 "use client";
-
 import React from "react";
 import { format, parseISO } from "date-fns";
 import Image from "next/image";
-import { useGetAllBookedQuery } from "@/redux/api/bookingApi";
+import { useGetAllUserQuery } from "@/redux/api/userApi";
 import Loading from "@/app/loading";
+import { IUserProfile } from "@/types";
 
 const page = () => {
   const arg = {};
-  const { data, isLoading } = useGetAllBookedQuery({ ...arg });
-  console.log(data);
 
+  const { data, isLoading } = useGetAllUserQuery({ ...arg });
+
+  const mappedArray = data?.admins?.map((object: IUserProfile) => {
+    return {
+      ...object,
+    };
+  });
+
+  console.log(mappedArray);
   if (isLoading) {
     return <Loading />;
   }
@@ -18,7 +25,7 @@ const page = () => {
   return (
     <div className="pr-20 pl-5 py-10">
       <div className="flex justify-between border-b-2 pb-1">
-        <h1 className="text-4xl font-bold">Bookings List</h1>
+        <h1 className="text-4xl font-bold">Users List</h1>
       </div>
       <div className="overflow-x-auto mt-10">
         <table className="min-w-full divide-y-2 divide-gray-200 bg-white text-sm">
@@ -28,30 +35,28 @@ const page = () => {
                 Image
               </th>
               <th className="whitespace-nowrap px-4 py-2 font-medium text-gray-900">
-                User
+                Address
               </th>
               <th className="whitespace-nowrap px-4 py-2 font-medium text-gray-900">
-                Service
+                ContactNo
               </th>
               <th className="whitespace-nowrap px-4 py-2 font-medium text-gray-900">
                 Date
               </th>
-              {/* <th className="whitespace-nowrap px-4 py-2 font-medium text-gray-900">
-                Price
-              </th> */}
+
               <th className="px-4 py-2"></th>
             </tr>
           </thead>
 
           <tbody className="divide-y divide-gray-200">
-            {data?.map((service: any) => (
-              <tr key={service?.id}>
+            {mappedArray.map((field: any) => (
+              <tr key={field?.id}>
                 <td className="whitespace-nowrap px-4 py-2 font-medium text-gray-900">
                   <div className="avatar">
                     <div className="w-8 rounded">
                       <Image
-                        alt={service?.title}
-                        src={service?.user?.profileImage}
+                        alt={field?.title}
+                        src={field?.profileImage}
                         width={32}
                         height={32}
                       />
@@ -59,21 +64,21 @@ const page = () => {
                   </div>
                 </td>
                 <td className="whitespace-nowrap px-4 py-2 text-gray-700">
-                  {service?.user?.fullName}
+                  {field?.address}
                 </td>
                 <td className="whitespace-nowrap px-4 py-2 text-gray-700">
-                  {service?.service?.title}
+                  {field?.contactNo}
                 </td>
                 <td className="whitespace-nowrap px-4 py-2 text-gray-700">
-                  {format(parseISO(service?.createdAt), "PP")}
+                  {format(parseISO(field?.createdAt), "PP")}
                 </td>
 
                 <div className="whitespace-nowrap ">
                   <button className="btn  py-2 mr-3 bg-purple-700 text-white hover:text-black">
-                    pending
+                    Reject
                   </button>
                   <button className="btn  bg-green-700 text-white hover:text-black">
-                    accept
+                    Make Admin
                   </button>
                 </div>
               </tr>
