@@ -9,7 +9,7 @@ const FeedbackPage = ({ params }: { params: any }) => {
   const { id } = params;
 
   const { data, isLoading } = useGetSingleFeedbackQuery(id);
-  console.log(data);
+
   if (isLoading) {
     return <Loading />;
   }

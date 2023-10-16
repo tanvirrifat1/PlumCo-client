@@ -5,6 +5,7 @@ import Image from "next/image";
 import { useGetAllUserQuery } from "@/redux/api/userApi";
 import Loading from "@/app/loading";
 import { IUserProfile } from "@/types";
+import Link from "next/link";
 
 const page = () => {
   const arg = {};
@@ -80,6 +81,12 @@ const page = () => {
                   <button className="btn  bg-green-700 text-white hover:text-black">
                     Make Admin
                   </button>
+                  <Link
+                    href={`/dashBoard/user/${field?.id}`}
+                    className="btn ml-3 bg-pink-600 text-white hover:text-black"
+                  >
+                    Profile
+                  </Link>
                 </div>
               </tr>
             ))}
