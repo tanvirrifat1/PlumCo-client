@@ -82,11 +82,9 @@ const DashboardServicePage = () => {
                 Title
               </th>
               <th className="whitespace-nowrap px-4 py-2 font-medium text-gray-900">
-                Date
+                Update here
               </th>
-              {/* <th className="whitespace-nowrap px-4 py-2 font-medium text-gray-900">
-                Price
-              </th> */}
+
               <th className="px-4 py-2"></th>
             </tr>
           </thead>
@@ -112,9 +110,7 @@ const DashboardServicePage = () => {
                 <td className="whitespace-nowrap px-4 py-2 text-gray-700">
                   {format(parseISO(service?.createdAt), "PP")}
                 </td>
-                {/* <td className="whitespace-nowrap px-4 py-2 text-primary">
-                  {service?.price} ৳
-                </td> */}
+
                 <td className="whitespace-nowrap py-2">
                   <AiOutlineEye className="text-3xl" />
                 </td>

@@ -22,7 +22,42 @@ const faqApi = baseApi.injectEndpoints({
       },
       providesTags: [tagTypes.faq],
     }),
+
+    deleteFaq: build.mutation({
+      query: (id) => ({
+        url: `${FAQ_API}/${id}`,
+        method: "DELETE",
+      }),
+      invalidatesTags: [tagTypes.faq],
+    }),
+
+    getSingleFaq: build.query({
+      query: (id) => ({
+        url: `${FAQ_API}/${id}`,
+        method: "GET",
+      }),
+      providesTags: [tagTypes.faq],
+    }),
+
+    createFaq: build.mutation({
+      query: (data) => ({
+        url: FAQ_API,
+        method: "POST",
+        data,
+      }),
+      invalidatesTags: [tagTypes.faq],
+    }),
+
+    updateFaq: build.mutation({
+      query: (data) => ({
+        url: `${FAQ_API}/${data?.id}`,
+        method: "PATCH",
+        data: data.body,
+      }),
+      invalidatesTags: [tagTypes.faq],
+    }),
   }),
 });
 
-export const { useAllFaqQuery } = faqApi;
+export const { useAllFaqQuery, useDeleteFaqMutation, useCreateFaqMutation } =
+  faqApi;
