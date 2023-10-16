@@ -47,3 +47,13 @@ export type IService = {
   createdAt: string;
   updatedAt: string;
 };
+
+export type IAddToCartData = {
+  id: string;
+  userId: string;
+  serviceId: string;
+  createdAt: string;
+  updatedAt: string;
+  user: IUserProfile;
+  service: IService;
+};

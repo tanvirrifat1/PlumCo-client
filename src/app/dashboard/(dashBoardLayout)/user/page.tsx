@@ -42,6 +42,9 @@ const page = () => {
                 ContactNo
               </th>
               <th className="whitespace-nowrap px-4 py-2 font-medium text-gray-900">
+                Role
+              </th>
+              <th className="whitespace-nowrap px-4 py-2 font-medium text-gray-900">
                 Date
               </th>
 
@@ -69,6 +72,9 @@ const page = () => {
                 </td>
                 <td className="whitespace-nowrap px-4 py-2 text-gray-700">
                   {field?.contactNo}
+                </td>
+                <td className="whitespace-nowrap px-4 py-2 text-gray-700">
+                  {field?.role}
                 </td>
                 <td className="whitespace-nowrap px-4 py-2 text-gray-700">
                   {format(parseISO(field?.createdAt), "PP")}

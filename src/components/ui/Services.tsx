@@ -1,14 +1,55 @@
 "use client";
 
 import { useGetAllServicesQuery } from "@/redux/api/serviceApi";
-
+import { CiSaveUp2 } from "react-icons/ci";
 import Image from "next/image";
 
 import React from "react";
+import { BiSolidCartAdd } from "react-icons/bi";
+import { getUserInfo, isLoggedin } from "@/service/auth.service";
+import { useRouter } from "next/navigation";
+import { useAddToCartMutation } from "@/redux/api/addToCartApi";
+import Swal from "sweetalert2";
 
 const Services = () => {
   const arg = {};
   const { data, isLoading } = useGetAllServicesQuery({ ...arg });
+  const { role, userId } = getUserInfo() as any;
+  const router = useRouter();
+  const userloggedIn = isLoggedin();
+
+  const [addToCart] = useAddToCartMutation();
+
+  const handleAddToCart = async (id: string) => {
+    if (id) {
+      const res: any = await addToCart({ serviceId: id });
+      if (res.data) {
+        Swal.fire({
+          position: "top-right",
+          icon: "success",
+          title: "Service is Added!",
+          showConfirmButton: false,
+          timer: 1500,
+        });
+      } else {
+        Swal.fire({
+          position: "top-right",
+          icon: "error",
+          title: "This service Already Added!",
+          showConfirmButton: false,
+          timer: 1500,
+        });
+      }
+    }
+  };
+
+  const handleBook = (id: string) => {
+    if (!userloggedIn) {
+      router.push("/login");
+    } else {
+      router.push(`/booking/${id}`);
+    }
+  };
 
   return (
     <section className="py-20 w-full lg:w-[1440px] mx-auto">
@@ -59,12 +100,18 @@ const Services = () => {
                       {service?.description.slice(0, 50)}...
                     </p>
                     <p className="text-lg">Price: {service?.price} $</p>
-                    <div className="card-actions justify-center">
-                      <button className="btn btn-outline rounded-full w-full hover:bg-white hover:text-black hover:shadow-lg">
-                        Read more
+                    <div className="flex justify-center gap-3">
+                      <button
+                        onClick={() => handleAddToCart(service?.id)}
+                        className="btn btn-outline rounded-full w-48 h-6 bg-slate-600 text-white hover:bg-white hover:text-black hover:shadow-lg"
+                      >
+                        <CiSaveUp2 className="text-2xl" /> Book
                       </button>
-                      <button className="btn btn-outline rounded-full w-full hover:bg-white hover:text-black hover:shadow-lg">
-                        Add Cart
+                      <button
+                        onClick={() => handleBook(service?.id)}
+                        className="btn btn-outline rounded-full  w-48 h-6 hover:bg-white hover:text-black hover:shadow-lg"
+                      >
+                        <BiSolidCartAdd className="text-2xl" /> Add
                       </button>
                     </div>
                   </div>

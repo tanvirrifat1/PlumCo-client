@@ -97,19 +97,19 @@ const page = () => {
                     {faq?.answer.slice(0, 70)}...
                   </td>
 
-                  <div className="whitespace-nowrap px-4 py-2">
-                    <td className="whitespace-nowrap py-2">
+                  <div className="whitespace-nowrap flex gap-2 px-4 py-2">
+                    <button className="whitespace-nowrap py-2 btn btn-primary">
                       {/* <Link href={`/dashBoard/faq/${faq?.id}`}> */}
                       <AiOutlineEye className="text-3xl" />
                       {/* </Link> */}
-                    </td>
+                    </button>
 
-                    <td className="whitespace-nowrap  py-2">
+                    <button className="whitespace-nowrap bg-red-500 flex justify-center rounded-lg w-16 py-2">
                       <AiFillDelete
                         onClick={() => handleDelete(faq?.id)}
-                        className="text-3xl text-red-500"
+                        className="text-3xl text-white hover:text-black"
                       />
-                    </td>
+                    </button>
                   </div>
                 </tr>
               ))}

@@ -105,18 +105,18 @@ const page = () => {
                 <td className="whitespace-nowrap px-4 py-2 text-gray-700">
                   {service?.suggestions.slice(0, 50)}...
                 </td>
-                <td className="whitespace-nowrap py-2">
+                <button className="whitespace-nowrap py-2 btn btn-primary">
                   <Link href={`/dashBoard/feedback/${service?.id}`}>
                     <AiOutlineEye className="text-3xl" />
                   </Link>
-                </td>
+                </button>
 
-                <td className="whitespace-nowrap  py-2">
+                <button className="whitespace-nowrap ml-2 btn py-2 bg-red-500 ">
                   <AiFillDelete
                     onClick={() => handleDelete(service?.id)}
-                    className="text-3xl text-red-500"
+                    className="text-3xl text-white hover:text-black"
                   />
-                </td>
+                </button>
               </tr>
             ))}
           </tbody>
