@@ -46,7 +46,7 @@ const page = () => {
       })
       .then((result) => {
         if (result.isConfirmed) {
-          const res = updateUser({ id, body: { role: role } });
+          const res = updateUser({ id, body: { role: "admin" } });
           if (res.arg.track) {
             swalWithBootstrapButtons.fire(
               "Confirm!",
@@ -81,6 +81,20 @@ const page = () => {
     <div className="pr-20 pl-5 py-10">
       <div className="flex justify-between border-b-2 pb-1">
         <h1 className="text-4xl font-bold">Users List</h1>
+      </div>
+      <div className="flex justify-end">
+        {role === "super_admin" ? (
+          <>
+            <Link
+              href="/dashBoard/user/create"
+              className="btn btn-outline rounded-full  hover:bg-white hover:text-black hover:shadow-lg"
+            >
+              Add Admin
+            </Link>
+          </>
+        ) : (
+          <></>
+        )}
       </div>
       <div className="overflow-x-auto mt-10">
         <table className="min-w-full divide-y-2 divide-gray-200 bg-white text-sm">
@@ -141,15 +155,31 @@ const page = () => {
                 </td>
 
                 <div className="whitespace-nowrap ">
-                  <button
-                    onClick={() => handleAccept(field?.id)}
-                    disabled={
-                      field?.role === "admin" || field?.role === "super_admin"
-                    }
-                    className="btn  bg-green-700 text-white hover:text-black"
-                  >
-                    Make Admin
-                  </button>
+                  {field?.role === "super_admin" ? (
+                    <>
+                      <button
+                        onClick={() => handleAccept(field?.id)}
+                        disabled={
+                          field?.role === "super_admin" ||
+                          field?.role === "admin"
+                        }
+                        className="btn  bg-green-700 text-white hover:text-black"
+                      >
+                        Make Admin
+                      </button>
+                    </>
+                  ) : (
+                    <>
+                      {" "}
+                      <button
+                        onClick={() => handleAccept(field?.id)}
+                        disabled={role === "admin"}
+                        className="btn  bg-green-700 text-white hover:text-black"
+                      >
+                        Make Admin
+                      </button>
+                    </>
+                  )}
                   <Link
                     href={`/dashBoard/user/${field?.id}`}
                     className="btn ml-3 bg-pink-600 text-white hover:text-black"

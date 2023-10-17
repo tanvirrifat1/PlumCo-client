@@ -59,7 +59,7 @@ const Drawer = () => {
   }
 
   return (
-    <div className="drawer drawer-end">
+    <div className="drawer drawer-end ">
       <input id="my-drawer-4" type="checkbox" className="drawer-toggle" />
       <div className="drawer-content">
         {/* Page content here */}
@@ -120,7 +120,7 @@ const Drawer = () => {
                   <div className="space-x-2">
                     <button
                       onClick={() => handleDelete(cart?.id)}
-                      className="btn bg-red-500 text-white btn-xs"
+                      className="rounded-xl hover:text-blue-400 bg-red-500 text-white btn-xs"
                     >
                       Delete
                     </button>
