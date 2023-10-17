@@ -21,7 +21,30 @@ export const profileApi = baseApi.injectEndpoints({
       },
       providesTags: [tagTypes.profile],
     }),
+    updatedUser: build.mutation({
+      query: (data) => {
+        return {
+          url: `${PROFILE_URL}/${data?.id}`,
+          method: "PATCH",
+          data: data.body,
+        };
+      },
+
+      invalidatesTags: [tagTypes.profile],
+    }),
+
+    getSingleUser: build.query({
+      query: (id) => ({
+        url: `${PROFILE_URL}/${id}`,
+        method: "GET",
+      }),
+      providesTags: [tagTypes.blog],
+    }),
   }),
 });
 
-export const { useProfileQuery } = profileApi;
+export const {
+  useProfileQuery,
+  useUpdatedUserMutation,
+  useGetSingleUserQuery,
+} = profileApi;

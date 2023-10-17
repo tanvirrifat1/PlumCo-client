@@ -5,6 +5,7 @@ import { getUserInfo } from "@/service/auth.service";
 import { IUserProfile } from "@/types";
 import { PencilSquareIcon } from "@heroicons/react/24/outline";
 import Image from "next/image";
+import Link from "next/link";
 
 const ProfilePage = () => {
   const { userId } = getUserInfo() as any;
@@ -13,7 +14,7 @@ const ProfilePage = () => {
   const profile = data?.profile as IUserProfile;
 
   return (
-    <div className="w-[700px] mx-auto flex space-x-10 my-10 ring p-5 rounded">
+    <div className="w-[700px] mx-auto flex space-x-10 my-10 ring p-5 rounded ">
       <div className="rounded-xl">
         <Image
           src={profile?.profileImage as string}
@@ -45,9 +46,11 @@ const ProfilePage = () => {
           <span>: {profile?.role}</span>
         </h1>
         <div className="tooltip tooltip-bottom pt-7" data-tip="edit">
-          <button className="btn btn-accent">
-            <PencilSquareIcon className="w-6 h-6" />
-          </button>
+          <Link href={`/profile/${profile?.id}`}>
+            <button className="btn btn-accent">
+              <PencilSquareIcon className="w-6 h-6" />
+            </button>
+          </Link>
         </div>
       </div>
     </div>

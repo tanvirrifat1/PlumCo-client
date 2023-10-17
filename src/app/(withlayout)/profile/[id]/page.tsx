@@ -1,34 +1,22 @@
 "use client";
-
+import React, { useState } from "react";
 import Form from "@/components/forms/Form";
 import FormInput from "@/components/forms/FormIntput";
 import {
-  useGetSingleBlogsQuery,
-  useUpdateBlogMutation,
-} from "@/redux/api/blogApi";
-import { getUserInfo } from "@/service/auth.service";
-import { useRouter } from "next/navigation";
-import React, { useState } from "react";
+  useGetSingleUserQuery,
+  useUpdatedUserMutation,
+} from "@/redux/api/profileApi";
 import { toast } from "react-toastify";
+import { useRouter } from "next/navigation";
 
-type IProps = {
-  params: any;
-};
-
-const page = ({ params }: IProps) => {
-  const [loading, setLoading] = useState<boolean>(false);
-  const [image, setImage] = useState<File | null>(null);
-  const { userId } = getUserInfo() as any;
-  const router = useRouter();
+const page = ({ params }: { params: any }) => {
   const { id } = params;
-  const { data } = useGetSingleBlogsQuery(id);
-  const [updateBlog] = useUpdateBlogMutation();
+  const [image, setImage] = useState<File | null>(null);
+  const [loading, setLoading] = useState<boolean>(false);
+  const router = useRouter();
+  const { data, isLoading } = useGetSingleUserQuery(id);
 
-  const Values = {
-    content: data?.content,
-    title: data?.title,
-    image: data?.image,
-  };
+  const [updatedUser] = useUpdatedUserMutation();
 
   const handleImageChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files && e.target.files[0];
@@ -39,9 +27,7 @@ const page = ({ params }: IProps) => {
 
   const onSubmit = async (data: any) => {
     setLoading(true);
-    if (userId) {
-      data.authorId = userId;
-    }
+    console.log(data);
     const formData = new FormData();
     formData.append("image", image as File);
     const url = `https://api.imgbb.com/1/upload?key=${IMAGEURL}`;
@@ -52,12 +38,12 @@ const page = ({ params }: IProps) => {
     if (response.ok) {
       const responseData = await response.json();
       if (responseData.data) {
-        data.image = responseData.data.display_url;
+        data.profileImage = responseData.data.display_url;
       }
     }
-    const res = await updateBlog({ id, body: data });
+    const res = await updatedUser({ id, body: data });
     if (res) {
-      toast("Blog Updated", {
+      toast("Profile Updated", {
         position: "top-center",
         autoClose: 5000,
         hideProgressBar: false,
@@ -67,9 +53,17 @@ const page = ({ params }: IProps) => {
         progress: undefined,
         theme: "light",
       });
-      router.push("/dashBoard/blog");
+      router.push("/profile");
       setLoading(false);
     }
+  };
+
+  const Values = {
+    contactNo: data?.contactNo,
+    address: data?.address,
+    email: data?.email,
+    fullName: data?.fullName,
+    // profileImage: data?.profileImage,
   };
 
   return (
@@ -98,10 +92,10 @@ const page = ({ params }: IProps) => {
                   <div className="mt-2">
                     <FormInput
                       id=""
-                      name="title"
+                      name="fullName"
                       type="text"
                       label="Title"
-                      placeholder="enter your title"
+                      placeholder="enter your fullName"
                       className="block w-full rounded-md border-0 py-1.5 px-2  text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                     />
                   </div>
@@ -110,10 +104,34 @@ const page = ({ params }: IProps) => {
                   <div className="mt-2">
                     <FormInput
                       id=""
-                      name="content"
+                      name="address"
                       type="text"
                       label="Content"
-                      placeholder="enter your content"
+                      placeholder="enter your address"
+                      className="block w-full rounded-md border-0 py-1.5 px-2  text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                    />
+                  </div>
+                </div>
+                <div className="sm:col-span-3">
+                  <div className="mt-2">
+                    <FormInput
+                      id=""
+                      name="email"
+                      type="text"
+                      label="Content"
+                      placeholder="enter your email"
+                      className="block w-full rounded-md border-0 py-1.5 px-2  text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                    />
+                  </div>
+                </div>
+                <div className="sm:col-span-3">
+                  <div className="mt-2">
+                    <FormInput
+                      id=""
+                      name="contactNo"
+                      type="text"
+                      label="Content"
+                      placeholder="enter your contactNo"
                       className="block w-full rounded-md border-0 py-1.5 px-2  text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                     />
                   </div>

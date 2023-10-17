@@ -15,10 +15,6 @@ import Drawer from "@/app/(withlayout)/drawer/page";
 const Navbar = () => {
   const { userId } = getUserInfo() as any;
   const { data } = useProfileQuery(userId);
-
-  const arg = {};
-  const { data: Carts } = useGetCartsQuery({ ...arg });
-
   const router = useRouter();
 
   const logOut = () => {
