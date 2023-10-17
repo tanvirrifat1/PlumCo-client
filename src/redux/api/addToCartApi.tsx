@@ -15,7 +15,7 @@ export const addToCartApi = baseApi.injectEndpoints({
           params: arg,
         };
       },
-      transformResponse: (response: IAddToCartData[], meta: IMeta) => {
+      transformResponse: (response: any[], meta: IMeta) => {
         return {
           addToCarts: response,
           meta,

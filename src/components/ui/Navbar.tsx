@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import React from "react";
+import React, { useState } from "react";
 import img from "../../assets/home.png";
 import Image from "next/image";
 import { getUserInfo, removeUserInfo } from "@/service/auth.service";
@@ -10,6 +10,7 @@ import { useRouter } from "next/navigation";
 import { useProfileQuery } from "@/redux/api/profileApi";
 import NavHeader from "./NavHeader";
 import { useGetCartsQuery } from "@/redux/api/addToCartApi";
+import Drawer from "@/app/(withlayout)/drawer/page";
 
 const Navbar = () => {
   const { userId } = getUserInfo() as any;
@@ -18,7 +19,6 @@ const Navbar = () => {
   const arg = {};
   const { data: Carts } = useGetCartsQuery({ ...arg });
 
-  console.log(Carts?.addToCarts?.length);
   const router = useRouter();
 
   const logOut = () => {
@@ -77,25 +77,18 @@ const Navbar = () => {
             <li className="text-black text-xl">Faq</li>
           </li>
         </Link>
-        {data?.profile?.role === "admin" ? (
-          <>
-            <Link href={"/blog"}>
-              <li>
-                <li className="text-black text-xl">Blog</li>
-              </li>
-            </Link>
-          </>
-        ) : (
-          <></>
-        )}
+
+        <Link href={"/blog"}>
+          <li>
+            <li className="text-black text-xl">Blog</li>
+          </li>
+        </Link>
+
         <Link href={"/dashBoard"}>
           <li>
             <li className="text-black text-xl">DashBoard</li>
           </li>
         </Link>
-        <li>
-          <li className="text-red-400 text-xl">{Carts?.addToCarts?.length}</li>
-        </li>
       </ul>
     </>
   );
@@ -154,7 +147,6 @@ const Navbar = () => {
                   src={data?.profile?.profileImage as string}
                 />
               </div>
-              <p className="m-2">{data?.profile?.fullName as string}</p>
             </div>
             <ul
               tabIndex={0}
@@ -168,6 +160,8 @@ const Navbar = () => {
               </li>
             </ul>
           </div>
+          <p className="m-2">{data?.profile?.fullName as string}</p>
+          <Drawer />;
         </div>
       </div>
     </div>
