@@ -9,11 +9,16 @@ import { authKey } from "@/constants/storageKey";
 import { useRouter } from "next/navigation";
 import { useProfileQuery } from "@/redux/api/profileApi";
 import NavHeader from "./NavHeader";
+import { useGetCartsQuery } from "@/redux/api/addToCartApi";
 
 const Navbar = () => {
   const { userId } = getUserInfo() as any;
   const { data } = useProfileQuery(userId);
 
+  const arg = {};
+  const { data: Carts } = useGetCartsQuery({ ...arg });
+
+  console.log(Carts?.addToCarts?.length);
   const router = useRouter();
 
   const logOut = () => {
@@ -83,25 +88,14 @@ const Navbar = () => {
         ) : (
           <></>
         )}
-
-        {/*  */}
-        {/* {data?.profile?.role === "admin" ? (
-          <>
-            <Link href={"/dashBoard"}>
-              <li>
-                <li className="text-black text-xl">DashBoard</li>
-              </li>
-            </Link>
-          </>
-        ) : (
-          <></>
-        )} */}
-
         <Link href={"/dashBoard"}>
           <li>
             <li className="text-black text-xl">DashBoard</li>
           </li>
         </Link>
+        <li>
+          <li className="text-red-400 text-xl">{Carts?.addToCarts?.length}</li>
+        </li>
       </ul>
     </>
   );

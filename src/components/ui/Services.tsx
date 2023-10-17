@@ -14,9 +14,7 @@ import Swal from "sweetalert2";
 const Services = () => {
   const arg = {};
   const { data, isLoading } = useGetAllServicesQuery({ ...arg });
-  const { role, userId } = getUserInfo() as any;
-
-  console.log(role);
+  const { role } = getUserInfo() as any;
 
   const router = useRouter();
   const userloggedIn = isLoggedin();
