@@ -4,16 +4,27 @@ import { useGetAllServicesQuery } from "@/redux/api/serviceApi";
 import { CiSaveUp2 } from "react-icons/ci";
 import Image from "next/image";
 
-import React from "react";
+import React, { useState } from "react";
 import { BiSolidCartAdd } from "react-icons/bi";
 import { getUserInfo, isLoggedin } from "@/service/auth.service";
 import { useRouter } from "next/navigation";
 import { useAddToCartMutation } from "@/redux/api/addToCartApi";
 import Swal from "sweetalert2";
+import { AiOutlineReload } from "react-icons/ai";
+import { useDebounced } from "@/redux/hooks";
 
 const Services = () => {
-  const arg = {};
-  const { data, isLoading } = useGetAllServicesQuery({ ...arg });
+  const arg: Record<string, any> = {};
+
+  const [searchTerm, setSearchTerm] = useState<string>("");
+  const debouncedTerm = useDebounced({
+    searchQuery: searchTerm,
+    delay: 600,
+  });
+  const { data, isLoading } = useGetAllServicesQuery({
+    ...arg,
+    searchTerm: debouncedTerm,
+  });
   const { role } = getUserInfo() as any;
 
   const router = useRouter();
@@ -52,6 +63,10 @@ const Services = () => {
     }
   };
 
+  const reseatFilters = () => {
+    setSearchTerm("");
+  };
+
   return (
     <section className="py-20 w-full lg:w-[1440px] mx-auto">
       <div className="flex flex-wrap">
@@ -70,12 +85,19 @@ const Services = () => {
           </div>
         </div>
       </div>
-      <div className="m-6">
+      <div className="m-6 flex justify-center py-5">
         <input
           type="text"
           placeholder="Type here"
           className="input input-primary w-full max-w-xs"
+          onChange={(e) => setSearchTerm(e.target.value)}
         />
+
+        {searchTerm && (
+          <button onClick={reseatFilters} className="btn btn-primary">
+            <AiOutlineReload className=" text-2xl mr-2 " />
+          </button>
+        )}
       </div>
       <div className=" grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3 md:gap-5">
         {isLoading ? (
