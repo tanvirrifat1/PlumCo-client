@@ -3,9 +3,14 @@
 import Loading from "@/app/loading";
 import Form from "@/components/forms/Form";
 import FormInput from "@/components/forms/FormIntput";
+import SelectFormField, {
+  SelectOptions,
+} from "@/components/forms/SeleteFormField";
 import LoadingButton from "@/components/ui/LoginSpinner";
 import SmallSpinner from "@/components/ui/SmallSpinner";
+import { useCategoriesQuery } from "@/redux/api/categoryApi";
 import { useCreateServiceMutation } from "@/redux/api/serviceApi";
+import { ICategory } from "@/types";
 import { useRouter } from "next/navigation";
 import React, { useState } from "react";
 import { toast } from "react-toastify";
@@ -15,6 +20,23 @@ const CreateServices = () => {
   const [loading, setLoading] = useState<boolean>(false);
   const router = useRouter();
   const [createService] = useCreateServiceMutation();
+  const arg = {};
+
+  const { data, isLoading } = useCategoriesQuery({ ...arg });
+
+  const options = data?.categories?.map((category: ICategory) => {
+    return {
+      label: category.title,
+      value: category.id,
+    };
+  });
+
+  console.log(options);
+
+  if (isLoading) {
+    return <Loading />;
+  }
+
   const IMAGEURL = process.env.NEXT_PUBLIC_IMBB_KEY;
   const handleImageChange = async (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files && e.target.files[0];
@@ -114,6 +136,14 @@ const CreateServices = () => {
                         className="block w-full rounded-md border-0 py-1.5 px-2  text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                       />
                     </div>
+                  </div>
+                  <div className="sm:col-span-3">
+                    <SelectFormField
+                      name="categoryId"
+                      options={options as SelectOptions[]}
+                      label="Category"
+                      className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
+                    />
                   </div>
                 </div>
               </div>
