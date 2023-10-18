@@ -97,7 +97,9 @@ const Reviews = () => {
                     </p>
                     <div className="relative text-center">
                       <FaQuoteLeft className="absolute quote top-0 -left-2 w-4 h-4 text-gray-900" />
-                      <p className="inline">{review?.review}</p>
+                      <p className="inline">
+                        {review?.review.slice(0, 100)}...
+                      </p>
                       <FaQuoteRight className="absolute quote bottom-0 right-0 w-4 h-4 text-gray-900" />
                     </div>
 

@@ -4,11 +4,7 @@ export interface IMeta {
   total: number;
   totalPage: number;
 }
-export type PaginationInfo = {
-  total: number;
-  page: number;
-  limit: number;
-};
+
 export type ResponseSuccessType = {
   data: any;
   meta?: IMeta;
@@ -33,7 +29,7 @@ export type IUserProfile = {
   role: string;
   contactNo: string;
   address: string;
-  profileImage: string | undefined;
+  profileImg: string | undefined;
   createdAt: string;
   updatedAt: string;
 };
@@ -48,10 +44,59 @@ export type IService = {
   updatedAt: string;
 };
 
+export type IBlogPost = {
+  id: string;
+  title: string;
+  content: string;
+  thumbnail: string;
+  published: boolean;
+  authorId: string;
+  createdAt: string;
+  updatedAt: string;
+  author: IUserProfile;
+};
+
+export type IFaq = {
+  id: string;
+  question: string;
+  answer: string;
+  createdAt: string;
+  updatedAt: string;
+};
+export type ICategory = {
+  id: string;
+  title: string;
+  createdAt: string;
+  updatedAt: string;
+};
+
+export type IFeedbackData = {
+  id: string;
+  userId: string;
+  serviceId: string;
+  comments: string;
+  suggestion: string;
+  createdAt: string;
+  updatedAt: string;
+  user: IUserProfile;
+  service: IService;
+};
+
 export type IAddToCartData = {
   id: string;
   userId: string;
   serviceId: string;
+  createdAt: string;
+  updatedAt: string;
+  user: IUserProfile;
+  service: IService;
+};
+export type IBookingData = {
+  id: string;
+  userId: string;
+  serviceId: string;
+  status: string;
+  date: string;
   createdAt: string;
   updatedAt: string;
   user: IUserProfile;

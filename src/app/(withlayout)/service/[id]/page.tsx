@@ -8,7 +8,8 @@ import { useRouter } from "next/navigation";
 import React from "react";
 import { GrLinkNext } from "react-icons/gr";
 
-import img from "../../../../assets/dashboard.png";
+import img from "../../../../assets/service/img.png";
+import img1 from "../../../../assets/service/img6.png";
 
 const page = ({ params }: { params: any }) => {
   const { id } = params;
@@ -54,16 +55,14 @@ const page = ({ params }: { params: any }) => {
               <GrLinkNext className="text-2xl hover:text-white" />
             </button>
           </div>
-          <div className="flex justify-center gap-2">
-            <div className="card w-72 bg-base-100 rounded-md shadow-xl mt-4">
-              <figure>
-                <Image src={data?.image} alt="Shoes" width={300} height={300} />
-              </figure>
-            </div>
-            <div className="card w-72 bg-base-100 rounded-md shadow-xl mt-4">
-              <figure>
-                <Image src={img} alt="Shoes" width={300} height={300} />
-              </figure>
+          <div className="grid md:grid-cols-1  grid-cols-1 mt-6">
+            <div className="flex justify-center gap-2">
+              <div className="card w-96 bg-base-100 rounded-md  shadow-xl ">
+                <Image src={img1} alt="" width={700} height={700} />
+              </div>
+              <div className="card w-96 bg-base-100 rounded-md  shadow-xl ">
+                <Image src={img} alt="" width={700} height={700} />
+              </div>
             </div>
           </div>
         </div>

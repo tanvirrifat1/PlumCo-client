@@ -104,7 +104,7 @@ const Services = () => {
       <div className=" grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3 md:gap-5">
         {isLoading ? (
           <>
-            <p>Loading...</p>
+            <span className="loading loading-spinner text-warning"></span>
           </>
         ) : (
           data?.map((service: any) => (
@@ -121,10 +121,8 @@ const Services = () => {
 
                   <div className="card-body">
                     <h2 className="card-title">{service?.title}</h2>
-                    <p className="text-lg">
-                      {service?.description.slice(0, 45)}...
-                    </p>
-                    <p className="text-lg">Price: {service?.price} $</p>
+                    <p className="">{service?.description.slice(0, 50)}...</p>
+                    <p className="">Price: {service?.price} $</p>
                     <div className="flex hover:text-purple-800 my-2">
                       <Link href={`/service/${service?.id}`}>
                         <div className="flex">
