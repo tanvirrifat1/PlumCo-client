@@ -10,7 +10,7 @@ interface IInput {
   placeholder?: string;
   label?: string;
   className?: string;
-  id: string;
+  id?: string;
   readonly?: boolean;
 }
 const FormInput = ({

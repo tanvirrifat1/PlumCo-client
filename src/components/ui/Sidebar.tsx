@@ -1,6 +1,7 @@
 "use client";
 import { ENUM_USER_ROLE } from "@/enum/user";
 import { getUserInfo } from "@/service/auth.service";
+import { Square3Stack3DIcon } from "@heroicons/react/20/solid";
 import {
   HomeIcon,
   QuestionMarkCircleIcon,
@@ -101,6 +102,16 @@ const Sidebar = () => {
                 href="/dashBoard/booking"
               >
                 <RiReservedFill className="w-5 h-5 inline-block " /> Booking
+              </Link>
+            </li>
+            <li>
+              <Link
+                className="hover:text-white hover:bg-gray-600 hover:rounded-lg my-1"
+                href="/dashBoard/category"
+              >
+                {" "}
+                <Square3Stack3DIcon className="w-5 h-5 inline-block " />
+                Category
               </Link>
             </li>
           </>
