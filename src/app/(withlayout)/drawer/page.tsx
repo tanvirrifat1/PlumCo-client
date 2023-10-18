@@ -124,7 +124,6 @@ const Drawer = () => {
                     >
                       Delete
                     </button>
-                    <button className="btn btn-xs">Tiny</button>
                   </div>
                 </div>
               ))}

@@ -12,6 +12,8 @@ import { useAddToCartMutation } from "@/redux/api/addToCartApi";
 import Swal from "sweetalert2";
 import { AiOutlineReload } from "react-icons/ai";
 import { useDebounced } from "@/redux/hooks";
+import Link from "next/link";
+import { GrFormNext } from "react-icons/gr";
 
 const Services = () => {
   const arg: Record<string, any> = {};
@@ -120,9 +122,18 @@ const Services = () => {
                   <div className="card-body">
                     <h2 className="card-title">{service?.title}</h2>
                     <p className="text-lg">
-                      {service?.description.slice(0, 50)}...
+                      {service?.description.slice(0, 45)}...
                     </p>
                     <p className="text-lg">Price: {service?.price} $</p>
+                    <div className="flex hover:text-purple-800 my-2">
+                      <Link href={`/service/${service?.id}`}>
+                        <div className="flex">
+                          <p className="text-xl">READ MORE</p>
+                          <GrFormNext className="text-xl hover:text-purple-800 mt-1" />
+                          <GrFormNext className="text-xl hover:text-purple-800 mt-1" />
+                        </div>
+                      </Link>
+                    </div>
                     <div className="flex justify-center gap-3">
                       <button
                         onClick={() => handleAddToCart(service?.id)}
