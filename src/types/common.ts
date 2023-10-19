@@ -29,7 +29,7 @@ export type IUserProfile = {
   role: string;
   contactNo: string;
   address: string;
-  profileImg: string | undefined;
+  profileImage: string | undefined;
   createdAt: string;
   updatedAt: string;
 };
