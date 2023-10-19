@@ -10,8 +10,12 @@ import {
   ShoppingBagIcon,
 } from "@heroicons/react/20/solid";
 import Image from "next/image";
+import Link from "next/link";
 import { useRouter } from "next/navigation";
 import React from "react";
+import { BiSolidCartAdd } from "react-icons/bi";
+import { CiSaveUp2 } from "react-icons/ci";
+import { GrFormNext } from "react-icons/gr";
 import Swal from "sweetalert2";
 
 const page = ({ params }: { params: any }) => {
@@ -59,7 +63,7 @@ const page = ({ params }: { params: any }) => {
   };
 
   return (
-    <section className="py-20">
+    <section className="py-20 w-full lg:w-[1440px] mx-auto">
       <div className="flex flex-wrap">
         <div className="w-full px-4">
           <div className="mx-auto mb-12 max-w-[510px] text-center lg:mb-20">
@@ -76,60 +80,58 @@ const page = ({ params }: { params: any }) => {
           </div>
         </div>
       </div>
-      <div className="container grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3 md:gap-5">
+
+      <div className=" grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3 md:gap-5">
         {isLoading ? (
           <>
-            <Loading />
+            <span className="loading loading-spinner text-warning"></span>
           </>
         ) : (
           data?.map((service: any) => (
-            <div
-              key={service?.id}
-              className="border group border-gray-200 rounded p-3 shadow hover:shadow hover:shadow-primaryColor text-center"
-            >
-              <div className="relative rounded overflow-hidden inline-block w-full">
-                <span className="absolute top-0 left-0 flex w-full h-0 mb-0 transition-all duration-300 ease-out transform translate-y-0 bg-gray-900 group-hover:h-[50%] opacity-80"></span>
-                <Image
-                  width={250}
-                  height={250}
-                  className="h-[200px] md:h-[250px] lg:h-[300px] w-full object-cover object-top rounded"
-                  src={service?.image}
-                  alt={service?.title}
-                />
-                <span className="absolute bottom-0 left-0 flex w-full h-0 mb-0 transition-all duration-300 ease-out transform translate-y-0 bg-gray-900 group-hover:h-[50%] opacity-80"></span>
+            <>
+              <div key={service.id} className="">
+                <div className="card card-compact  bg-base-100 shadow-xl">
+                  <Image
+                    width={250}
+                    height={250}
+                    className="h-[200px] md:h-[250px] lg:h-[300px] w-full object-cover object-top rounded "
+                    src={service.image}
+                    alt={service.title}
+                  />
+
+                  <div className="card-body">
+                    <h2 className="card-title">{service?.title}</h2>
+                    <p className="">{service?.description.slice(0, 50)}...</p>
+                    <p className="">Price: {service?.price} $</p>
+                    <div className="flex hover:text-purple-800 my-2">
+                      <Link href={`/service/${service?.id}`}>
+                        <div className="flex">
+                          <p className="text-xl">READ MORE</p>
+                          <GrFormNext className="text-xl hover:text-purple-800 mt-1" />
+                          <GrFormNext className="text-xl hover:text-purple-800 mt-1" />
+                        </div>
+                      </Link>
+                    </div>
+                    <div className="flex justify-center gap-3">
+                      <button
+                        onClick={() => handleAddToCart(service?.id)}
+                        disabled={role === "admin" || role === "super_admin"}
+                        className="btn btn-outline rounded-full w-48 h-6 bg-slate-600 text-white hover:bg-white hover:text-black hover:shadow-lg"
+                      >
+                        <CiSaveUp2 className="text-2xl" /> Add
+                      </button>
+                      <button
+                        onClick={() => handleBook(service?.id)}
+                        disabled={role === "admin" || role === "super_admin"}
+                        className="btn btn-outline rounded-full  w-48 h-6 hover:bg-white hover:text-black hover:shadow-lg"
+                      >
+                        <BiSolidCartAdd className="text-2xl" /> Book
+                      </button>
+                    </div>
+                  </div>
+                </div>
               </div>
-              <div className="relative inline-flex items-center justify-center px-1 md:px-5 lg:px-10 py-1 md:py-2 lg:py-4 overflow-hidden bg-gray-800 rounded group -mt-7 md:-mt-10 lg:-mt-14"></div>
-              <div className="p-1 md:p-2 lg:p-4 mt-1 md:mt-3 space-y-2">
-                <h2 className="text-xl md:text-2xl lg:text-3xl font-bold text-gray-800">
-                  {service?.title}
-                </h2>
-                <p className="text-xs md:text-base">{service?.description}</p>
-              </div>
-              <div className="flex justify-center gap-3">
-                <button
-                  onClick={() => handleAddToCart(service?.id)}
-                  className="btn btn-outline btn-accent"
-                  disabled={
-                    role === ENUM_USER_ROLE.ADMIN ||
-                    role === ENUM_USER_ROLE.SUPER_ADMIN
-                  }
-                >
-                  <ShoppingBagIcon className="w-6 h-6 inline-block" /> Add To
-                  Cart
-                </button>
-                <button
-                  onClick={() => handleBook(service?.id)}
-                  className="btn btn-outline btn-accent"
-                  disabled={
-                    role === ENUM_USER_ROLE.ADMIN ||
-                    role === ENUM_USER_ROLE.SUPER_ADMIN
-                  }
-                >
-                  <ClipboardDocumentCheckIcon className="w-6 h-6 inline-block" />{" "}
-                  Book now
-                </button>
-              </div>
-            </div>
+            </>
           ))
         )}
       </div>

@@ -5,6 +5,7 @@ import { useCategoriesQuery } from "@/redux/api/categoryApi";
 import { ICategory } from "@/types";
 import { useRouter } from "next/navigation";
 import React from "react";
+import { MdOutlineMedicalServices } from "react-icons/md";
 import { PiBuildingsFill } from "react-icons/pi";
 import { SiHomeadvisor } from "react-icons/si";
 
@@ -13,14 +14,13 @@ const CategoryPage = () => {
   const { data, isLoading } = useCategoriesQuery({ ...query });
   const router = useRouter();
   const handleService = (id: string) => {
-    console.log(id);
     router.push(`/category/service/${id}`);
   };
   if (isLoading) {
     return <Loading />;
   }
   return (
-    <div className="container pt-32 pb-5">
+    <div className="container w-[1000px] pt-32 pb-5">
       <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
         {data?.categories?.map((category: ICategory, i: number) => (
           <div
@@ -31,9 +31,9 @@ const CategoryPage = () => {
             key={category?.id}
           >
             {i === 0 ? (
-              <PiBuildingsFill className="w-10 h-10 inline-block text-white" />
+              <MdOutlineMedicalServices className="w-10 h-10 inline-block text-white" />
             ) : (
-              <SiHomeadvisor className="w-10 h-10 inline-block text-white" />
+              <MdOutlineMedicalServices className="w-10 h-10 inline-block text-white" />
             )}
             <h1 className="text-center font-bold text-white text-xl md:text-2xl lg:text-4xl">
               {category?.title}
