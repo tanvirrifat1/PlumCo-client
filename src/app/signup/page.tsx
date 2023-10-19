@@ -22,6 +22,8 @@ const SignupPage = () => {
 
   const IMAGEURL = process.env.NEXT_PUBLIC_IMBB_KEY;
 
+  console.log(IMAGEURL);
+
   const onSubmit = async (data: any) => {
     setLoading(true);
 
@@ -33,7 +35,7 @@ const SignupPage = () => {
     const formData = new FormData();
     formData.append("image", image);
 
-    const url = `https://api.imgbb.com/1/upload?key=${IMAGEURL}`;
+    const url = `https://api.imgbb.com/1/upload?key=c71fd21009b2244466212ed88a7ea531`;
     const response = await fetch(url, {
       method: "POST",
       body: formData,

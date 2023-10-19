@@ -11,6 +11,7 @@ import { useRouter } from "next/navigation";
 import { useState } from "react";
 import Swal from "sweetalert2";
 import { Helmet } from "react-helmet-async";
+import { toast } from "react-toastify";
 
 const LoginPage = () => {
   const [loading, setLoading] = useState<Boolean>(false);
@@ -24,6 +25,21 @@ const LoginPage = () => {
       if (res?.accessToken) {
         router.push("/profile");
         Swal.fire("User Login successfully!");
+      }
+      if (!res?.accessToken) {
+        toast(
+          "something went wrong please carefully write your email and password!",
+          {
+            position: "top-right",
+            autoClose: 3000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            theme: "light",
+          }
+        );
       }
 
       storeUserInfo({ accessToken: res?.accessToken });

@@ -49,7 +49,7 @@ const CreateServices = () => {
     const formData = new FormData();
     formData.append("image", image as File);
 
-    const url = `https://api.imgbb.com/1/upload?key=${IMAGEURL}`;
+    const url = `https://api.imgbb.com/1/upload?key=c71fd21009b2244466212ed88a7ea531`;
     const response = await fetch(url, {
       method: "POST",
       body: formData,

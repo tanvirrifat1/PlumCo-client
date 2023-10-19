@@ -11,7 +11,7 @@ const Header = () => {
       subTitle2: "House shifting services in Dhaka",
       descripttion:
         "Welcome to PACK & SHIFT Removal group, Professional House Shifting Service to anywhere in Bangladesh from Dhaka City. AlsoInternational movers and packers Any country of the world",
-      image: "https://i.ibb.co/2sPZDhV/pipe.webp",
+      image: "https://i.ibb.co/7KGxBcT/gas1.jpg",
     },
     {
       id: 2,
@@ -20,7 +20,7 @@ const Header = () => {
       subTitle2: "House shifting services in Dhaka",
       descripttion:
         "Welcome to PACK & SHIFT Removal group, Professional House Shifting Service to anywhere in Bangladesh from Dhaka City. AlsoInternational movers and packers Any country of the world",
-      image: "https://i.ibb.co/RYSHGcP/istockphoto-155599518-170667a.webp",
+      image: "https://i.ibb.co/CBRsyy1/img6.jpg",
     },
     {
       id: 3,
@@ -29,15 +29,15 @@ const Header = () => {
       subTitle2: "House shifting services in Dhaka",
       descripttion:
         "Welcome to PACK & SHIFT Removal group, Professional House Shifting Service to anywhere in Bangladesh from Dhaka City. AlsoInternational movers and packers Any country of the world",
-      image: "https://i.ibb.co/hcVfGRF/pipe1.webp",
+      image: "https://i.ibb.co/9vtN6m9/pipe.jpg",
     },
   ];
   return (
     <AwesomeSlider
       animation="foldOutAnimation"
-      className="h-[270px] md:h-[70vh] lg:h-[80vh] w-[100vw]" // You can add a custom class for styling
+      className="h-[270px] md:h-[70vh] lg:h-[80vh] w-[100vw]"
     >
-      {bannars.map((banner) => (
+      {bannars?.map((banner) => (
         <>
           <div
             className="hero min-w-[100vw] min-h-[100vh]"
