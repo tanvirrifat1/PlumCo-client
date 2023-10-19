@@ -8,6 +8,7 @@ import { useFeedbackMutation } from "@/redux/api/feedbackApi";
 import { useGetAllServicesQuery } from "@/redux/api/serviceApi";
 import { getUserInfo } from "@/service/auth.service";
 import React from "react";
+import { Helmet } from "react-helmet-async";
 import { toast } from "react-toastify";
 
 const page = () => {
@@ -63,7 +64,11 @@ const page = () => {
                 Please share the article or the text you like me to review, and
                 let me know what specific aspects you would like feedback on
               </p>
-
+              <div>
+                <Helmet>
+                  <title>Plumbing | Feedback</title>
+                </Helmet>
+              </div>
               <div className="mt-10 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
                 <div className="sm:col-span-3">
                   <div className="mt-2">

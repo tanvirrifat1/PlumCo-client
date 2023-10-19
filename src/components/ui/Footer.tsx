@@ -42,9 +42,9 @@ const Footer = () => {
         </nav>
         <nav>
           <header className="footer-title">Project</header>
-          <p className="link link-hover">Terms of use</p>
-          <p className="link link-hover">Privacy policy</p>
-          <p className="link link-hover">Cookie policy</p>
+          <p className="link link-hover">AC Repair</p>
+          <p className="link link-hover">Condensate Drain Cleaning</p>
+          <p className="link link-hover">Upgrades and Replacements</p>
         </nav>
       </footer>
       <footer className="footer flex justify-center items-center p-4 bg-slate-700  text-neutral-content">

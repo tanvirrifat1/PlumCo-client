@@ -10,6 +10,7 @@ import { GrLinkNext } from "react-icons/gr";
 
 import img from "../../../../assets/service/img.png";
 import img1 from "../../../../assets/service/img6.png";
+import { Helmet } from "react-helmet-async";
 
 const page = ({ params }: { params: any }) => {
   const { id } = params;
@@ -40,6 +41,11 @@ const page = ({ params }: { params: any }) => {
           <p className="my-8">
             <span className="font-medium ">{data?.description}</span>
           </p>
+          <div>
+            <Helmet>
+              <title>Plumbing | Service</title>
+            </Helmet>
+          </div>
           <p className="my-2">
             <span className="font-medium ">Price: {data?.price}$</span>
           </p>

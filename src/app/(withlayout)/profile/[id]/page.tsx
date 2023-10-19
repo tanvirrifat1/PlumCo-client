@@ -8,6 +8,7 @@ import {
 } from "@/redux/api/profileApi";
 import { toast } from "react-toastify";
 import { useRouter } from "next/navigation";
+import { Helmet } from "react-helmet-async";
 
 const page = ({ params }: { params: any }) => {
   const { id } = params;
@@ -75,7 +76,11 @@ const page = ({ params }: { params: any }) => {
               <h2 className="text-base font-semibold leading-7 text-gray-900">
                 Submit Your Updated Blogs
               </h2>
-
+              <div>
+                <Helmet>
+                  <title>Plumbing | Profile</title>
+                </Helmet>
+              </div>
               <div className="mt-10 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
                 <div className="col-span-6">
                   <div className="mt-2 flex justify-center rounded-lg border border-dashed border-gray-900/25 px-6 py-10">

@@ -6,6 +6,7 @@ import LatestNews from "@/components/ui/LatestNews";
 import { useCreateBlogMutation } from "@/redux/api/blogApi";
 import { getUserInfo } from "@/service/auth.service";
 import React, { useState } from "react";
+import { Helmet } from "react-helmet-async";
 import { toast } from "react-toastify";
 
 const page = () => {
@@ -74,6 +75,12 @@ const page = () => {
   return (
     <div>
       <LatestNews />
+      <div>
+        <Helmet>
+          <title>Plumbing | Blog</title>
+        </Helmet>
+      </div>
+      ;
     </div>
   );
 };

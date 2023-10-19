@@ -111,20 +111,20 @@ const DashboardServicePage = () => {
                   {format(parseISO(service?.createdAt), "PP")}
                 </td>
 
-                <td className="whitespace-nowrap py-2">
+                <button className="whitespace-nowrap ml-2 btn py-2 btn-secondary">
                   <AiOutlineEye className="text-3xl" />
-                </td>
-                <td className="whitespace-nowrap  py-2">
+                </button>
+                <button className="whitespace-nowrap ml-2 btn py-2 btn-primary">
                   <Link href={`/dashBoard/blog/edit/${service?.id}`}>
                     <AiOutlineEdit className="text-3xl" />
                   </Link>
-                </td>
-                <td className="whitespace-nowrap  py-2">
+                </button>
+                <button className="whitespace-nowrap ml-2 btn py-2 bg-red-500 text-white">
                   <AiFillDelete
                     onClick={() => handleDelete(service?.id)}
-                    className="text-3xl text-red-500"
+                    className="text-3xl text-white hover:text-black "
                   />
-                </td>
+                </button>
               </tr>
             ))}
           </tbody>

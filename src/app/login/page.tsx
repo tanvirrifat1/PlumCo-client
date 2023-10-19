@@ -10,6 +10,7 @@ import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 import Swal from "sweetalert2";
+import { Helmet } from "react-helmet-async";
 
 const LoginPage = () => {
   const [loading, setLoading] = useState<Boolean>(false);
@@ -39,6 +40,11 @@ const LoginPage = () => {
           <BiArrowBack className="text-4xl" />
         </div>
       </Link>
+      <div>
+        <Helmet>
+          <title>Plumbing | Login</title>
+        </Helmet>
+      </div>
       <div className="flex justify-center items-center h-screen  bg-[#F9FAFB]">
         <div className="flex flex-col justify-center px-6 py-12 lg:px-8 w-[400px] mx-auto ring bg-white shadow rounded">
           <div className="sm:mx-auto sm:w-full sm:max-w-sm">

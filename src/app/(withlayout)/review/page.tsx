@@ -8,6 +8,7 @@ import { useReviewMutation } from "@/redux/api/reviewApi";
 import { useGetAllServicesQuery } from "@/redux/api/serviceApi";
 import { getUserInfo } from "@/service/auth.service";
 import React from "react";
+import { Helmet } from "react-helmet-async";
 import { toast } from "react-toastify";
 
 const review = () => {
@@ -59,13 +60,17 @@ const review = () => {
           <div className="space-y-12">
             <div className="border-b border-gray-900/10 pb-12">
               <h2 className="text-base font-semibold leading-7 text-gray-900">
-                Your Feedback
+                Your Review
               </h2>
               <p className="mt-1 text-sm leading-6 text-gray-600">
                 Please share the article or the text you like me to review, and
                 let me know what specific aspects you would like feedback on
               </p>
-
+              <div>
+                <Helmet>
+                  <title>Plumbing | Review</title>
+                </Helmet>
+              </div>
               <div className="mt-10 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
                 <div className="sm:col-span-3">
                   <div className="mt-2">

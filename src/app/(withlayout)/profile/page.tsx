@@ -6,6 +6,7 @@ import { IUserProfile } from "@/types";
 import { PencilSquareIcon } from "@heroicons/react/24/outline";
 import Image from "next/image";
 import Link from "next/link";
+import { Helmet } from "react-helmet-async";
 
 const ProfilePage = () => {
   const { userId } = getUserInfo() as any;
@@ -23,6 +24,11 @@ const ProfilePage = () => {
           height={250}
           className="w-[200px] h-[250px] rounded p-1 border-2"
         />
+      </div>
+      <div>
+        <Helmet>
+          <title>Plumbing | Profile</title>
+        </Helmet>
       </div>
       <div className="space-y-2">
         <h1 className="flex">

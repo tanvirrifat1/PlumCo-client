@@ -13,6 +13,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import React from "react";
+import { Helmet } from "react-helmet-async";
 import { BiSolidCartAdd } from "react-icons/bi";
 import { CiSaveUp2 } from "react-icons/ci";
 import { GrFormNext } from "react-icons/gr";
@@ -80,7 +81,12 @@ const page = ({ params }: { params: any }) => {
           </div>
         </div>
       </div>
-
+      <div>
+        <Helmet>
+          <title>Plumbing | Category</title>
+        </Helmet>
+      </div>
+      ;
       <div className=" grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3 md:gap-5">
         {isLoading ? (
           <>

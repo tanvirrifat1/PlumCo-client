@@ -7,6 +7,7 @@ import { useRouter } from "next/navigation";
 import { useState } from "react";
 import Swal from "sweetalert2";
 import { BiArrowBack } from "react-icons/bi";
+import { Helmet } from "react-helmet-async";
 
 const SignupPage = () => {
   const [userSignup] = useUserSignupMutation();
@@ -66,6 +67,11 @@ const SignupPage = () => {
           <BiArrowBack className="text-4xl" />
         </div>
       </Link>
+      <div>
+        <Helmet>
+          <title>Plumbing | SignUp</title>
+        </Helmet>
+      </div>
       <div className="container xl:w-[40%] px-20 py-5 border-gray-900 mt-5 border">
         <Form submitHandler={onSubmit}>
           <div className="space-y-12">

@@ -1,14 +1,26 @@
 "use client";
+import Loading from "@/app/loading";
 import { useAllFaqQuery } from "@/redux/api/faqApi";
 import React from "react";
+import { Helmet } from "react-helmet-async";
 
 const FaqPage = () => {
   const arg = {};
   const { data, isLoading } = useAllFaqQuery({ ...arg });
-  console.log(data);
+
+  if (isLoading) {
+    return <Loading />;
+  }
+
   return (
     <div>
       <div className="w-full lg:w-[1020px] mx-auto px-3 py-24">
+        <div>
+          <Helmet>
+            <title>Plumbing | Faq</title>
+          </Helmet>
+        </div>
+
         <div className="flex flex-wrap">
           <div className="w-full px-4">
             <div className="mx-auto mb-12 max-w-[510px] text-center lg:mb-20">

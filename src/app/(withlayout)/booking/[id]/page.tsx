@@ -11,6 +11,7 @@ import { useGetSingleDataQuery } from "@/redux/api/serviceApi";
 import { getUserInfo } from "@/service/auth.service";
 import { format } from "date-fns";
 import { useState } from "react";
+import { Helmet } from "react-helmet-async";
 import { toast } from "react-toastify";
 
 const page = ({ params }: { params: any }) => {
@@ -79,6 +80,12 @@ const page = ({ params }: { params: any }) => {
           </div>
         </div>
       </div>
+      <div>
+        <Helmet>
+          <title>Plumbing | Booking</title>
+        </Helmet>
+      </div>
+      ;
       <Form submitHandler={onSubmit} defaultValues={defaultValues}>
         <div className="p-10 shadow-md">
           <div className="flex gap-3 pt-5">

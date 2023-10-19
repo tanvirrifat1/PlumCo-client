@@ -1,3 +1,5 @@
+"use client";
+
 import Image from "next/image";
 import React, { useRef } from "react";
 import img from "../../../assets/service/Contact us-bro.png";
