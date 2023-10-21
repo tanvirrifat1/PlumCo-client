@@ -9,7 +9,6 @@ import { authKey } from "@/constants/storageKey";
 import { useRouter } from "next/navigation";
 import { useProfileQuery } from "@/redux/api/profileApi";
 import NavHeader from "./NavHeader";
-import { useGetCartsQuery } from "@/redux/api/addToCartApi";
 import Drawer from "@/app/(withlayout)/drawer/page";
 
 const Navbar = () => {
