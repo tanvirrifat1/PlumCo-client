@@ -64,7 +64,6 @@ const page = ({ params }: { params: any }) => {
     address: data?.address,
     email: data?.email,
     fullName: data?.fullName,
-    // profileImage: data?.profileImage,
   };
 
   return (
@@ -74,7 +73,7 @@ const page = ({ params }: { params: any }) => {
           <div className="space-y-12">
             <div className="border-b border-gray-900/10 pb-12">
               <h2 className="text-base font-semibold leading-7 text-gray-900">
-                Submit Your Updated Blogs
+                Updated your profile
               </h2>
               <div>
                 <Helmet>

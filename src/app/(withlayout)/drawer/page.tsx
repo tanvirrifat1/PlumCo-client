@@ -5,9 +5,7 @@ import {
   useDeleteCartMutation,
   useGetCartsQuery,
 } from "@/redux/api/addToCartApi";
-import { IAddToCartData, IService } from "@/types";
 import Image from "next/image";
-import { FaShoppingCart } from "react-icons/fa";
 import Swal from "sweetalert2";
 
 const Drawer = () => {
@@ -54,9 +52,6 @@ const Drawer = () => {
         }
       });
   };
-  if (isLoading) {
-    return <Loading />;
-  }
 
   return (
     <div className="drawer drawer-end ">
