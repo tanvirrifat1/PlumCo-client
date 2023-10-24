@@ -35,24 +35,28 @@ const Services = () => {
   const [addToCart] = useAddToCartMutation();
 
   const handleAddToCart = async (id: string) => {
-    if (id) {
-      const res: any = await addToCart({ serviceId: id });
-      if (res.data) {
-        Swal.fire({
-          position: "top-right",
-          icon: "success",
-          title: "Service is Added!",
-          showConfirmButton: false,
-          timer: 1500,
-        });
-      } else {
-        Swal.fire({
-          position: "top-right",
-          icon: "error",
-          title: "This service Already Added!",
-          showConfirmButton: false,
-          timer: 1500,
-        });
+    if (!userloggedIn) {
+      router.push("/login");
+    } else {
+      if (id) {
+        const res: any = await addToCart({ serviceId: id });
+        if (res.data) {
+          Swal.fire({
+            position: "top-right",
+            icon: "success",
+            title: "Service is Added!",
+            showConfirmButton: false,
+            timer: 1500,
+          });
+        } else {
+          Swal.fire({
+            position: "top-right",
+            icon: "error",
+            title: "This service Already Added!",
+            showConfirmButton: false,
+            timer: 1500,
+          });
+        }
       }
     }
   };

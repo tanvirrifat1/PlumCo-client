@@ -1,7 +1,6 @@
 "use client";
 
 import React, { useState } from "react";
-import { FcFeedback } from "react-icons/fc";
 import Form from "../forms/Form";
 import FormInput from "../forms/FormIntput";
 import { getUserInfo } from "@/service/auth.service";

@@ -4,7 +4,11 @@ import Link from "next/link";
 import React, { useState } from "react";
 import img from "../../assets/home.png";
 import Image from "next/image";
-import { getUserInfo, removeUserInfo } from "@/service/auth.service";
+import {
+  getUserInfo,
+  isLoggedin,
+  removeUserInfo,
+} from "@/service/auth.service";
 import { authKey } from "@/constants/storageKey";
 import { useRouter } from "next/navigation";
 import { useProfileQuery } from "@/redux/api/profileApi";
@@ -20,6 +24,8 @@ const Navbar = () => {
     removeUserInfo(authKey);
     router.push("/login");
   };
+
+  const userloggedIn = isLoggedin();
 
   const navOption = (
     <>
@@ -64,11 +70,13 @@ const Navbar = () => {
             <li className="text-black text-xl">Contact</li>
           </li>
         </Link>
-        <Link href={"/feedback"}>
-          <li>
-            <li className="text-black text-xl">Feedback</li>
-          </li>
-        </Link>
+        {userloggedIn && (
+          <Link href={"/feedback"}>
+            <li>
+              <li className="text-black text-xl">Feedback</li>
+            </li>
+          </Link>
+        )}
         {/* <Link href={"/review"}>
           <li>
             <li className="text-black text-xl">Review</li>
