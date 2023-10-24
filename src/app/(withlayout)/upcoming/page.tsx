@@ -86,11 +86,6 @@ const Upcoming = () => {
             <div className="card-body items-center text-center">
               <h2 className="card-title">{service?.title}</h2>
               <p>{service?.descripttion.slice(0, 75)}...</p>
-              {/* <div className="card-actions">
-                <button className="btn btn-outline rounded-full  hover:bg-white hover:text-black hover:shadow-lg">
-                  Buy Now
-                </button>
-              </div> */}
             </div>
           </div>
         ))}

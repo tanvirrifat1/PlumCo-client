@@ -13,7 +13,7 @@ import Swal from "sweetalert2";
 import { AiOutlineReload } from "react-icons/ai";
 import { useDebounced } from "@/redux/hooks";
 import Link from "next/link";
-import { GrFormNext } from "react-icons/gr";
+import { GrFormNext, GrLinkNext } from "react-icons/gr";
 
 const Services = () => {
   const arg: Record<string, any> = {};
@@ -101,7 +101,7 @@ const Services = () => {
           </button>
         )}
       </div>
-      <div className=" grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3 md:gap-5">
+      <div className="w-full lg:w-[1440px] mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
         {isLoading ? (
           <>
             <span className="loading loading-spinner text-warning"></span>
@@ -110,14 +110,16 @@ const Services = () => {
           data?.map((service: any) => (
             <>
               <div key={service.id} className="">
-                <div className="card card-compact  bg-base-100 shadow-xl">
-                  <Image
-                    width={250}
-                    height={250}
-                    className="h-[200px] md:h-[250px] lg:h-[300px] w-full object-cover object-top rounded "
-                    src={service.image}
-                    alt={service.title}
-                  />
+                <div className="card w-96 bg-base-100 shadow-xl">
+                  <figure className="px-10 pt-10">
+                    <Image
+                      width={500}
+                      height={500}
+                      src={service?.image}
+                      alt={service?.title}
+                      className="rounded-xl"
+                    />
+                  </figure>
 
                   <div className="card-body">
                     <h2 className="card-title">{service?.title}</h2>
@@ -127,8 +129,7 @@ const Services = () => {
                       <Link href={`/service/${service?.id}`}>
                         <div className="flex">
                           <p className="text-xl">READ MORE</p>
-                          <GrFormNext className="text-xl hover:text-purple-800 mt-1" />
-                          <GrFormNext className="text-xl hover:text-purple-800 mt-1" />
+                          <GrLinkNext className="text-xl hover:text-purple-800 mt-1" />
                         </div>
                       </Link>
                     </div>
@@ -136,14 +137,14 @@ const Services = () => {
                       <button
                         onClick={() => handleAddToCart(service?.id)}
                         disabled={role === "admin" || role === "super_admin"}
-                        className="btn btn-outline rounded-full w-48 h-6 bg-slate-600 text-white hover:bg-white hover:text-black hover:shadow-lg"
+                        className="btn btn-outline  w-36 h-6 bg-slate-600 text-white hover:bg-white hover:text-black hover:shadow-lg"
                       >
                         <CiSaveUp2 className="text-2xl" /> Add
                       </button>
                       <button
                         onClick={() => handleBook(service?.id)}
                         disabled={role === "admin" || role === "super_admin"}
-                        className="btn btn-outline rounded-full  w-48 h-6 hover:bg-white hover:text-black hover:shadow-lg"
+                        className="btn btn-outline   w-36 h-6 hover:bg-white hover:text-black hover:shadow-lg"
                       >
                         <BiSolidCartAdd className="text-2xl" /> Book
                       </button>
