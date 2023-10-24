@@ -18,7 +18,7 @@ const page = ({ params }: { params: any }) => {
   const { id } = params;
   const router = useRouter();
   const { data, isLoading } = useGetSingleDataQuery(id);
-
+  const [openModal, setOpenModal] = useState<boolean | null>(null);
   const userloggedIn = isLoggedin();
 
   const handleBook = (id: string) => {
@@ -29,14 +29,8 @@ const page = ({ params }: { params: any }) => {
     }
   };
 
-  const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
-
-  const openModal = () => {
-    setIsModalOpen(true);
-  };
-
-  const closeModal = () => {
-    setIsModalOpen(false);
+  const handleOpen = () => {
+    setOpenModal(true);
   };
 
   if (isLoading) {
@@ -70,11 +64,14 @@ const page = ({ params }: { params: any }) => {
               Book Now
               <GrLinkNext className="text-2xl hover:text-white" />
             </button>
-            <div className="btn  rounded-full ml-2 w-48 h-6 ">
-              {/* Feed Back
-              <FcFeedback className="text-2xl hover:text-white" /> */}
-              <FeedBackModal />
-            </div>
+            <label
+              onClick={handleOpen}
+              htmlFor="my_modal_6"
+              className="btn btn-outline rounded-full w-48 h-6 ml-2 bg-white hover:text-white hover:shadow-lg"
+            >
+              FeedBack
+              <FcFeedback className="text-2xl hover:text-white" />
+            </label>
           </div>
           <div className="grid md:grid-cols-1  grid-cols-1 mt-6">
             <div className="flex justify-center gap-2">
@@ -95,6 +92,7 @@ const page = ({ params }: { params: any }) => {
           className="object-cover w-full rounded-md xl:col-span-3 dark:bg-gray-500"
         />
       </div>
+      {openModal && <FeedBackModal id={id} setOpenModal={setOpenModal} />}
     </section>
   );
 };

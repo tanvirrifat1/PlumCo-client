@@ -20,7 +20,6 @@ const page = () => {
       <Header />
       <CategoryPage />
       <Services />
-      {/* <Upcoming /> */}
       <Reviews />
       <LatestNews />
       <AddServiceCart />

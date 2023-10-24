@@ -69,11 +69,11 @@ const Navbar = () => {
             <li className="text-black text-xl">Feedback</li>
           </li>
         </Link>
-        <Link href={"/review"}>
+        {/* <Link href={"/review"}>
           <li>
             <li className="text-black text-xl">Review</li>
           </li>
-        </Link>
+        </Link> */}
 
         <Link href={"/faq"}>
           <li>
