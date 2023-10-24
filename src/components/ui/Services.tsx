@@ -101,7 +101,7 @@ const Services = () => {
           </button>
         )}
       </div>
-      <div className="w-full lg:w-[1440px] mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+      <div className="w-full lg:w-[1440px] mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3">
         {isLoading ? (
           <>
             <span className="loading loading-spinner text-warning"></span>
@@ -110,7 +110,7 @@ const Services = () => {
           data?.map((service: any) => (
             <>
               <div key={service.id} className="">
-                <div className="card w-96 bg-base-100 shadow-xl">
+                <div className="card w-full bg-base-100 shadow-xl">
                   <figure className="px-10 pt-10">
                     <Image
                       width={500}
@@ -137,14 +137,14 @@ const Services = () => {
                       <button
                         onClick={() => handleAddToCart(service?.id)}
                         disabled={role === "admin" || role === "super_admin"}
-                        className="btn btn-outline  w-36 h-6 bg-slate-600 text-white hover:bg-white hover:text-black hover:shadow-lg"
+                        className="btn btn-outline  w-44 h-6 bg-slate-600 text-white hover:bg-white hover:text-black hover:shadow-lg"
                       >
                         <CiSaveUp2 className="text-2xl" /> Add
                       </button>
                       <button
                         onClick={() => handleBook(service?.id)}
                         disabled={role === "admin" || role === "super_admin"}
-                        className="btn btn-outline   w-36 h-6 hover:bg-white hover:text-black hover:shadow-lg"
+                        className="btn btn-outline  w-44 h-6 hover:bg-white hover:text-black hover:shadow-lg"
                       >
                         <BiSolidCartAdd className="text-2xl" /> Book
                       </button>

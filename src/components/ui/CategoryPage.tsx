@@ -5,7 +5,8 @@ import { useCategoriesQuery } from "@/redux/api/categoryApi";
 import { ICategory } from "@/types";
 import { useRouter } from "next/navigation";
 import React from "react";
-import { MdOutlineMedicalServices } from "react-icons/md";
+import { BiSolidGasPump } from "react-icons/bi";
+import { MdDesignServices, MdOutlineMedicalServices } from "react-icons/md";
 import { PiBuildingsFill } from "react-icons/pi";
 import { SiHomeadvisor } from "react-icons/si";
 
@@ -27,15 +28,15 @@ const CategoryPage = () => {
             onClick={() => handleService(category?.id)}
             className={`${
               i === 0 ? "bg-[#253041]" : "bg-[#0052DA]"
-            } py-8 cursor-pointer rounded bg-opacity-90 hover:bg-opacity-100 transition-all duration-300 flex items-center justify-center gap-7`}
+            } card w-96 bg-base-100 shadow-xl text-black py-8 cursor-pointer rounded bg-opacity-90 hover:bg-opacity-100 transition-all duration-300 flex items-center justify-center gap-7`}
             key={category?.id}
           >
             {i === 0 ? (
-              <MdOutlineMedicalServices className="w-10 h-10 inline-block text-white" />
+              <BiSolidGasPump className="w-20 h-20 inline-block text-black" />
             ) : (
-              <MdOutlineMedicalServices className="w-10 h-10 inline-block text-white" />
+              <MdDesignServices className="w-20 h-20 inline-block text-black" />
             )}
-            <h1 className="text-center font-bold text-white text-xl md:text-2xl lg:text-4xl">
+            <h1 className="text-center font-bold text-black text-xl md:text-2xl lg:text-4xl">
               {category?.title}
             </h1>
           </div>

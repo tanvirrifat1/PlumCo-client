@@ -16,7 +16,7 @@ import React from "react";
 import { Helmet } from "react-helmet-async";
 import { BiSolidCartAdd } from "react-icons/bi";
 import { CiSaveUp2 } from "react-icons/ci";
-import { GrFormNext } from "react-icons/gr";
+import { GrFormNext, GrLinkNext } from "react-icons/gr";
 import Swal from "sweetalert2";
 
 const page = ({ params }: { params: any }) => {
@@ -113,8 +113,7 @@ const page = ({ params }: { params: any }) => {
                       <Link href={`/service/${service?.id}`}>
                         <div className="flex">
                           <p className="text-xl">READ MORE</p>
-                          <GrFormNext className="text-xl hover:text-purple-800 mt-1" />
-                          <GrFormNext className="text-xl hover:text-purple-800 mt-1" />
+                          <GrLinkNext className="text-xl hover:text-purple-800 mt-1" />
                         </div>
                       </Link>
                     </div>
@@ -122,14 +121,14 @@ const page = ({ params }: { params: any }) => {
                       <button
                         onClick={() => handleAddToCart(service?.id)}
                         disabled={role === "admin" || role === "super_admin"}
-                        className="btn btn-outline rounded-full w-48 h-6 bg-slate-600 text-white hover:bg-white hover:text-black hover:shadow-lg"
+                        className="btn btn-outline  w-48 h-6 bg-slate-600 text-white hover:bg-white hover:text-black hover:shadow-lg"
                       >
                         <CiSaveUp2 className="text-2xl" /> Add
                       </button>
                       <button
                         onClick={() => handleBook(service?.id)}
                         disabled={role === "admin" || role === "super_admin"}
-                        className="btn btn-outline rounded-full  w-48 h-6 hover:bg-white hover:text-black hover:shadow-lg"
+                        className="btn btn-outline  w-48 h-6 hover:bg-white hover:text-black hover:shadow-lg"
                       >
                         <BiSolidCartAdd className="text-2xl" /> Book
                       </button>
