@@ -5,12 +5,14 @@ import { useGetSingleDataQuery } from "@/redux/api/serviceApi";
 import { isLoggedin } from "@/service/auth.service";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
-import React from "react";
+import React, { useState } from "react";
 import { GrLinkNext } from "react-icons/gr";
 
 import img from "../../../../assets/service/img.png";
 import img1 from "../../../../assets/service/img6.png";
 import { Helmet } from "react-helmet-async";
+import { FcFeedback } from "react-icons/fc";
+import FeedBackModal from "@/components/common/FeedBackModal";
 
 const page = ({ params }: { params: any }) => {
   const { id } = params;
@@ -27,7 +29,15 @@ const page = ({ params }: { params: any }) => {
     }
   };
 
-  console.log(data);
+  const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
+
+  const openModal = () => {
+    setIsModalOpen(true);
+  };
+
+  const closeModal = () => {
+    setIsModalOpen(false);
+  };
 
   if (isLoading) {
     return <Loading />;
@@ -55,11 +65,16 @@ const page = ({ params }: { params: any }) => {
           <div>
             <button
               onClick={() => handleBook(data?.id)}
-              className="btn btn-outline rounded-full   w-48 h-6 bg-white hover:text-white hover:shadow-lg"
+              className="btn btn-outline rounded-full w-48 h-6 bg-white hover:text-white hover:shadow-lg"
             >
               Book Now
               <GrLinkNext className="text-2xl hover:text-white" />
             </button>
+            <div className="btn  rounded-full ml-2 w-48 h-6 ">
+              {/* Feed Back
+              <FcFeedback className="text-2xl hover:text-white" /> */}
+              <FeedBackModal />
+            </div>
           </div>
           <div className="grid md:grid-cols-1  grid-cols-1 mt-6">
             <div className="flex justify-center gap-2">

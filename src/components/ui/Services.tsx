@@ -125,7 +125,7 @@ const Services = () => {
                     <h2 className="card-title">{service?.title}</h2>
                     <p className="">{service?.description.slice(0, 50)}...</p>
                     <p className="">Price: {service?.price} $</p>
-                    <div className="flex hover:text-purple-800 my-2">
+                    <div className="flex hover:text-purple-800 my-2 ">
                       <Link href={`/service/${service?.id}`}>
                         <div className="flex">
                           <p className="text-xl">READ MORE</p>
