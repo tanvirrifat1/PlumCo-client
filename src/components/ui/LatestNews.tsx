@@ -2,12 +2,11 @@
 import Loading from "@/app/loading";
 import { useAddAllBlogsQuery } from "@/redux/api/blogApi";
 import Image from "next/image";
-import Link from "next/link";
 
 const LatestNews = () => {
   const arg = {};
   const { data, isLoading } = useAddAllBlogsQuery({ ...arg });
-
+  console.log(data);
   return (
     <section className="py-20 w-full lg:w-[1440px] mx-auto">
       <div className="flex flex-wrap">

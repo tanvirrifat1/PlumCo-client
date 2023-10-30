@@ -4,6 +4,7 @@ import Footer from "@/components/ui/Footer";
 import dynamic from "next/dynamic";
 import { useState, useEffect } from "react";
 import Loading from "../loading";
+import Navbar from "@/components/ui/Navbar";
 
 export default function DashboardLayout({
   children, // will be a page or nested layout
@@ -11,9 +12,9 @@ export default function DashboardLayout({
   children: React.ReactNode;
 }) {
   const [loading, setLoading] = useState(true);
-  const Navbar = dynamic(() => import("../../components/ui/Navbar"), {
-    ssr: false,
-  });
+  // const Navbar = dynamic(() => import("../../components/ui/Navbar"), {
+  //   ssr: true,
+  // });
 
   useEffect(() => {
     // Simulate loading time

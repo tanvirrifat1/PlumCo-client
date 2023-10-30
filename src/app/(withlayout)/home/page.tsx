@@ -5,7 +5,6 @@ import Header from "@/components/ui/Header";
 import LatestNews from "@/components/ui/LatestNews";
 import Reviews from "@/components/ui/Reviews";
 import Services from "@/components/ui/Services";
-import Upcoming from "@/app/(withlayout)/upcoming/page";
 import React from "react";
 import { Helmet } from "react-helmet-async";
 

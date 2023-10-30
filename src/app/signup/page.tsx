@@ -22,8 +22,6 @@ const SignupPage = () => {
 
   const IMAGEURL = process.env.NEXT_PUBLIC_IMBB_KEY;
 
-  console.log(IMAGEURL);
-
   const onSubmit = async (data: any) => {
     setLoading(true);
 
