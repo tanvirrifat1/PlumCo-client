@@ -18,8 +18,17 @@ const page = () => {
   const { data, isLoading } = useGetAllBookedQuery({ ...arg });
   const [deleteBooks] = useDeleteBooksMutation();
   const [updateBooks] = useUpdateBooksMutation();
-
   const { role } = getUserInfo() as any;
+
+  const newArray = data?.map((obj: any) => obj.service?.price);
+
+  const total = newArray
+    ?.map(function (elt: any) {
+      return /^\d+$/.test(elt) ? parseInt(elt) : 0;
+    })
+    .reduce(function (a: any, b: any) {
+      return a + b;
+    });
 
   const handleCancel = (id: string) => {
     const swalWithBootstrapButtons = Swal.mixin({
@@ -171,8 +180,13 @@ const page = () => {
 
   return (
     <div className="pr-20 pl-5 py-10">
-      <div className="flex justify-between border-b-2 pb-1">
-        <h1 className="text-4xl font-bold">Bookings List</h1>
+      <div className="flex justify-between">
+        <div className="flex justify-between border-b-2 pb-1">
+          <h1 className="text-4xl font-bold">Bookings List</h1>
+        </div>
+        <div className="flex justify-between  pb-1">
+          <h1 className="text-4xl font-bold">Total Price : {total} $</h1>
+        </div>
       </div>
       <div className="overflow-x-auto mt-10">
         <table className="min-w-full divide-y-2 divide-gray-200 bg-white text-sm">

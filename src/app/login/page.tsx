@@ -24,7 +24,7 @@ const LoginPage = () => {
     try {
       setLoading(true);
       const res: any = await userLogin({ ...data });
-      console.log(res);
+
       if (res.error) {
         setError(res.error);
         setCheck(false);
@@ -42,15 +42,16 @@ const LoginPage = () => {
             popup: "animate__animated animate__fadeOutUp",
           },
         });
+        setLoading(false);
         storeUserInfo({ accessToken: res?.data?.accessToken });
       }
     } catch (error: any) {
       console.error(error);
     }
   };
-  if (error) {
-    Swal.fire("user not found!");
-  }
+  // if (error) {
+  //   Swal.fire("user not found!");
+  // }
   return (
     <div>
       <Link href={"/home"}>
@@ -124,7 +125,9 @@ const LoginPage = () => {
               </Link>
             </p>
             {error && (
-              <small className="text-red-500 pt-4 block">{error}</small>
+              <small className="text-red-500 text-center text-xl pt-4 block">
+                {error}
+              </small>
             )}
           </div>
         </div>
