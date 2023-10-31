@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import React from "react";
+import React, { useState } from "react";
 import img from "../../assets/home.png";
 import Image from "next/image";
 import {
@@ -10,7 +10,7 @@ import {
   removeUserInfo,
 } from "@/service/auth.service";
 import { authKey } from "@/constants/storageKey";
-import { useRouter } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import { useProfileQuery } from "@/redux/api/profileApi";
 import NavHeader from "./NavHeader";
 import Drawer from "@/app/(withlayout)/drawer/page";
@@ -19,6 +19,17 @@ const Navbar = () => {
   const { userId } = getUserInfo() as any;
   const { data } = useProfileQuery(userId);
   const router = useRouter();
+  const pathname = usePathname();
+  const [open, setOpen] = useState<boolean>(false);
+
+  const handleOpen = () => {
+    setOpen(!open);
+  };
+  const handleClose = () => {
+    setTimeout(() => {
+      setOpen(false);
+    }, 500);
+  };
 
   const logOut = () => {
     removeUserInfo(authKey);
@@ -29,53 +40,42 @@ const Navbar = () => {
 
   const navOption = (
     <>
-      <ul className="lg:flex justify-center font-semibold space-x-6 text-black ">
-        <Link href={"/home"}>
-          <li>
-            <li className="text-black text-xl">Home</li>
-          </li>
-        </Link>
+      <ul className="lg:flex justify-center font-semibold text-xl space-x-6 text-black ">
+        <li></li>
 
-        <div className="dropdown mt-1">
-          <li tabIndex={0} className="text-xl m-1 hover:text-indigo-700 ">
-            SignUp
-          </li>
-          <ul
-            tabIndex={0}
-            className="dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-52"
+        <li>
+          <Link
+            className={`${pathname === "/home" ? "active" : ""}`}
+            href={"/home"}
           >
-            <Link href={"/signup"}>
-              <li>
-                <h1>signup</h1>
-              </li>
-            </Link>
-            <Link href={"/login"}>
-              <li>
-                <h1>Login</h1>
-              </li>
-            </Link>
-            <li>
-              <li onClick={logOut}>Logout</li>
-            </li>
-          </ul>
-        </div>
-
-        <Link href={"/upcoming"}>
-          <li>
-            <li className="text-black text-xl">Upcoming service</li>
-          </li>
-        </Link>
-        <Link href={"/Contacts"}>
-          <li>
-            <li className="text-black text-xl">Contact</li>
-          </li>
-        </Link>
-        {userloggedIn && (
-          <Link href={"/feedback"}>
-            <li>
-              <li className="text-black text-xl">Feedback</li>
-            </li>
+            Home
           </Link>
+        </li>
+        <li>
+          <Link
+            className={`${pathname === "/upcoming" ? "active" : ""}`}
+            href={"/upcoming"}
+          >
+            Upcoming service
+          </Link>
+        </li>
+        <li>
+          <Link
+            className={`${pathname === "/Contacts" ? "active" : ""}`}
+            href={"/Contacts"}
+          >
+            Contact
+          </Link>
+        </li>
+        {userloggedIn && (
+          <li>
+            <Link
+              className={`${pathname === "/feedback" ? "active" : ""}`}
+              href={"/feedback"}
+            >
+              Feedback
+            </Link>
+          </li>
         )}
         {/* <Link href={"/review"}>
           <li>
@@ -83,23 +83,54 @@ const Navbar = () => {
           </li>
         </Link> */}
 
-        <Link href={"/faq"}>
-          <li>
-            <li className="text-black text-xl">Faq</li>
-          </li>
-        </Link>
+        <li>
+          <Link
+            className={`${pathname === "/faq" ? "active" : ""}`}
+            href={"/faq"}
+          >
+            Faq
+          </Link>
+        </li>
 
-        <Link href={"/blog"}>
-          <li>
-            <li className="text-black text-xl">Blog</li>
-          </li>
-        </Link>
+        <li>
+          <Link
+            className={`${pathname === "/blog" ? "active" : ""}`}
+            href={"/blog"}
+          >
+            Blog
+          </Link>
+        </li>
 
-        <Link href={"/dashBoard"}>
+        {userloggedIn && (
           <li>
-            <li className="text-black text-xl">DashBoard</li>
+            <Link
+              className={`${pathname === "/dashBoard" ? "active" : ""}`}
+              href={"/dashBoard"}
+            >
+              DashBoard
+            </Link>
           </li>
-        </Link>
+        )}
+        <div className="dropdown mt-1">
+          <li tabIndex={0} className=" m-1 hover:text-indigo-700 ">
+            SignUp
+          </li>
+          <li
+            tabIndex={0}
+            className="dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-52"
+          >
+            <li>
+              <Link href={"/signup"}>signup</Link>
+            </li>
+            <li>
+              <Link href={"/login"}> Login</Link>
+            </li>
+
+            <li className="lg:ml-3" onClick={logOut}>
+              Logout
+            </li>
+          </li>
+        </div>
       </ul>
     </>
   );
@@ -149,7 +180,7 @@ const Navbar = () => {
         </div>
         <div className="navbar-end">
           <div className="dropdown dropdown-end">
-            <div className="avatar" tabIndex={0}>
+            <div className="avatar mx-4" tabIndex={0}>
               <div className="w-10 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2">
                 <Image
                   width={50}

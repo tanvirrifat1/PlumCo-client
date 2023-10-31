@@ -87,7 +87,7 @@ const page = ({ params }: { params: any }) => {
         </Helmet>
       </div>
       ;
-      <div className=" grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3 md:gap-5">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3 md:gap-5">
         {isLoading ? (
           <>
             <span className="loading loading-spinner text-warning"></span>
@@ -100,7 +100,7 @@ const page = ({ params }: { params: any }) => {
                   <Image
                     width={250}
                     height={250}
-                    className="h-[200px] md:h-[250px] lg:h-[300px] w-full object-cover object-top rounded "
+                    className="h-[200px] md:h-[250px] lg:h-[300px] w-full object-cover object-top rounded"
                     src={service.image}
                     alt={service.title}
                   />
@@ -121,14 +121,14 @@ const page = ({ params }: { params: any }) => {
                       <button
                         onClick={() => handleAddToCart(service?.id)}
                         disabled={role === "admin" || role === "super_admin"}
-                        className="btn btn-outline  w-48 h-6 bg-slate-600 text-white hover:bg-white hover:text-black hover:shadow-lg"
+                        className="btn btn-outline h-6 bg-slate-600 text-white hover:bg-white hover:text-black hover:shadow-lg"
                       >
                         <CiSaveUp2 className="text-2xl" /> Add
                       </button>
                       <button
                         onClick={() => handleBook(service?.id)}
                         disabled={role === "admin" || role === "super_admin"}
-                        className="btn btn-outline  w-48 h-6 hover:bg-white hover:text-black hover:shadow-lg"
+                        className="btn btn-outline h-6 hover:bg-white hover:text-black hover:shadow-lg"
                       >
                         <BiSolidCartAdd className="text-2xl" /> Book
                       </button>
