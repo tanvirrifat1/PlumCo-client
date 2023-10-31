@@ -85,8 +85,9 @@ const Services = () => {
               What We Offer
             </h2>
             <p className="text-base text-body-color">
-              There are many variations of passages of Lorem Ipsum available but
-              the majority have suffered alteration in some form
+              A pipe service offer generally refers to the products or services
+              offered by a company or organization in the context of pipes or
+              plumbing. These services may include
             </p>
           </div>
         </div>
@@ -99,11 +100,13 @@ const Services = () => {
           onChange={(e) => setSearchTerm(e.target.value)}
         />
 
-        {searchTerm && (
-          <button onClick={reseatFilters} className="btn btn-primary">
-            <AiOutlineReload className=" text-2xl mr-2 " />
-          </button>
-        )}
+        <div className="ml-2">
+          {searchTerm && (
+            <button onClick={reseatFilters} className="btn btn-primary">
+              <AiOutlineReload className=" text-2xl mr-2 " />
+            </button>
+          )}
+        </div>
       </div>
       <div className="w-full lg:w-[1440px] mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3">
         {isLoading ? (
@@ -129,15 +132,15 @@ const Services = () => {
                     <h2 className="card-title">{service?.title}</h2>
                     <p className="">{service?.description.slice(0, 50)}...</p>
                     <p className="">Price: {service?.price} $</p>
-                    <div className="flex hover:text-purple-800 my-2 ">
+                    <div className="flex  hover:text-purple-800 my-2 ">
                       <Link href={`/service/${service?.id}`}>
-                        <div className="flex">
+                        <div className="flex ">
                           <p className="text-xl">READ MORE</p>
                           <GrLinkNext className="text-xl hover:text-purple-800 mt-1" />
                         </div>
                       </Link>
                     </div>
-                    <div className="flex justify-center gap-3">
+                    <div className="flex justify-center gap-3 ">
                       <button
                         onClick={() => handleAddToCart(service?.id)}
                         disabled={role === "admin" || role === "super_admin"}

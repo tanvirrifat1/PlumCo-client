@@ -19,7 +19,7 @@ const AddServiceCart = () => {
 
   return (
     <div
-      className="mt-32"
+      className="mt-32 group relative"
       style={{
         backgroundImage: `url(${bg})`,
         backgroundRepeat: "no-repeat",
@@ -47,7 +47,7 @@ const AddServiceCart = () => {
             </p>
             <button
               onClick={openModal}
-              className="btn btn-outline rounded-full  hover:bg-white hover:text-black hover:shadow-lg"
+              className="btn btn-outline rounded-full opacity-0 group-hover:opacity-100 transition-all duration-500 hover:bg-white hover:text-black hover:shadow-lg"
             >
               Add Service
             </button>

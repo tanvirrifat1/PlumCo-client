@@ -8,7 +8,7 @@ const Loading = () => {
         height: "100vh",
       }}
     >
-      <span className="loading loading-dots loading-lg"></span>
+      <span className="loading loading-spinner loading-lg"></span>
     </div>
   );
 };

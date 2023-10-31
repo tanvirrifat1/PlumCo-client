@@ -48,7 +48,9 @@ const Header = () => {
               backgroundPosition: "center",
             }}
           >
-            <div className="hero-overlay bg-opacity-60"></div>
+            <div className="hero-overlay bg-opacity-60">
+              <div></div>
+            </div>
             <div className="hero-content w-full text-center text-neutral-content">
               <div className="max-w-md"></div>
             </div>

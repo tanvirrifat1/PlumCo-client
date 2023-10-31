@@ -22,7 +22,7 @@ const CategoryPage = () => {
   }
   return (
     <div className="container lg:w-[1000px] pt-32 pb-5">
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
+      <div className="grid grid-cols-1   md:grid-cols-2 gap-10">
         {data?.categories?.map((category: ICategory, i: number) => (
           <div
             onClick={() => handleService(category?.id)}

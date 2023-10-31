@@ -6,7 +6,7 @@ import Image from "next/image";
 const LatestNews = () => {
   const arg = {};
   const { data, isLoading } = useAddAllBlogsQuery({ ...arg });
-  console.log(data);
+
   return (
     <section className="py-20 w-full lg:w-[1440px] mx-auto">
       <div className="flex flex-wrap">
@@ -16,8 +16,11 @@ const LatestNews = () => {
               Latest News & Blog
             </h2>
             <p className="text-base text-body-color">
-              There are many variations of passages of Lorem Ipsum available but
-              the majority have suffered alteration in some form
+              If you are looking for a blog article related to pipe services,
+              you might consider writing or searching for articles on topics
+              such as plumbing tips, pipe maintenance, common plumbing issues,
+              or specific pipe-related services. Here is a general outline for a
+              blog article on pipe services
             </p>
           </div>
         </div>

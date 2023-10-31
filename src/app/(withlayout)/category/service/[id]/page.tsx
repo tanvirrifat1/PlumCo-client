@@ -75,8 +75,9 @@ const page = ({ params }: { params: any }) => {
               What We Offer
             </h2>
             <p className="text-base text-body-color">
-              There are many variations of passages of Lorem Ipsum available but
-              the majority have suffered alteration in some form
+              A pipe service offer generally refers to the products or services
+              offered by a company or organization in the context of pipes or
+              plumbing. These services may include
             </p>
           </div>
         </div>
