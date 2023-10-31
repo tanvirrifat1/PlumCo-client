@@ -17,38 +17,40 @@ const LoginPage = () => {
   const [loading, setLoading] = useState<Boolean>(false);
   const [userLogin] = useUserLoginMutation();
   const router = useRouter();
+  const [error, setError] = useState<string>("");
+  const [check, setCheck] = useState<boolean>(true);
+
   const handleSubmit = async (data: any) => {
     try {
       setLoading(true);
-      const res = await userLogin({ ...data }).unwrap();
-
-      if (res?.accessToken) {
+      const res: any = await userLogin({ ...data });
+      console.log(res);
+      if (res.error) {
+        setError(res.error);
+        setCheck(false);
+      } else {
+        setError("");
+      }
+      if (res?.data?.accessToken) {
         router.push("/profile");
-        Swal.fire("User Login successfully!");
+        Swal.fire({
+          title: "user login successfully",
+          showClass: {
+            popup: "animate__animated animate__fadeInDown",
+          },
+          hideClass: {
+            popup: "animate__animated animate__fadeOutUp",
+          },
+        });
+        storeUserInfo({ accessToken: res?.data?.accessToken });
       }
-      if (!res?.accessToken) {
-        toast(
-          "something went wrong please carefully write your email and password!",
-          {
-            position: "top-right",
-            autoClose: 3000,
-            hideProgressBar: false,
-            closeOnClick: true,
-            pauseOnHover: true,
-            draggable: true,
-            progress: undefined,
-            theme: "light",
-          }
-        );
-      }
-
-      storeUserInfo({ accessToken: res?.accessToken });
-
-      setLoading(false);
     } catch (error: any) {
-      console.error(error.message);
+      console.error(error);
     }
   };
+  if (error) {
+    Swal.fire("user not found!");
+  }
   return (
     <div>
       <Link href={"/home"}>
@@ -121,6 +123,9 @@ const LoginPage = () => {
                 signup
               </Link>
             </p>
+            {error && (
+              <small className="text-red-500 pt-4 block">{error}</small>
+            )}
           </div>
         </div>
       </div>

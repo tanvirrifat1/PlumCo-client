@@ -15,48 +15,50 @@ const ProfilePage = () => {
   const profile = data?.profile as IUserProfile;
 
   return (
-    <div className="md:w-[700px] hero-content flex-col lg:flex-row mx-auto flex space-x-10 my-10 border-4 border-indigo-700 p-5 rounded ">
-      <div className="rounded-xl">
-        <Image
-          src={profile?.profileImage as string}
-          alt={profile?.fullName}
-          width={200}
-          height={250}
-          className="w-[200px] h-[250px] rounded p-1 border-2"
-        />
-      </div>
-      <div>
-        <Helmet>
-          <title>Plumbing | Profile</title>
-        </Helmet>
-      </div>
-      <div className="space-y-2">
-        <h1 className="flex">
-          <strong className="w-[115px]">Name</strong>{" "}
-          <span>: {profile?.fullName}</span>
-        </h1>
-        <h1 className="flex">
-          <strong className="w-[115px]">Contact-No</strong>{" "}
-          <span>: {profile?.contactNo}</span>
-        </h1>
-        <h1 className="flex">
-          <strong className="w-[115px]">Email</strong>{" "}
-          <span>: {profile?.email}</span>
-        </h1>
-        <h1 className="flex">
-          <strong className="w-[115px]">Address</strong>{" "}
-          <span>: {profile?.address}</span>
-        </h1>
-        <h1 className="flex">
-          <strong className="w-[115px]">Role</strong>{" "}
-          <span>: {profile?.role}</span>
-        </h1>
-        <div className="tooltip tooltip-bottom pt-7" data-tip="edit">
-          <Link href={`/profile/${profile?.id}`}>
-            <button className="btn btn-accent">
-              <PencilSquareIcon className="w-6 h-6" />
-            </button>
-          </Link>
+    <div className="min-h-[45vh]">
+      <div className="md:w-[700px] hero-content  flex-col lg:flex-row mx-auto flex space-x-10 my-10 border-4 border-indigo-700 p-5 rounded ">
+        <div className="rounded-xl">
+          <Image
+            src={profile?.profileImage as string}
+            alt={profile?.fullName}
+            width={200}
+            height={250}
+            className="w-[200px] h-[250px] rounded p-1 border-2"
+          />
+        </div>
+        <div>
+          <Helmet>
+            <title>Plumbing | Profile</title>
+          </Helmet>
+        </div>
+        <div className="space-y-2">
+          <h1 className="flex">
+            <strong className="w-[115px]">Name</strong>{" "}
+            <span>: {profile?.fullName}</span>
+          </h1>
+          <h1 className="flex">
+            <strong className="w-[115px]">Contact-No</strong>{" "}
+            <span>: {profile?.contactNo}</span>
+          </h1>
+          <h1 className="flex">
+            <strong className="w-[115px]">Email</strong>{" "}
+            <span>: {profile?.email}</span>
+          </h1>
+          <h1 className="flex">
+            <strong className="w-[115px]">Address</strong>{" "}
+            <span>: {profile?.address}</span>
+          </h1>
+          <h1 className="flex">
+            <strong className="w-[115px]">Role</strong>{" "}
+            <span>: {profile?.role}</span>
+          </h1>
+          <div className="tooltip tooltip-bottom pt-7" data-tip="edit">
+            <Link href={`/profile/${profile?.id}`}>
+              <button className="btn btn-accent">
+                <PencilSquareIcon className="w-6 h-6" />
+              </button>
+            </Link>
+          </div>
         </div>
       </div>
     </div>
