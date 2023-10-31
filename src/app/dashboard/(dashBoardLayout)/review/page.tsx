@@ -67,7 +67,7 @@ const reviewPage = () => {
   return (
     <div className="pr-20 pl-5 py-10">
       <div className="flex justify-between border-b-2 pb-1">
-        <h1 className="text-4xl font-bold">Feedbacks List</h1>
+        <h1 className="text-4xl font-bold">Reviews List</h1>
       </div>
       <div className="overflow-x-auto mt-10">
         <table className="min-w-full divide-y-2 divide-gray-200 bg-white text-sm">

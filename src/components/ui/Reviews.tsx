@@ -15,6 +15,8 @@ import { AiOutlineLeft, AiOutlineRight } from "react-icons/ai";
 import Image from "next/image";
 import { StarIcon } from "@heroicons/react/20/solid";
 import { useGetAllReviewQuery } from "@/redux/api/reviewApi";
+import { isLoggedin } from "@/service/auth.service";
+import { useRouter } from "next/navigation";
 
 const Reviews = () => {
   const arg = {};
@@ -28,6 +30,17 @@ const Reviews = () => {
   };
   const closeModal = () => {
     setIsModalOpen(false);
+  };
+
+  const router = useRouter();
+  const userloggedIn = isLoggedin();
+
+  const handleReview = (id: string) => {
+    if (!userloggedIn) {
+      router.push("/login");
+    } else {
+      router.push(`/review/${id}`);
+    }
   };
 
   return (
@@ -76,7 +89,7 @@ const Reviews = () => {
           >
             {SERVICE?.map((review: any, i: any) => (
               <SwiperSlide className="pt-3" key={i}>
-                <div className="mb-10">
+                <div onClick={() => handleReview(review?.id)} className="mb-10">
                   <figure className="cursor-pointer">
                     <Image
                       width={100}

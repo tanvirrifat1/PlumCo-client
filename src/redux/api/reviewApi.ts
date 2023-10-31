@@ -40,6 +40,14 @@ const reviewApi = baseApi.injectEndpoints({
       }),
       invalidatesTags: [tagTypes.review],
     }),
+
+    getSingleData: build.query({
+      query: (id) => ({
+        url: `${REVIEW_API}/${id}`,
+        method: "GET",
+      }),
+      providesTags: [tagTypes.review],
+    }),
   }),
 });
 
@@ -47,4 +55,5 @@ export const {
   useGetAllReviewQuery,
   useReviewMutation,
   useDeleteReviewMutation,
+  useGetSingleDataQuery,
 } = reviewApi;
