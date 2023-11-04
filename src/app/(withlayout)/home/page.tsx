@@ -5,6 +5,7 @@ import Header from "@/components/ui/Header";
 import LatestNews from "@/components/ui/LatestNews";
 import Reviews from "@/components/ui/Reviews";
 import Services from "@/components/ui/Services";
+import TeamMember from "@/components/ui/TeamMember";
 import React from "react";
 import { Helmet } from "react-helmet-async";
 
@@ -21,6 +22,7 @@ const page = () => {
       <Services />
       <Reviews />
       <LatestNews />
+      <TeamMember />
       <AddServiceCart />
     </div>
   );
