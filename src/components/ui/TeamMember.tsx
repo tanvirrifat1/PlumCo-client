@@ -1,9 +1,13 @@
 "use client";
-
 import Image from "next/image";
 import { AiOutlineTwitter } from "react-icons/ai";
 import { BiLogoFacebook } from "react-icons/bi";
 import { FaLinkedinIn } from "react-icons/fa";
+
+import image1 from "../../assets/mamber/member2.png";
+import image2 from "../../assets/mamber/member.png";
+import image3 from "../../assets/mamber/member3.png";
+import image4 from "../../assets/mamber/member4.png";
 
 const TeamMember = () => {
   const member = [
@@ -11,25 +15,25 @@ const TeamMember = () => {
       id: 1,
       title: "Team Leader",
       name: "Henry Barton",
-      image: "https://i.ibb.co/KyLNVxw/likage.jpg",
+      image: image4,
     },
     {
       id: 2,
       title: "Junior Member",
       name: "Mattie Washington",
-      image: "https://i.ibb.co/5kqyGZy/drain.jpg",
+      image: image2,
     },
     {
       id: 3,
       title: "Team Leader",
       name: "Winifred Harmon",
-      image: "https://i.ibb.co/93mFsk3/img2.jpg",
+      image: image3,
     },
     {
       id: 4,
       title: "Senior Member",
       name: "Shelia Lawrence",
-      image: "https://i.ibb.co/GMc7RzP/member.jpg",
+      image: image1,
     },
   ];
 
@@ -42,11 +46,14 @@ const TeamMember = () => {
               Dedicated Member
             </h2>
             <p className="text-base text-body-color">
-              If you are looking for a blog article related to pipe services,
-              you might consider writing or searching for articles on topics
-              such as plumbing tips, pipe maintenance, common plumbing issues,
-              or specific pipe-related services. Here is a general outline for a
-              blog article on pipe services
+              It appears that you are interested in an article about dedicated
+              members or membership in a specific context. To provide you with a
+              more relevant and informative article, please specify the topic or
+              field you are interested in. Dedicated members can be found in
+              various contexts, such as clubs, organizations, teams, or online
+              communities, so having more specific information about the subject
+              matter would be helpful. Once you provide more details, I will be
+              happy to generate an article for you.
             </p>
           </div>
           <div className="w-full  lg:w-[1440px] mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-2">
