@@ -1,39 +1,34 @@
 "use client";
 
 import Image from "next/image";
+import { AiOutlineTwitter } from "react-icons/ai";
+import { BiLogoFacebook } from "react-icons/bi";
+import { FaLinkedinIn } from "react-icons/fa";
 
 const TeamMember = () => {
   const member = [
     {
       id: 1,
-      title: "Leak Detection and Repair.",
-      price: "280",
-      descripttion:
-        "This service involves identifying and fixing leaks in water supply or drainage pipes. Leaks can waste water, damage property, and lead to increased utility bills. Plumbers use various techniques, including pressure testing and visual inspection, to locate and repair leaks.",
+      title: "Team Leader",
+      name: "Henry Barton",
       image: "https://i.ibb.co/KyLNVxw/likage.jpg",
     },
     {
       id: 2,
-      title: "Drain Cleaning and Unclogging.",
-      price: "170",
-      descripttion:
-        "Plumbers provide services to clear clogged drains, toilets, and sewer lines. They use tools like drain snakes, hydro-jetting, or chemical solutions to remove blockages and ensure proper drainage.",
+      title: "Junior Member",
+      name: "Mattie Washington",
       image: "https://i.ibb.co/5kqyGZy/drain.jpg",
     },
     {
       id: 3,
-      title: "Pipe Installation and Replacement.",
-      price: "346",
-      descripttion:
-        "Plumbers install new water supply lines, drain pipes, and fixtures in residential, commercial, or industrial settings. They may also replace old or damaged pipes to improve the plumbing system's efficiency and reliability.",
+      title: "Team Leader",
+      name: "Winifred Harmon",
       image: "https://i.ibb.co/93mFsk3/img2.jpg",
     },
     {
       id: 4,
-      title: "Water Heater Services.",
-      price: "276",
-      descripttion:
-        "This includes the installation, repair, and maintenance of water heaters. Plumbers can work with various types of water heaters, including tankless, electric, gas, or solar, to ensure hot water is available in homes and businesses.",
+      title: "Senior Member",
+      name: "Shelia Lawrence",
       image: "https://i.ibb.co/GMc7RzP/member.jpg",
     },
   ];
@@ -54,9 +49,12 @@ const TeamMember = () => {
               blog article on pipe services
             </p>
           </div>
-          <div className="w-full lg:w-[1440px] mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-2">
+          <div className="w-full  lg:w-[1440px] mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-2">
             {member?.map((card: any) => (
-              <div key={card?.id} className="max-w-xs rounded-md shadow-md ">
+              <div
+                key={card?.id}
+                className="max-w-xs rounded-md shadow-md group relative"
+              >
                 <Image
                   src={card?.image}
                   alt=""
@@ -67,12 +65,22 @@ const TeamMember = () => {
                 <div className="flex flex-col justify-between p-6 space-y-8">
                   <div className="space-y-2">
                     <h2 className="text-3xl font-semibold tracki">
-                      Donec lectus leo
+                      {card?.name}
                     </h2>
-                    <p className="dark:text-gray-100">
-                      Curabitur luctus erat nunc, sed ullamcorper erat
-                      vestibulum eget.
-                    </p>
+                    <p className="text-black">{card?.title}</p>
+                  </div>
+                  <div className="flex justify-center absolute bottom-0 left-0 w-full h-0 flex-col  items-center opacity-0 group-hover:h-full group-hover:opacity-90 duration-500">
+                    <div className="flex gap-2 bg ">
+                      <button className="btn btn-circle btn-outline bg-white text-black">
+                        <BiLogoFacebook className="text-xl" />
+                      </button>
+                      <button className="btn btn-circle btn-outline bg-white text-black">
+                        <FaLinkedinIn className="text-xl" />
+                      </button>
+                      <button className="btn btn-circle btn-outline bg-white text-black">
+                        <AiOutlineTwitter className="text-xl" />
+                      </button>
+                    </div>
                   </div>
                 </div>
               </div>
