@@ -58,24 +58,3 @@ const page = ({ params }: { params: any }) => {
 };
 
 export default page;
-
-{
-  /* <div className="flex justify-center">
-  <div className="card card-side bg-base-100 shadow-xl">
-    <figure>
-      <Image src={data?.user?.dataImage} alt="Album" width={300} height={300} />
-    </figure>
-    <div className="card-body">
-      <h2 className="card-title">{data?.user?.fullName}</h2>
-      <span>{data?.review}</span>
-      <div className="flex justify-center mt-2 gap-0.5 ">
-        {Array(data?.rating)
-          .fill(0)
-          .map((index, i) => (
-            <StarIcon key={i} className="w-6 h-6 text-yellow-500" />
-          ))}
-      </div>
-    </div>
-  </div>
-</div>; */
-}

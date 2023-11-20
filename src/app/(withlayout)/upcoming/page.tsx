@@ -60,20 +60,20 @@ const Upcoming = () => {
         <h1 className="text-5xl text-black text-center font-semibold my-2">
           Upcoming Service
         </h1>
-        <span className="text-center flex justify-center items-center ">
+        <span className="text-center flex justify-center items-center my-2">
           In the fast-paced world of piping and plumbing, staying updated with
           the latest advancements and upcoming services is crucial for
           professionals and enthusiasts alike.
         </span>
-        <span className="text-center flex justify-center items-center ">
+        <span className="text-center flex justify-center items-center my-2">
           This article delves into the innovative pipe services on the horizon,
           helping you navigate the ever-evolving landscape of this vital
           industry.
         </span>
       </div>
-      <div className="w-full lg:w-[1440px] mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+      <div className="w-full lg:w-[1440px] mx-auto grid grid-cols-1 mt-4 md:grid-cols-2 lg:grid-cols-3 gap-6">
         {UpcomingService?.map((service: any, i) => (
-          <div key={i} className="card w-96 glass">
+          <div key={i} className="card w-full glass">
             <figure className="px-10 pt-10">
               <Image
                 width={500}

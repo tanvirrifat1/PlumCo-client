@@ -111,7 +111,34 @@ const Navbar = () => {
             </Link>
           </li>
         )}
-        <div className="dropdown mt-1">
+
+        <div className="cursor-pointer">
+          {userloggedIn ? (
+            <>
+              {" "}
+              <li className="lg:ml-3 mt-[7px]" onClick={logOut}>
+                Logout
+              </li>
+            </>
+          ) : (
+            <>
+              {" "}
+              <li>
+                <Link
+                  className={`${pathname === "/login" ? "active" : ""}`}
+                  href={"/login"}
+                >
+                  Login
+                </Link>
+              </li>
+            </>
+          )}
+        </div>
+
+        {/*
+'
+
+<div className="dropdown mt-1 btn">
           <li tabIndex={0} className=" m-1 hover:text-indigo-700 ">
             SignUp
           </li>
@@ -130,7 +157,7 @@ const Navbar = () => {
               Logout
             </li>
           </li>
-        </div>
+        </div> */}
       </ul>
     </>
   );

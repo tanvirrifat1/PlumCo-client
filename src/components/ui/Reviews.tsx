@@ -44,7 +44,7 @@ const Reviews = () => {
   };
 
   return (
-    <div className="bg-[#F5F8FE] w-full lg:w-[1440px] mx-auto">
+    <div className=" w-full lg:w-[1440px] mx-auto">
       <section className="container relative py-20">
         <div className="flex flex-wrap">
           <div className="w-full px-4">
@@ -59,7 +59,7 @@ const Reviews = () => {
           </div>
         </div>
 
-        <div className="mt-10">
+        <div className="mt-5">
           <Swiper
             // install Swiper modules
             modules={[Navigation, Pagination, Scrollbar, Autoplay, Keyboard]}
@@ -105,9 +105,7 @@ const Reviews = () => {
                     </p>
                     <div className="relative text-center">
                       <FaQuoteLeft className="absolute quote top-0 -left-2 w-4 h-4 text-gray-900" />
-                      <p className="inline">
-                        {review?.review.slice(0, 100)}...
-                      </p>
+                      <p className="inline">{review?.review.slice(0, 80)}...</p>
                       <FaQuoteRight className="absolute quote bottom-0 right-0 w-4 h-4 text-gray-900" />
                     </div>
 

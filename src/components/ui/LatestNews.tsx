@@ -25,7 +25,7 @@ const LatestNews = () => {
           </div>
         </div>
       </div>
-      <div className="container grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3 md:gap-5">
+      <div className="w-full lg:w-[1400px] mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3">
         {isLoading ? (
           <>
             <Loading />
@@ -33,13 +33,13 @@ const LatestNews = () => {
         ) : (
           data?.map((blog: any) => (
             <>
-              <div className="card bg-base-100 shadow-xl">
+              <div className="card lg:w-[450px] bg-base-100 shadow-xl">
                 <figure className=" ">
                   <Image
                     src={blog?.image}
                     alt="Shoes"
-                    width={500}
-                    height={500}
+                    width={100}
+                    height={100}
                     className="h-[330px] w-full"
                   />
                 </figure>
