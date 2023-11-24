@@ -1,4 +1,4 @@
-import ReactDatePicker from "react-datepicker"; // Import the DatePicker from 'react-datepicker' with a different name
+import ReactDatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import { addDays } from "date-fns";
 

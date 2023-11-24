@@ -16,6 +16,7 @@ import { toast } from "react-toastify";
 
 const page = ({ params }: { params: any }) => {
   const { id } = params;
+
   const [startDate, setStartDate] = useState(new Date());
   const [loading, setLoading] = useState<boolean>(false);
   const { userId } = getUserInfo() as any;
@@ -35,11 +36,12 @@ const page = ({ params }: { params: any }) => {
 
   const onSubmit = async () => {
     const BookData = {
-      serviceId: service?.id,
+      serviceId: id,
       userId,
       date: date,
     };
     const res: any = await createBooked(BookData);
+
     if (res?.data) {
       toast("booking successfully!", {
         position: "top-right",
@@ -85,7 +87,7 @@ const page = ({ params }: { params: any }) => {
           <title>Plumbing | Booking</title>
         </Helmet>
       </div>
-      ;
+
       <Form submitHandler={onSubmit} defaultValues={defaultValues}>
         <div className="p-10 shadow-md">
           <div className="flex gap-3 pt-5">
