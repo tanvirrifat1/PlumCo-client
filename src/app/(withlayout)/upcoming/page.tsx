@@ -26,7 +26,7 @@ const Upcoming = () => {
       price: "346",
       descripttion:
         "Plumbers install new water supply lines, drain pipes, and fixtures in residential, commercial, or industrial settings. They may also replace old or damaged pipes to improve the plumbing system's efficiency and reliability.",
-      image: "https://i.ibb.co/93mFsk3/img2.jpg",
+      image: "https://i.ibb.co/zFVvrRR/img2.jpg",
     },
     {
       id: 4,
@@ -34,7 +34,7 @@ const Upcoming = () => {
       price: "276",
       descripttion:
         "This includes the installation, repair, and maintenance of water heaters. Plumbers can work with various types of water heaters, including tankless, electric, gas, or solar, to ensure hot water is available in homes and businesses.",
-      image: "https://i.ibb.co/rsT6jx5/img6.jpg",
+      image: "https://i.ibb.co/BcK1HPJ/image.jpg",
     },
     {
       id: 5,
@@ -42,7 +42,7 @@ const Upcoming = () => {
       price: "276",
       descripttion:
         "Plumbers install and replace fixtures such as faucets, sinks, toilets, showers, and bathtubs. They ensure that these fixtures are connected properly to the plumbing system and function as intended.",
-      image: "https://i.ibb.co/Px9NgXZ/img4.jpg",
+      image: "https://i.ibb.co/yqcRnvm/Fixture.jpg",
     },
     {
       id: 6,

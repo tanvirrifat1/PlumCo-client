@@ -49,11 +49,7 @@ const TeamMember = () => {
               It appears that you are interested in an article about dedicated
               members or membership in a specific context. To provide you with a
               more relevant and informative article, please specify the topic or
-              field you are interested in. Dedicated members can be found in
-              various contexts, such as clubs, organizations, teams, or online
-              communities, so having more specific information about the subject
-              matter would be helpful. Once you provide more details, I will be
-              happy to generate an article for you.
+              field you are interested in.
             </p>
           </div>
           <div className="w-full  lg:w-[1440px] mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-2">

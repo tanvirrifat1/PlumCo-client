@@ -14,13 +14,15 @@ import { usePathname, useRouter } from "next/navigation";
 import { useProfileQuery } from "@/redux/api/profileApi";
 import NavHeader from "./NavHeader";
 import Drawer from "@/app/(withlayout)/drawer/page";
+import { FaUserLarge } from "react-icons/fa6";
 
 const Navbar = () => {
-  const { userId } = getUserInfo() as any;
+  const { userId, role } = getUserInfo() as any;
   const { data } = useProfileQuery(userId);
   const router = useRouter();
   const pathname = usePathname();
   const [open, setOpen] = useState<boolean>(false);
+  console.log(role);
 
   const handleOpen = () => {
     setOpen(!open);
@@ -103,12 +105,14 @@ const Navbar = () => {
 
         {userloggedIn && (
           <li>
-            <Link
-              className={`${pathname === "/dashBoard" ? "active" : ""}`}
-              href={"/dashBoard"}
-            >
-              DashBoard
-            </Link>
+            {role !== "user" && (
+              <Link
+                className={`${pathname === "/dashBoard" ? "active" : ""}`}
+                href={"/dashBoard"}
+              >
+                DashBoard
+              </Link>
+            )}
           </li>
         )}
 
@@ -116,9 +120,9 @@ const Navbar = () => {
           {userloggedIn ? (
             <>
               {" "}
-              <li className="lg:ml-3 mt-[7px]" onClick={logOut}>
+              {/* <li className="lg:ml-3 mt-[7px]" onClick={logOut}>
                 Logout
-              </li>
+              </li> */}
             </>
           ) : (
             <>
@@ -134,30 +138,6 @@ const Navbar = () => {
             </>
           )}
         </div>
-
-        {/*
-'
-
-<div className="dropdown mt-1 btn">
-          <li tabIndex={0} className=" m-1 hover:text-indigo-700 ">
-            SignUp
-          </li>
-          <li
-            tabIndex={0}
-            className="dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-52"
-          >
-            <li>
-              <Link href={"/signup"}>signup</Link>
-            </li>
-            <li>
-              <Link href={"/login"}> Login</Link>
-            </li>
-
-            <li className="lg:ml-3" onClick={logOut}>
-              Logout
-            </li>
-          </li>
-        </div> */}
       </ul>
     </>
   );
@@ -209,12 +189,22 @@ const Navbar = () => {
           <div className="dropdown dropdown-end">
             <div className="avatar mx-4" tabIndex={0}>
               <div className="w-10 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2">
-                <Image
-                  width={50}
-                  height={50}
-                  alt="avater"
-                  src={data?.profile?.profileImage as string}
-                />
+                {data?.profile?.profileImage ? (
+                  <>
+                    <Image
+                      width={50}
+                      height={50}
+                      alt="avater"
+                      src={data?.profile?.profileImage as string}
+                    />
+                  </>
+                ) : (
+                  <>
+                    <p className="text-black lg:mt-2 text-2xl flex justify-center">
+                      <FaUserLarge />
+                    </p>
+                  </>
+                )}
               </div>
             </div>
             <ul
@@ -224,9 +214,35 @@ const Navbar = () => {
               <li>
                 <Link href="/profile">Profile</Link>
               </li>
-              <li>
-                <li onClick={logOut}>Logout</li>
-              </li>
+              {role === "user" && (
+                <li>
+                  <Link className="mt-1" href="/dashBoard/booking">
+                    Order
+                  </Link>
+                </li>
+              )}
+              {userloggedIn ? (
+                <>
+                  <li
+                    className="lg:ml-3 cursor-pointer mt-[7px]"
+                    onClick={logOut}
+                  >
+                    Logout
+                  </li>
+                </>
+              ) : (
+                <>
+                  {" "}
+                  <li>
+                    <Link
+                      className={`${pathname === "/login" ? "active" : ""}`}
+                      href={"/login"}
+                    >
+                      Login
+                    </Link>
+                  </li>
+                </>
+              )}
             </ul>
           </div>
           <p className="m-2">{data?.profile?.fullName as string}</p>
