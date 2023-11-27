@@ -9,7 +9,7 @@ import { Helmet } from "react-helmet-async";
 const page = ({ params }: { params: any }) => {
   const { id } = params;
   const { data, isLoading } = useGetSingleDataQuery(id);
-
+  console.log(data);
   if (isLoading) {
     return <Loading />;
   }

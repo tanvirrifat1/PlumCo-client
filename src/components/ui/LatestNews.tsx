@@ -1,12 +1,24 @@
 "use client";
 import Loading from "@/app/loading";
 import { useAddAllBlogsQuery } from "@/redux/api/blogApi";
+import { isLoggedin } from "@/service/auth.service";
 import Image from "next/image";
+import { useRouter } from "next/navigation";
 
 const LatestNews = () => {
   const arg = {};
   const { data, isLoading } = useAddAllBlogsQuery({ ...arg });
+  console.log(data);
+  const router = useRouter();
+  const userloggedIn = isLoggedin();
 
+  const handleBlog = (id: string) => {
+    if (!userloggedIn) {
+      router.push("/login");
+    } else {
+      router.push(`/blog/${id}`);
+    }
+  };
   return (
     <section className="py-20 w-full lg:w-[1440px] mx-auto">
       <div className="flex flex-wrap">
@@ -33,7 +45,10 @@ const LatestNews = () => {
         ) : (
           data?.map((blog: any) => (
             <>
-              <div className="card lg:w-[450px] bg-base-100 shadow-xl">
+              <div
+                onClick={() => handleBlog(blog?.id)}
+                className="card lg:w-[450px] bg-base-100 shadow-xl"
+              >
                 <figure className=" ">
                   <Image
                     src={blog?.image}
@@ -51,12 +66,27 @@ const LatestNews = () => {
                       : blog?.content}
                     ...
                   </p>
-                  <div className="card-actions justify-start">
-                    <div className="badge badge-outline">
-                      {blog?.author?.fullName}
+                  <div className="flex justify-between">
+                    <div>
+                      <div className="card-actions justify-start">
+                        <div className="avatar">
+                          <div className="w-14 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2">
+                            <Image
+                              src={blog?.author?.profileImage}
+                              width={20}
+                              height={20}
+                              alt=""
+                            />
+                          </div>
+                        </div>
+                        <div className=" mt-4 lg:ml-3">
+                          {blog?.author?.fullName}
+                        </div>
+                      </div>
                     </div>
-                    <div className="badge badge-outline">Fashion</div>
-                    <div className="badge badge-outline">Products</div>
+                    <div>
+                      <button className="btn btn-outline">Read more...</button>
+                    </div>
                   </div>
                 </div>
               </div>

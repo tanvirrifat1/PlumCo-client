@@ -68,7 +68,7 @@ const page = ({ params }: { params: any }) => {
       <div className="flex flex-wrap">
         <div className="w-full px-4">
           <div className="mx-auto mb-12 max-w-[510px] text-center lg:mb-20">
-            <span className="block mb-2 text-lg font-semibold text-primary">
+            <span className="block mb-2 text-lg font-semibold ">
               Our Services
             </span>
             <h2 className="mb-4 text-3xl font-bold text-dark sm:text-4xl md:text-[40px]">
@@ -87,12 +87,12 @@ const page = ({ params }: { params: any }) => {
           <title>Plumbing | Category</title>
         </Helmet>
       </div>
-      ;
+
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3 md:gap-5">
         {isLoading ? (
-          <>
-            <span className="loading loading-spinner text-warning"></span>
-          </>
+          <div className="flex justify-center items-center">
+            <span className="loading loading-spinner text-primary"></span>
+          </div>
         ) : (
           data?.map((service: any) => (
             <>
@@ -122,14 +122,14 @@ const page = ({ params }: { params: any }) => {
                       <button
                         onClick={() => handleAddToCart(service?.id)}
                         disabled={role === "admin" || role === "super_admin"}
-                        className="btn btn-outline h-6 bg-slate-600 text-white hover:bg-white hover:text-black hover:shadow-lg"
+                        className="btn btn-outline w-44 h-6 bg-slate-600 text-white hover:bg-white hover:text-black hover:shadow-lg"
                       >
                         <CiSaveUp2 className="text-2xl" /> Add
                       </button>
                       <button
                         onClick={() => handleBook(service?.id)}
                         disabled={role === "admin" || role === "super_admin"}
-                        className="btn btn-outline h-6 hover:bg-white hover:text-black hover:shadow-lg"
+                        className="btn btn-outline w-44 h-6 hover:bg-white hover:text-black hover:shadow-lg"
                       >
                         <BiSolidCartAdd className="text-2xl" /> Book
                       </button>

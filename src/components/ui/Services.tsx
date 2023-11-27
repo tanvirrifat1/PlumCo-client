@@ -27,6 +27,7 @@ const Services = () => {
     ...arg,
     searchTerm: debouncedTerm,
   });
+
   const { role } = getUserInfo() as any;
 
   const router = useRouter();
@@ -130,7 +131,7 @@ const Services = () => {
                   {service?.description.slice(0, 32)}
                 </p>
               </div>
-              <div className="flex justify-center absolute bottom-0 left-0 w-full h-0 flex-col  items-center opacity-0 group-hover:h-full group-hover:opacity-90 duration-500">
+              <div className="flex justify-center absolute bottom-0 left-0 w-full h-0 flex-col  items-center opacity-0 group-hover:h-full group-hover:opacity-90 duration-1000">
                 <div className="flex gap-2 ">
                   <button
                     onClick={() => handleAddToCart(service?.id)}
@@ -142,12 +143,17 @@ const Services = () => {
                   <button
                     onClick={() => handleBook(service?.id)}
                     disabled={role === "admin" || role === "super_admin"}
-                    className="btn btn-outline  w-24 h-6 hover:bg-white hover:text-black hover:shadow-lg"
+                    className="btn btn-outline  w-24 h-6 bg-slate-600 text-white hover:bg-white hover:text-black hover:shadow-lg"
                   >
                     <BiSolidCartAdd className="text-2xl" /> Book
                   </button>
-                  <button className="btn btn-outline  w-24 h-6 bg-white text-black">
-                    <Link href={`/service/${service?.id}`}>
+                  <button
+                    onClick={() =>
+                      window.location.assign(`/service/${service?.id}`)
+                    }
+                    className="btn btn-outline  w-24 h-6 bg-slate-600 text-white hover:bg-white hover:text-black hover:shadow-lg"
+                  >
+                    <Link href={""}>
                       <div className="flex ">
                         <p className="">READ MORE</p>
                         <GrLinkNext className="text-xl hover:text-purple-800 mt-1" />

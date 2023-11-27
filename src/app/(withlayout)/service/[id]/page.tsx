@@ -16,8 +16,10 @@ import FeedBackModal from "@/components/common/FeedBackModal";
 
 const page = ({ params }: { params: any }) => {
   const { id } = params;
+
   const router = useRouter();
   const { data, isLoading } = useGetSingleDataQuery(id);
+
   const [openModal, setOpenModal] = useState<boolean | null>(null);
   const userloggedIn = isLoggedin();
 
