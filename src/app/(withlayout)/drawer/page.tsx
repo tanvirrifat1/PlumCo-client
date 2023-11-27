@@ -13,6 +13,16 @@ const Drawer = () => {
   const { data, isLoading } = useGetCartsQuery({ ...arg });
   const [deleteCart] = useDeleteCartMutation();
 
+  const newArray = data?.addToCarts?.map((obj: any) => obj.Service?.price);
+
+  const total = newArray
+    ?.map(function (elt: any) {
+      return /^\d+$/.test(elt) ? parseInt(elt) : 0;
+    })
+    .reduce(function (a: any, b: any) {
+      return a + b;
+    });
+
   const handleDelete = async (id: string) => {
     const swalWithBootstrapButtons = Swal.mixin({
       customClass: {
@@ -123,6 +133,7 @@ const Drawer = () => {
                 </div>
               ))}
             </div>
+            <h1 className="text-xl font-bold">Total Price : {total} $</h1>
           </div>
         </ul>
       </div>

@@ -143,7 +143,7 @@ const Services = () => {
                   <button
                     onClick={() => handleBook(service?.id)}
                     disabled={role === "admin" || role === "super_admin"}
-                    className="btn btn-outline  w-24 h-6 bg-slate-600 text-white hover:bg-white hover:text-black hover:shadow-lg"
+                    className="btn  btn-outline  w-24 h-6 bg-slate-600 text-white hover:bg-white hover:text-black hover:shadow-lg"
                   >
                     <BiSolidCartAdd className="text-2xl" /> Book
                   </button>

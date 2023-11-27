@@ -37,7 +37,7 @@ const LatestNews = () => {
           </div>
         </div>
       </div>
-      <div className="w-full lg:w-[1400px] mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3">
+      <div className="w-full p-6 lg:w-[1400px] mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3">
         {isLoading ? (
           <>
             <Loading />
@@ -47,7 +47,7 @@ const LatestNews = () => {
             <>
               <div
                 onClick={() => handleBlog(blog?.id)}
-                className="card lg:w-[450px] bg-base-100 shadow-xl"
+                className="rounded-md shadow-md "
               >
                 <figure className=" ">
                   <Image
@@ -62,7 +62,7 @@ const LatestNews = () => {
                   <h2 className="card-title">{blog?.title}</h2>
                   <p>
                     {blog?.content.length > 100
-                      ? blog?.content.slice(0, 100)
+                      ? blog?.content.slice(0, 70)
                       : blog?.content}
                     ...
                   </p>

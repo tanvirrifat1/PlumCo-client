@@ -11,7 +11,7 @@ const Header = () => {
       subTitle2: "House shifting services in Dhaka",
       descripttion:
         "Welcome to PACK & SHIFT Removal group, Professional House Shifting Service to anywhere in Bangladesh from Dhaka City. AlsoInternational movers and packers Any country of the world",
-      image: "https://i.ibb.co/7KGxBcT/gas1.jpg",
+      image: "https://i.ibb.co/yqcRnvm/Fixture.jpg",
     },
     {
       id: 2,
@@ -20,7 +20,7 @@ const Header = () => {
       subTitle2: "House shifting services in Dhaka",
       descripttion:
         "Welcome to PACK & SHIFT Removal group, Professional House Shifting Service to anywhere in Bangladesh from Dhaka City. AlsoInternational movers and packers Any country of the world",
-      image: "https://i.ibb.co/CBRsyy1/img6.jpg",
+      image: "https://i.ibb.co/whYLmtZ/gas.jpg",
     },
     {
       id: 3,
@@ -29,7 +29,7 @@ const Header = () => {
       subTitle2: "House shifting services in Dhaka",
       descripttion:
         "Welcome to PACK & SHIFT Removal group, Professional House Shifting Service to anywhere in Bangladesh from Dhaka City. AlsoInternational movers and packers Any country of the world",
-      image: "https://i.ibb.co/9vtN6m9/pipe.jpg",
+      image: "https://i.ibb.co/zFVvrRR/img2.jpg",
     },
   ];
   return (
