@@ -69,6 +69,7 @@ const Navbar = () => {
             Contact
           </Link>
         </li>
+
         {userloggedIn && (
           <li>
             <Link
@@ -102,6 +103,14 @@ const Navbar = () => {
             Blog
           </Link>
         </li>
+        {/* <li>
+          <Link
+            className={`${pathname === "/about" ? "active" : ""}`}
+            href={"/about"}
+          >
+            About US
+          </Link>
+        </li> */}
 
         {userloggedIn && (
           <li>
