@@ -52,11 +52,11 @@ const TeamMember = () => {
               field you are interested in.
             </p>
           </div>
-          <div className="w-full  lg:w-[1440px] mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-2">
+          <div className="w-full  container mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
             {member?.map((card: any) => (
               <div
                 key={card?.id}
-                className="max-w-xs rounded-md shadow-md group relative"
+                className="rounded-md shadow-md group relative"
               >
                 <Image
                   src={card?.image}
@@ -67,7 +67,7 @@ const TeamMember = () => {
                 />
                 <div className="flex flex-col justify-between p-6 space-y-8">
                   <div className="space-y-2">
-                    <h2 className="text-3xl font-semibold tracki">
+                    <h2 className="text-3xl font-semibold tracking-tighter">
                       {card?.name}
                     </h2>
                     <p className="text-black">{card?.title}</p>

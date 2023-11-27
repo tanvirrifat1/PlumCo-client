@@ -5,6 +5,8 @@ import Providers from "@/lib/Providers";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
+import { ThemeProvider } from "@material-tailwind/react";
+
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {

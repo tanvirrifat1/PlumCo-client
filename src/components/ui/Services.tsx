@@ -108,63 +108,107 @@ const Services = () => {
           )}
         </div>
       </div>
-      <div className="w-full lg:w-[1440px] mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3">
-        {isLoading ? (
-          <>
-            <span className="loading loading-spinner text-warning"></span>
-          </>
-        ) : (
-          data?.map((service: any) => (
-            <>
-              <div key={service.id} className="">
-                <div className="card w-full bg-base-100 shadow-xl">
-                  <figure className="px-10 pt-10">
-                    <Image
-                      width={500}
-                      height={500}
-                      src={service?.image}
-                      alt={service?.title}
-                      className="rounded-xl"
-                    />
-                  </figure>
-
-                  <div className="card-body">
-                    <h2 className="card-title">{service?.title}</h2>
-                    <p className="">{service?.description.slice(0, 50)}...</p>
-                    <p className="">Price: {service?.price} $</p>
-                    <div className="flex  hover:text-purple-800 my-2 ">
-                      <Link href={`/service/${service?.id}`}>
-                        <div className="flex ">
-                          <p className="text-xl">READ MORE</p>
-                          <GrLinkNext className="text-xl hover:text-purple-800 mt-1" />
-                        </div>
-                      </Link>
-                    </div>
-                    <div className="flex justify-center gap-3 ">
-                      <button
-                        onClick={() => handleAddToCart(service?.id)}
-                        disabled={role === "admin" || role === "super_admin"}
-                        className="btn btn-outline  w-44 h-6 bg-slate-600 text-white hover:bg-white hover:text-black hover:shadow-lg"
-                      >
-                        <CiSaveUp2 className="text-2xl" /> Add
-                      </button>
-                      <button
-                        onClick={() => handleBook(service?.id)}
-                        disabled={role === "admin" || role === "super_admin"}
-                        className="btn btn-outline  w-44 h-6 hover:bg-white hover:text-black hover:shadow-lg"
-                      >
-                        <BiSolidCartAdd className="text-2xl" /> Book
-                      </button>
-                    </div>
-                  </div>
+      <div className="w-full container mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+        {data?.map((service: any) => (
+          <div
+            key={service?.id}
+            className=" rounded-md shadow-md group relative"
+          >
+            <Image
+              src={service?.image}
+              alt={service?.title}
+              className="object-cover object-center w-full rounded-t-md h-72 dark-bg-gray-500"
+              height={350}
+              width={300}
+            />
+            <div className="flex flex-col justify-between p-6 space-y-8">
+              <div className="space-y-2">
+                <h2 className="text-xl font-semibold tracking-tighter">
+                  {service?.title}
+                </h2>
+                <p className="text-black">
+                  {service?.description.slice(0, 32)}
+                </p>
+              </div>
+              <div className="flex justify-center absolute bottom-0 left-0 w-full h-0 flex-col  items-center opacity-0 group-hover:h-full group-hover:opacity-90 duration-500">
+                <div className="flex gap-2 ">
+                  <button
+                    onClick={() => handleAddToCart(service?.id)}
+                    disabled={role === "admin" || role === "super_admin"}
+                    className="btn btn-outline  w-24 h-6 bg-slate-600 text-white hover:bg-white hover:text-black hover:shadow-lg"
+                  >
+                    <CiSaveUp2 className="text-2xl" /> Add
+                  </button>
+                  <button
+                    onClick={() => handleBook(service?.id)}
+                    disabled={role === "admin" || role === "super_admin"}
+                    className="btn btn-outline  w-24 h-6 hover:bg-white hover:text-black hover:shadow-lg"
+                  >
+                    <BiSolidCartAdd className="text-2xl" /> Book
+                  </button>
+                  <button className="btn btn-outline  w-24 h-6 bg-white text-black">
+                    <Link href={`/service/${service?.id}`}>
+                      <div className="flex ">
+                        <p className="">READ MORE</p>
+                        <GrLinkNext className="text-xl hover:text-purple-800 mt-1" />
+                      </div>
+                    </Link>
+                  </button>
                 </div>
               </div>
-            </>
-          ))
-        )}
+            </div>
+          </div>
+        ))}
       </div>
     </section>
   );
 };
 
 export default Services;
+// data?.map((service: any) => (
+//             <>
+//               <div key={service.id} className="">
+//                 <div className="card w-full bg-base-100 shadow-xl">
+//                   <figure className="px-10 pt-10">
+//                     <Image
+//                       width={500}
+//                       height={500}
+//                       src={service?.image}
+//                       alt={service?.title}
+//                       className="rounded-xl"
+//                     />
+//                   </figure>
+
+//                   <div className="card-body">
+//                     <h2 className="card-title">{service?.title}</h2>
+//                     <p className="">{service?.description.slice(0, 50)}...</p>
+//                     <p className="">Price: {service?.price} $</p>
+//                     <div className="flex  hover:text-purple-800 my-2 ">
+//                       <Link href={`/service/${service?.id}`}>
+//                         <div className="flex ">
+//                           <p className="text-xl">READ MORE</p>
+//                           <GrLinkNext className="text-xl hover:text-purple-800 mt-1" />
+//                         </div>
+//                       </Link>
+//                     </div>
+//                     <div className="flex justify-center gap-3 ">
+//                       <button
+//                         onClick={() => handleAddToCart(service?.id)}
+//                         disabled={role === "admin" || role === "super_admin"}
+//                         className="btn btn-outline  w-44 h-6 bg-slate-600 text-white hover:bg-white hover:text-black hover:shadow-lg"
+//                       >
+//                         <CiSaveUp2 className="text-2xl" /> Add
+//                       </button>
+//                       <button
+//                         onClick={() => handleBook(service?.id)}
+//                         disabled={role === "admin" || role === "super_admin"}
+//                         className="btn btn-outline  w-44 h-6 hover:bg-white hover:text-black hover:shadow-lg"
+//                       >
+//                         <BiSolidCartAdd className="text-2xl" /> Book
+//                       </button>
+//                     </div>
+//                   </div>
+//                 </div>
+//               </div>
+//             </>
+//           ))

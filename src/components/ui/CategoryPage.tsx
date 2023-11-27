@@ -4,11 +4,8 @@ import Loading from "@/app/loading";
 import { useCategoriesQuery } from "@/redux/api/categoryApi";
 import { ICategory } from "@/types";
 import { useRouter } from "next/navigation";
-import React from "react";
 import { BiSolidGasPump } from "react-icons/bi";
-import { MdDesignServices, MdOutlineMedicalServices } from "react-icons/md";
-import { PiBuildingsFill } from "react-icons/pi";
-import { SiHomeadvisor } from "react-icons/si";
+import { MdDesignServices } from "react-icons/md";
 
 const CategoryPage = () => {
   const query: Record<string, any> = {};
