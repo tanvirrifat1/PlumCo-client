@@ -71,6 +71,47 @@ const LoginPage = () => {
               Sign in to your account
             </h2>
           </div>
+          <div className="sm:mx-auto sm:w-full sm:max-w-sm">
+            <h2 className=" text-center  font-bold leading-9 tracking-tight text-gray-900">
+              Get Dashboard access Hits the Access
+            </h2>
+            <div className="flex justify-center">
+              <button
+                className="btn btn-outline"
+                onClick={() =>
+                  //@ts-ignore
+                  document.getElementById("my_modal_3").showModal()
+                }
+              >
+                Button
+              </button>
+            </div>
+            <dialog id="my_modal_3" className="modal">
+              <div className="modal-box">
+                <form method="dialog">
+                  {/* if there is a button in form, it will close the modal */}
+                  <button className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">
+                    ✕
+                  </button>
+                </form>
+                <h1 className="font-semibold">
+                  Do not share any one Email or Password
+                </h1>
+                <div className="border px-2 py-4 mt-6 rounded ">
+                  <p className="">For Super-Admin</p>
+                  <p>
+                    email: jhonkar@gmail.com <br /> Password: 123456
+                  </p>
+                </div>
+                <div className="border px-2 py-4 mt-3 rounded">
+                  <p className="">For Admin</p>
+                  <p className="">
+                    email: mez@gmail.com <br /> Password: 123456
+                  </p>
+                </div>
+              </div>
+            </dialog>
+          </div>
 
           <div className="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
             <Form submitHandler={handleSubmit}>

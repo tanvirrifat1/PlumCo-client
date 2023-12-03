@@ -233,7 +233,7 @@ const Navbar = () => {
                 {userloggedIn ? (
                   <>
                     <li
-                      className="lg:ml-3 cursor-pointer mt-[7px]"
+                      className="lg:ml-4  cursor-pointer mt-[7px]"
                       onClick={logOut}
                     >
                       Logout
