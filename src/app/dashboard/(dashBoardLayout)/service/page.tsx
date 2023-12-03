@@ -69,6 +69,7 @@ const ServicePage = () => {
             Add Service
           </Link>
         </div>
+        <h1 className="text-2xl font-bold">total service: {data?.length}</h1>
         <div className="overflow-x-auto mt-10">
           <table className="min-w-full divide-y-2 divide-gray-200 bg-white text-sm">
             <thead className="text-left">

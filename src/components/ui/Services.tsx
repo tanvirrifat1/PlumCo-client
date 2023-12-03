@@ -91,7 +91,8 @@ const Services = () => {
     if (!userloggedIn) {
       router.push("/login");
     } else {
-      router.push(`/booking/${id}`);
+      window.location.assign(`/booking/${id}`);
+      // router.push(`/booking/${id}`);
     }
   };
 
