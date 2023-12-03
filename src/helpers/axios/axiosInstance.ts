@@ -1,6 +1,7 @@
 import { authKey } from "@/constants/storageKey";
 import { IGenericErrorResponse, ResponseSuccessType } from "@/types";
 import { getFromLocalStorage } from "@/utils/local-storage";
+
 import axios from "axios";
 
 const instance = axios.create();
@@ -31,6 +32,7 @@ instance.interceptors.response.use(
       data: response?.data?.data,
       meta: response?.data?.meta,
     };
+
     return responseObject;
   },
   function (error) {

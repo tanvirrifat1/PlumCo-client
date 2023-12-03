@@ -133,7 +133,8 @@ const Drawer = () => {
                 </div>
               ))}
             </div>
-            <h1 className="text-xl font-bold">Total Price : {total} $</h1>
+            <div className="divider"></div>
+            <h1 className="text-xl my-3 font-bold">Total Price : {total} $</h1>
           </div>
         </ul>
       </div>

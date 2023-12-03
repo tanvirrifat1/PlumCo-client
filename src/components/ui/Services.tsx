@@ -18,15 +18,40 @@ import { GrFormNext, GrLinkNext } from "react-icons/gr";
 const Services = () => {
   const arg: Record<string, any> = {};
 
+  const [page, setPage] = useState<number>(1);
+
+  arg["page"] = page;
+
+  arg["size"] = 8;
+
   const [searchTerm, setSearchTerm] = useState<string>("");
   const debouncedTerm = useDebounced({
     searchQuery: searchTerm,
     delay: 600,
   });
+
   const { data, isLoading } = useGetAllServicesQuery({
     ...arg,
     searchTerm: debouncedTerm,
   });
+
+  //@ts-ignore
+  const { data: totalData } = useGetAllServicesQuery(undefined);
+
+  //@ts-ignore
+  const pageCount = Math.ceil(totalData?.length / 8);
+
+  const handlePrev = async () => {
+    if (page > 1) {
+      setPage((prev) => prev - 1);
+    }
+  };
+
+  const handleNext = async () => {
+    if (page < pageCount) {
+      setPage((prev) => prev + 1);
+    }
+  };
 
   const { role } = getUserInfo() as any;
 
@@ -166,55 +191,19 @@ const Services = () => {
           </div>
         ))}
       </div>
+      <div className="lg:ml-5">
+        <div className="join my-2 ">
+          <button onClick={handlePrev} className="join-item btn">
+            «
+          </button>
+          <button className="join-item btn">{page}</button>
+          <button onClick={handleNext} className="join-item btn">
+            »
+          </button>
+        </div>
+      </div>
     </section>
   );
 };
 
 export default Services;
-// data?.map((service: any) => (
-//             <>
-//               <div key={service.id} className="">
-//                 <div className="card w-full bg-base-100 shadow-xl">
-//                   <figure className="px-10 pt-10">
-//                     <Image
-//                       width={500}
-//                       height={500}
-//                       src={service?.image}
-//                       alt={service?.title}
-//                       className="rounded-xl"
-//                     />
-//                   </figure>
-
-//                   <div className="card-body">
-//                     <h2 className="card-title">{service?.title}</h2>
-//                     <p className="">{service?.description.slice(0, 50)}...</p>
-//                     <p className="">Price: {service?.price} $</p>
-//                     <div className="flex  hover:text-purple-800 my-2 ">
-//                       <Link href={`/service/${service?.id}`}>
-//                         <div className="flex ">
-//                           <p className="text-xl">READ MORE</p>
-//                           <GrLinkNext className="text-xl hover:text-purple-800 mt-1" />
-//                         </div>
-//                       </Link>
-//                     </div>
-//                     <div className="flex justify-center gap-3 ">
-//                       <button
-//                         onClick={() => handleAddToCart(service?.id)}
-//                         disabled={role === "admin" || role === "super_admin"}
-//                         className="btn btn-outline  w-44 h-6 bg-slate-600 text-white hover:bg-white hover:text-black hover:shadow-lg"
-//                       >
-//                         <CiSaveUp2 className="text-2xl" /> Add
-//                       </button>
-//                       <button
-//                         onClick={() => handleBook(service?.id)}
-//                         disabled={role === "admin" || role === "super_admin"}
-//                         className="btn btn-outline  w-44 h-6 hover:bg-white hover:text-black hover:shadow-lg"
-//                       >
-//                         <BiSolidCartAdd className="text-2xl" /> Book
-//                       </button>
-//                     </div>
-//                   </div>
-//                 </div>
-//               </div>
-//             </>
-//           ))

@@ -23,7 +23,7 @@ const page = ({ params }: { params: any }) => {
   const { data: service } = useGetSingleDataQuery(id);
   const { data: user } = useProfileQuery(userId);
   const date = format(startDate, "PP");
-
+  console.log(service);
   const defaultValues = {
     fullName: user?.profile?.fullName,
     email: user?.profile?.email,

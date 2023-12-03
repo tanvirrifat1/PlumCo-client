@@ -15,6 +15,7 @@ import Loading from "@/app/loading";
 const DashboardCategory = () => {
   const arg: any = {};
   const { data, isLoading } = useCategoriesQuery({ ...arg });
+  console.log(data);
   const [deleteService] = useDeleteCategoryMutation();
 
   //this function for deleted

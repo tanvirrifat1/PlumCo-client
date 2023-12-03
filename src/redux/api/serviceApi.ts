@@ -14,12 +14,12 @@ const serviceApi = baseApi.injectEndpoints({
           params: arg,
         };
       },
-      transformErrorResponse: (response: IService[], meta: IMeta) => {
-        return {
-          services: response,
-          meta,
-        };
-      },
+      // transformResponse: (response: IService[], meta: IMeta) => {
+      //   return {
+      //     services: response,
+      //     meta,
+      //   };
+      // },
       providesTags: [tagTypes.service],
     }),
 

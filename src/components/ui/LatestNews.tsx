@@ -8,16 +8,17 @@ import { useRouter } from "next/navigation";
 const LatestNews = () => {
   const arg = {};
   const { data, isLoading } = useAddAllBlogsQuery({ ...arg });
-  console.log(data);
+  // console.log(data);
   const router = useRouter();
   const userloggedIn = isLoggedin();
 
   const handleBlog = (id: string) => {
-    if (!userloggedIn) {
-      router.push("/login");
-    } else {
-      router.push(`/blog/${id}`);
-    }
+    router.push(`/blog/${id}`);
+    // if ( !userloggedIn ) {
+    //   router.push("/login");
+    // } else {
+    //   router.push(`/blog/${id}`);
+    // }
   };
   return (
     <section className="py-20 w-full lg:w-[1440px] mx-auto">
