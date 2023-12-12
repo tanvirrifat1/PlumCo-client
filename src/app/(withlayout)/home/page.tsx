@@ -8,6 +8,7 @@ import Services from "@/components/ui/Services";
 import TeamMember from "@/components/ui/TeamMember";
 import React from "react";
 import { Helmet } from "react-helmet-async";
+import Price from "../price/page";
 
 const page = () => {
   return (
@@ -23,6 +24,7 @@ const page = () => {
       <Reviews />
       <LatestNews />
       <TeamMember />
+      <Price />
       <AddServiceCart />
     </div>
   );
