@@ -22,7 +22,6 @@ const UpcomingService = () => {
   };
 
   const onSubmit = async (data: any) => {
-    console.log(data);
     setLoading(true);
 
     const formData = new FormData();
