@@ -1,52 +1,35 @@
 "use client";
 
-import Loading from "@/app/loading";
 import Form from "@/components/forms/Form";
 import FormInput from "@/components/forms/FormIntput";
-import SelectFormField, {
-  SelectOptions,
-} from "@/components/forms/SeleteFormField";
+import SelectFormField from "@/components/forms/SeleteFormField";
 import LoadingButton from "@/components/ui/LoginSpinner";
 import SmallSpinner from "@/components/ui/SmallSpinner";
-import { useCategoriesQuery } from "@/redux/api/categoryApi";
-import { useCreateServiceMutation } from "@/redux/api/serviceApi";
-import { ICategory } from "@/types";
+import { useCreateUpComingMutation } from "@/redux/api/upcomingServiceApi";
 import { useRouter } from "next/navigation";
-import React, { useState } from "react";
+import { useState } from "react";
 import { toast } from "react-toastify";
 
-const CreateServices = () => {
+const UpcomingService = () => {
   const [image, setImage] = useState<File | null>(null);
   const [loading, setLoading] = useState<boolean>(false);
   const router = useRouter();
-  const [createService] = useCreateServiceMutation();
-  const arg = {};
+  const [createUpComing] = useCreateUpComingMutation();
 
-  const { data, isLoading } = useCategoriesQuery({ ...arg });
-
-  const options = data?.categories?.map((category: ICategory) => {
-    return {
-      label: category.title,
-      value: category.id,
-    };
-  });
-
-  if (isLoading) {
-    return <Loading />;
-  }
-
-  const IMAGEURL = process.env.NEXT_PUBLIC_IMBB_KEY;
   const handleImageChange = async (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files && e.target.files[0];
     setImage(file);
   };
 
   const onSubmit = async (data: any) => {
+    console.log(data);
     setLoading(true);
+
     const formData = new FormData();
     formData.append("image", image as File);
 
-    const url = `https://api.imgbb.com/1/upload?key=c71fd21009b2244466212ed88a7ea531`;
+    const url =
+      "https://api.imgbb.com/1/upload?key=c71fd21009b2244466212ed88a7ea531";
     const response = await fetch(url, {
       method: "POST",
       body: formData,
@@ -57,7 +40,7 @@ const CreateServices = () => {
       if (responseData.data) {
         data.image = responseData?.data?.display_url;
 
-        const res = await createService(data);
+        const res = await createUpComing(data);
         if (res) {
           toast("Service Created", {
             position: "top-center",
@@ -70,7 +53,7 @@ const CreateServices = () => {
             theme: "light",
           });
         }
-        router.push("/dashBoard/service");
+        router.push("/dashBoard/upcomingService");
         setLoading(false);
       }
     }
@@ -134,14 +117,6 @@ const CreateServices = () => {
                       />
                     </div>
                   </div>
-                  <div className="sm:col-span-3">
-                    <SelectFormField
-                      name="categoryId"
-                      options={options as SelectOptions[]}
-                      label="Category"
-                      className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
-                    />
-                  </div>
                 </div>
               </div>
             </div>
@@ -162,4 +137,4 @@ const CreateServices = () => {
   );
 };
 
-export default CreateServices;
+export default UpcomingService;

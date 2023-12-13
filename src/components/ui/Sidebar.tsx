@@ -11,7 +11,7 @@ import Link from "next/link";
 import { AiOutlineUser } from "react-icons/ai";
 import { FaBlogger } from "react-icons/fa";
 import { FcFeedback } from "react-icons/fc";
-import { MdReviews } from "react-icons/md";
+import { MdReviews, MdUpcoming } from "react-icons/md";
 import { RiReservedFill } from "react-icons/ri";
 
 const Sidebar = () => {
@@ -123,6 +123,15 @@ const Sidebar = () => {
                 {" "}
                 <MdReviews className="w-5 h-5 inline-block " />
                 Review
+              </Link>
+            </li>
+            <li>
+              <Link
+                className="hover:text-white hover:bg-gray-600 hover:rounded-lg my-1"
+                href="/dashBoard/upcomingService"
+              >
+                <MdUpcoming className="w-5 h-5 inline-block " />
+                Upcoming service
               </Link>
             </li>
           </>
