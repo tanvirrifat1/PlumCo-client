@@ -128,11 +128,11 @@ const page = () => {
                     </td>
 
                     <td className="flex gap-2">
-                      <button className="btn btn-secondary ">
+                      {/* <button className="btn btn-secondary ">
                         <Link href={`/dashBoard/service/edit/${service?.id}`}>
                           <AiOutlineEdit className="text-3xl" />
                         </Link>
-                      </button>
+                      </button> */}
                       <button className="btn bg-red-600">
                         <AiFillDelete
                           onClick={() => handleDelete(service?.id)}

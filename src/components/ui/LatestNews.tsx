@@ -8,7 +8,7 @@ import { useRouter } from "next/navigation";
 const LatestNews = () => {
   const arg = {};
   const { data, isLoading } = useAddAllBlogsQuery({ ...arg });
-  // console.log(data);
+
   const router = useRouter();
   const userloggedIn = isLoggedin();
 
