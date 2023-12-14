@@ -1,23 +1,7 @@
-"use client";
-import GoogleMapReact from "google-map-react";
+import React from "react";
 
 const MapContainer = () => {
-  const defaultProps = {
-    center: {
-      lat: 10.99835602,
-      lng: 77.01502627,
-    },
-    zoom: 8,
-  };
-  return (
-    <div style={{ height: "50vh", width: "100%" }}>
-      <GoogleMapReact
-        bootstrapURLKeys={{ key: "" }}
-        defaultCenter={defaultProps.center}
-        defaultZoom={defaultProps.zoom}
-      ></GoogleMapReact>
-    </div>
-  );
+  return <div></div>;
 };
 
 export default MapContainer;

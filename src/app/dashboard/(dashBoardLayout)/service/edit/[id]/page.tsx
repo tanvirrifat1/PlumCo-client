@@ -34,7 +34,6 @@ const UpdatedService = ({ params }: IPops) => {
   };
 
   const onSubmit = async (data: any) => {
-    console.log(data);
     setLoading(true);
     const formData = new FormData();
     formData.append("image", image as File);

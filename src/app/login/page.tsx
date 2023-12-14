@@ -49,9 +49,7 @@ const LoginPage = () => {
       console.error(error);
     }
   };
-  // if (error) {
-  //   Swal.fire("user not found!");
-  // }
+
   return (
     <div>
       <Link href={"/home"}>

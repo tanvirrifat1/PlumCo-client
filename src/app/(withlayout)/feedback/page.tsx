@@ -46,7 +46,6 @@ const page = () => {
           theme: "light",
         });
       }
-      console.log(data);
     } catch (error) {
       console.error(error);
     }

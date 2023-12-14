@@ -28,7 +28,7 @@ const page = ({ params }: { params: any }) => {
 
   const onSubmit = async (data: any) => {
     setLoading(true);
-    console.log(data);
+
     const formData = new FormData();
     formData.append("image", image as File);
     const url = `https://api.imgbb.com/1/upload?key=c71fd21009b2244466212ed88a7ea531`;
