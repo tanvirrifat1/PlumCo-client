@@ -18,30 +18,32 @@ import {
   FaLinkedinIn,
 } from "react-icons/fa6";
 import { CiUser } from "react-icons/ci";
+import { useGetAllServicesQuery } from "@/redux/api/serviceApi";
 
 const DetailsBlog = ({ params }: { params: any }) => {
   const [quantity, setQuantity] = useState<number>(0);
   const { id } = params;
   const { data, isLoading } = useGetSingleBlogsQuery(id);
-  if (isLoading) {
-    return <Loading />;
-  }
-  console.log(data);
+  const arg: any = {};
+  const { data: services } = useGetAllServicesQuery({ arg });
+
   const handleIncrement = () => {
     setQuantity((prevQuantity) => prevQuantity + 1);
   };
-
+  if (isLoading) {
+    return <Loading />;
+  }
   return (
-    <div className="container mx-auto min-h-[70vh] py-12">
-      <div className="grid grid-cols-12 gap-5">
+    <div className="container mx-auto min-h-[70vh] py-12 ">
+      <div className="grid grid-cols-12 gap-5 ">
         {/* left side section */}
         <div className="col-span-8 bg-slate-50 p-5 rounded">
           <figure className="mb-7">
             <Image
               src={data?.image}
               alt={data?.title}
-              width={1200}
-              height={500}
+              width={1100}
+              height={300}
               className="group-hover:scale-110 h-full transition-all duration-200"
             />
           </figure>
@@ -62,9 +64,9 @@ const DetailsBlog = ({ params }: { params: any }) => {
           <section></section>
         </div>
         {/* right section */}
-        <aside className="col-span-4 bg-slate-50 rounded">
+        <aside className="col-span-4 bg-slate-50 rounded ">
           {/* profile or author section */}
-          <div className="m-5 bg-slate-200 rounded">
+          <div className="m-5 bg-slate-200 rounded ">
             <div className="avatar flex flex-col items-center justify-center py-10">
               <div className="w-[150px] rounded-full ring ring-slate-50 focus:ring-2">
                 <Image
@@ -84,7 +86,7 @@ const DetailsBlog = ({ params }: { params: any }) => {
               </p>
               <nav className="flex gap-x-2 mt-5">
                 <a
-                  href="http://www.facebook.com/masudranawebdev"
+                  href="https://www.facebook.com/rifat.khan7625"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="group"
@@ -97,7 +99,7 @@ const DetailsBlog = ({ params }: { params: any }) => {
                   </span>
                 </a>
                 <a
-                  href="http://www.linkedin.com/in/masudranawebdev"
+                  href="https://www.linkedin.com/in/md-rifat-miah-48555b257/"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="group"
@@ -110,7 +112,7 @@ const DetailsBlog = ({ params }: { params: any }) => {
                   </span>
                 </a>
                 <a
-                  href="http://www.github.com/masudranawebdev"
+                  href="https://github.com/tanvirrifat1"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="group"
@@ -123,7 +125,7 @@ const DetailsBlog = ({ params }: { params: any }) => {
                   </span>
                 </a>
                 <a
-                  href="http://mrmasud.netlify.app"
+                  href="https://rifat-portfolio.vercel.app/"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="group"
@@ -138,43 +140,25 @@ const DetailsBlog = ({ params }: { params: any }) => {
               </nav>
             </div>
           </div>
-          {/* category section */}
-          {/* <div className="m-5 rounded my-14">
-            <h2 className="text-2xl font-normal">Categories</h2>
-            <div className="flex gap-x-1 mt-2">
-              <span className="w-[100px] h-[5px] bg-primary inline-block rounded-full"></span>
-              <span className="flex-1 h-[5px] bg-slate-400 inline-block rounded-full"></span>
-            </div>
-            <div className="flex flex-col mt-7">
-              {categoriesData?.categories?.map((category: any) => (
-                <Link
-                  href={`/category/service/${category?.id}`}
-                  key={category?.id}
-                  className="text-xl mb-2 hover:underline hover:text-blue-500"
-                >
-                  {category?.title}
-                </Link>
-              ))}
-            </div>
-          </div> */}
+
           {/* recent blog */}
-          {/* <div className="m-5 rounded">
+          <div className="m-5 rounded">
             <h2 className="text-2xl font-normal">Best Services</h2>
             <div className="flex gap-x-1 mt-2">
               <span className="w-[100px] h-[5px] bg-primary inline-block rounded-full"></span>
               <span className="flex-1 h-[5px] bg-slate-400 inline-block rounded-full"></span>
             </div>
             <div className="mt-7 space-y-3">
-              {services?.slice(0, 3)?.map((service) => (
+              {services?.slice(0, 3)?.map((service: any) => (
                 <div className="flex items-center" key={service?.id}>
                   <div className="w-[150px] rounded-full ring ring-slate-50 focus:ring-2">
                     <Image
+                      className="rounded-full"
                       src={service?.image}
                       alt="Shoes"
                       width={100}
                       height={100}
                     />
-                    {service?.thumbnail}
                   </div>
                   <div>
                     <Link
@@ -187,7 +171,7 @@ const DetailsBlog = ({ params }: { params: any }) => {
                 </div>
               ))}
             </div>
-          </div> */}
+          </div>
 
           {/* help section */}
           <div className="p-5 rounded bg-slate-200">
