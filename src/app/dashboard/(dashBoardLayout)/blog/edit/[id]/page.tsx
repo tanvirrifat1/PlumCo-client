@@ -22,6 +22,7 @@ const page = ({ params }: IProps) => {
   const router = useRouter();
   const { id } = params;
   const { data } = useGetSingleBlogsQuery(id);
+
   const [updateBlog] = useUpdateBlogMutation();
 
   const Values = {
@@ -56,6 +57,7 @@ const page = ({ params }: IProps) => {
       }
     }
     const res = await updateBlog({ id, body: data });
+    console.log(res);
     if (res) {
       toast("Blog Updated", {
         position: "top-center",

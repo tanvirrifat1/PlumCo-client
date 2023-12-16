@@ -29,6 +29,21 @@ const UpcomingServiceApi = baseApi.injectEndpoints({
       }),
       invalidatesTags: [tagTypes.upcomingService],
     }),
+    getSingleService: build.query({
+      query: (id: string) => ({
+        url: `${SERVICE_API}/${id}`,
+        method: "GET",
+      }),
+      providesTags: [tagTypes.upcomingService],
+    }),
+    updateService: build.mutation({
+      query: (data: any) => ({
+        url: `${SERVICE_API}/${data?.id}`,
+        method: "PATCH",
+        data: data.body,
+      }),
+      invalidatesTags: [tagTypes.upcomingService],
+    }),
   }),
 });
 
@@ -36,4 +51,6 @@ export const {
   useCreateUpComingMutation,
   useGetUpcomingServiceQuery,
   useDeleteServiceMutation,
+  useUpdateServiceMutation,
+  useGetSingleServiceQuery,
 } = UpcomingServiceApi;
