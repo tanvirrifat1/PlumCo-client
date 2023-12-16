@@ -55,7 +55,6 @@ const page = ({ params }: IPARAMS) => {
     }
 
     const res = await updateService({ id, body: data });
-    console.log(res);
 
     if (res) {
       toast("Up coming service Updated", {
