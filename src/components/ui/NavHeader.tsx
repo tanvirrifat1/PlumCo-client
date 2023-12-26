@@ -10,15 +10,21 @@ const NavHeader = () => {
     day: "numeric",
   });
   return (
-    <div className="bg-slate-700 ">
-      <div className=" flex justify-between gap-2">
-        <div className="flex justify-center items-center ">
-          <BsSmartwatch className="font-semibold text-4xl text-blue-600" />
-          <p className="font-semibold text-white ml-1">{formattedDate}</p>
-        </div>
-        <div className=" flex justify-center items-center gap-2">
-          <p className="font-semibold text-white ml-1">+88 01633912193 </p>
-          <FcCallback className="font-semibold text-4xl m-2" />
+    <div className="bg-slate-700">
+      <div className="">
+        <div className="flex flex-col lg:flex-row justify-between gap-2 items-center">
+          <div className="flex justify-center items-center mb-2 lg:mb-0">
+            <BsSmartwatch className="font-semibold text-4xl text-blue-600" />
+            <p className="font-semibold text-white ml-1 text-sm lg:text-base">
+              {formattedDate}
+            </p>
+          </div>
+          <div className="flex justify-center items-center gap-2">
+            <p className="lg:font-semibold text-white ml-1 text-sm lg:text-base">
+              +88 01633912193
+            </p>
+            <FcCallback className="font-semibold text-4xl m-2" />
+          </div>
         </div>
       </div>
     </div>

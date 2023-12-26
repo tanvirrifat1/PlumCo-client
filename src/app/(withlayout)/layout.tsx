@@ -12,15 +12,11 @@ export default function DashboardLayout({
   children: React.ReactNode;
 }) {
   const [loading, setLoading] = useState(true);
-  // const Navbar = dynamic(() => import("../../components/ui/Navbar"), {
-  //   ssr: true,
-  // });
 
   useEffect(() => {
-    // Simulate loading time
     setTimeout(() => {
       setLoading(false);
-    }, 1000); // Adjust the time as needed
+    }, 1000);
   }, []);
 
   if (loading) {

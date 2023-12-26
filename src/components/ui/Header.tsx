@@ -1,61 +1,71 @@
 "use client";
+import { useState } from "react";
 import AwesomeSlider from "react-awesome-slider";
 import "react-awesome-slider/dist/styles.css";
+import RequestModal from "../common/RequestModal";
 
 const Header = () => {
+  const [isOpen, setIsOpen] = useState<boolean>(false);
+  const openModal = () => {
+    setIsOpen(true);
+  };
+
+  const closeModal = () => {
+    setIsOpen(false);
+  };
+
   const bannars = [
     {
       id: 1,
-      title: " Plumbing Service",
-      subTitle1: "We Provide World Class",
-      subTitle2: "House shifting services in Dhaka",
+      title: "Residential Plumbing",
       descripttion:
-        "Welcome to PACK & SHIFT Removal group, Professional House Shifting Service to anywhere in Bangladesh from Dhaka City. AlsoInternational movers and packers Any country of the world",
-      image: "https://i.ibb.co/pb5jsNx/gas1.jpg",
+        "The residential plumbing system starts with the supply of clean, potable water. This water is delivered to your home from a municipal water source or a well. It is essential that this water is free from contaminants and safe for consumption.",
+      image: "https://i.ibb.co/KycWfQf/gas1.jpg",
     },
     {
       id: 2,
-      title: "Expert Plumbing Service You Can Trust.",
-      subTitle1: "We Provide World Class",
-      subTitle2: "House shifting services in Dhaka",
+      title: "Basement Plumbing",
       descripttion:
-        "Welcome to PACK & SHIFT Removal group, Professional House Shifting Service to anywhere in Bangladesh from Dhaka City. AlsoInternational movers and packers Any country of the world",
-      image: "https://i.ibb.co/whYLmtZ/gas.jpg",
+        "Water heaters are another critical component of residential plumbing. They ensure you have hot water for bathing, washing dishes, and doing laundry. Common types include tankless water heaters and traditional storage tanks.",
+      image: "https://i.ibb.co/SPXCfy0/motor.jpg",
     },
     {
       id: 3,
-      title: "Expert Plumbing Service You Can Trust.",
-      subTitle1: "We Provide World Class",
-      subTitle2: "House shifting services in Dhaka",
+      title: "Commercial Plumbing",
       descripttion:
-        "Welcome to PACK & SHIFT Removal group, Professional House Shifting Service to anywhere in Bangladesh from Dhaka City. AlsoInternational movers and packers Any country of the world",
-      image: "https://i.ibb.co/v4hcdTZ/istockphoto-1339613829-612x612.jpg",
+        "Plumbing emergencies, such as burst pipes, need immediate attention to prevent water damage to your home. Knowing how to shut off the main water supply and having a reliable plumber's contact information are essential in such situations.",
+      image: "https://i.ibb.co/6XbQvdT/gas.jpg",
     },
   ];
   return (
     <AwesomeSlider
-      animation="foldOutAnimation"
-      className="h-[270px] md:h-[70vh] lg:h-[80vh] w-[100vw]"
+      className="h-[270px] md:h-[70vh] lg:h-[80vh] w-[100vw]" // You can add a custom class for styling
     >
       {bannars?.map((banner) => (
-        <>
-          <div
-            className="hero min-w-[100vw] min-h-[100vh]"
-            style={{
-              backgroundImage: `url(${banner?.image})`,
-              backgroundRepeat: "no-repeat",
-              backgroundSize: "cover",
-              backgroundPosition: "center",
-            }}
-          >
-            <div className="hero-overlay bg-opacity-60">
-              <div></div>
-            </div>
-            <div className="hero-content w-full text-center text-neutral-content">
-              <div className="max-w-md"></div>
+        <div
+          key={banner.id}
+          className="hero min-w-[100vw] min-h-[100vh]"
+          style={{
+            backgroundImage: `url(${banner?.image})`,
+            backgroundRepeat: "no-repeat",
+            backgroundSize: "cover",
+            backgroundPosition: "center",
+          }}
+        >
+          <div className="hero-overlay bg-opacity-60"></div>
+          <div className="hero-content w-full text-center text-neutral-content">
+            <div className="max-w-xl">
+              <h1 className="mb-5 text-5xl font-bold text-slate-50">
+                {banner?.title}
+              </h1>
+              <p className="mb-5">{banner?.descripttion}</p>
+              <button onClick={openModal} className="btn btn-secondary">
+                Online Book
+              </button>
             </div>
           </div>
-        </>
+          <RequestModal isOpen={isOpen} onClose={closeModal} />
+        </div>
       ))}
     </AwesomeSlider>
   );

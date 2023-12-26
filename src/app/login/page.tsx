@@ -11,12 +11,12 @@ import { useRouter } from "next/navigation";
 import { useState } from "react";
 import Swal from "sweetalert2";
 import { Helmet } from "react-helmet-async";
-import { toast } from "react-toastify";
 
 const LoginPage = () => {
+  const router = useRouter();
   const [loading, setLoading] = useState<Boolean>(false);
   const [userLogin] = useUserLoginMutation();
-  const router = useRouter();
+
   const [error, setError] = useState<string>("");
   const [check, setCheck] = useState<boolean>(true);
 

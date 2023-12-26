@@ -21,7 +21,7 @@ const LatestNews = () => {
     // }
   };
   return (
-    <section className="py-20 w-full lg:w-[1440px] mx-auto">
+    <section className="lg:-mt-64 mt-6 w-full lg:p-[180px] mx-auto">
       <div className="flex flex-wrap">
         <div className="w-full px-4">
           <div className="mx-auto mb-12 max-w-[510px] text-center lg:mb-20">
@@ -38,7 +38,7 @@ const LatestNews = () => {
           </div>
         </div>
       </div>
-      <div className="w-full p-6 lg:w-[1400px] mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3">
+      <div className="w-full p-6 container mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3">
         {isLoading ? (
           <>
             <Loading />

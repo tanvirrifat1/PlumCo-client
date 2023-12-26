@@ -23,8 +23,10 @@ export default function RootLayout({
     <Providers>
       <html lang="en" data-theme="light">
         <body className={inter.className}>
+          {/* <div className="max-w-screen-xl mx-auto"> */}
           {children}
           <ToastContainer />
+          {/* </div> */}
         </body>
       </html>
     </Providers>

@@ -60,14 +60,6 @@ const Navbar = () => {
             Upcoming service
           </Link>
         </li>
-        <li>
-          <Link
-            className={`${pathname === "/Contacts" ? "active" : ""}`}
-            href={"/Contacts"}
-          >
-            Contact
-          </Link>
-        </li>
 
         {userloggedIn && (
           <li>
@@ -123,6 +115,14 @@ const Navbar = () => {
             )}
           </li>
         )}
+        <li>
+          <Link
+            className={`${pathname === "/Contacts" ? "active" : ""}`}
+            href={"/Contacts"}
+          >
+            Contact
+          </Link>
+        </li>
 
         <div className="cursor-pointer">
           {userloggedIn ? (
@@ -151,12 +151,10 @@ const Navbar = () => {
   );
 
   return (
-    <div className="sticky top-0 z-50 ">
+    <div className="sticky top-0 z-50 bg-white shadow-lg">
       <div>
         <NavHeader />
-      </div>
-      <div>
-        <div className="navbar bg-base-100 text-sm">
+        <div className="navbar bg-base-100 container">
           <div className="navbar-start">
             <div className="dropdown">
               <label tabIndex={0} className="btn btn-ghost lg:hidden">
@@ -194,6 +192,9 @@ const Navbar = () => {
               <li tabIndex={0}>{navOption}</li>
             </ul>
           </div>
+          <div>
+            <Drawer />
+          </div>
           <div className="navbar-end">
             <div className="dropdown dropdown-end">
               <div className="avatar mx-4" tabIndex={0}>
@@ -216,46 +217,54 @@ const Navbar = () => {
                   )}
                 </div>
               </div>
-              <ul
-                tabIndex={0}
-                className="dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-52 font-semibold"
-              >
-                <li>
-                  <Link href="/profile">Profile</Link>
-                </li>
-                {role === "user" && (
+
+              <div className="flex justify-between">
+                <ul
+                  tabIndex={0}
+                  className="dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-52 font-semibold"
+                >
                   <li>
-                    <Link className="mt-1" href="/dashBoard/booking">
-                      Order
-                    </Link>
+                    <Link href="/profile">Profile</Link>
                   </li>
-                )}
-                {userloggedIn ? (
-                  <>
-                    <li
-                      className="lg:ml-4  cursor-pointer mt-[7px]"
-                      onClick={logOut}
-                    >
-                      Logout
-                    </li>
-                  </>
-                ) : (
-                  <>
-                    {" "}
+                  {role === "user" && (
                     <li>
-                      <Link
-                        className={`${pathname === "/login" ? "active" : ""}`}
-                        href={"/login"}
-                      >
-                        Login
+                      <Link className="mt-1" href="/dashBoard/booking">
+                        Order
                       </Link>
                     </li>
-                  </>
-                )}
-              </ul>
+                  )}
+                  {userloggedIn ? (
+                    <>
+                      <li
+                        className="lg:ml-4 ml-4 cursor-pointer mt-[7px]"
+                        onClick={logOut}
+                      >
+                        Logout
+                      </li>
+                    </>
+                  ) : (
+                    <>
+                      {" "}
+                      <li>
+                        <Link
+                          className={`${pathname === "/login" ? "active" : ""}`}
+                          href={"/login"}
+                        >
+                          Login
+                        </Link>
+                      </li>
+                    </>
+                  )}
+                  <p className="m-2 p-4 flex gap-2">
+                    <p>welcome</p>
+                    <p className="text-primary">
+                      {" "}
+                      {data?.profile?.fullName as string}
+                    </p>
+                  </p>
+                </ul>
+              </div>
             </div>
-            <p className="m-2">{data?.profile?.fullName as string}</p>
-            <Drawer />;
           </div>
         </div>
       </div>

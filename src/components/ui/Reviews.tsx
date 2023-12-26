@@ -44,7 +44,7 @@ const Reviews = () => {
   };
 
   return (
-    <div className=" w-full lg:w-[1440px] mx-auto">
+    <div className="lg:-mt-96 mt-6 w-full lg:p-[180px] mx-auto">
       <section className="container relative py-20">
         <div className="flex flex-wrap">
           <div className="w-full px-4">

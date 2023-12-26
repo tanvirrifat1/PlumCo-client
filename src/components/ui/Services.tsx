@@ -101,9 +101,9 @@ const Services = () => {
   };
 
   return (
-    <section className="py-20 w-full lg:w-[1440px] mx-auto">
+    <section className="lg:-mt-16 mt-6 w-full lg:p-[180px] mx-auto">
       <div className="flex flex-wrap">
-        <div className="w-full px-4">
+        <div className="w-full px-2">
           <div className="mx-auto mb-12 max-w-[510px] text-center lg:mb-20">
             <span className="block mb-2 text-lg font-semibold text-primary">
               Our Services
@@ -162,7 +162,7 @@ const Services = () => {
                   <button
                     onClick={() => handleAddToCart(service?.id)}
                     disabled={role === "admin" || role === "super_admin"}
-                    className="btn btn-outline  w-24 h-6 bg-slate-600 text-white hover:bg-white hover:text-black hover:shadow-lg"
+                    className="btn btn-outline  w-24 h-6 bg-slate-600 text-white hover:bg-white  hover:text-black hover:shadow-lg"
                   >
                     <CiSaveUp2 className="text-2xl" /> Add
                   </button>

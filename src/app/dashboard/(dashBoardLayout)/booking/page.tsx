@@ -24,11 +24,11 @@ const page = () => {
 
   const total = newArray
     ?.map(function (elt: any) {
-      return /^\d+$/.test(elt) ? parseInt(elt) : 0;
+      return /^\d+$/.test(elt) ? parseFloat(elt) : 0;
     })
     .reduce(function (a: any, b: any) {
       return a + b;
-    });
+    }, 0);
 
   const handleCancel = (id: string) => {
     const swalWithBootstrapButtons = Swal.mixin({
