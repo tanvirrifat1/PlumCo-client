@@ -4,6 +4,7 @@ import { useAddAllBlogsQuery } from "@/redux/api/blogApi";
 import { isLoggedin } from "@/service/auth.service";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
+import { GrLinkNext } from "react-icons/gr";
 
 const LatestNews = () => {
   const arg = {};
@@ -21,7 +22,7 @@ const LatestNews = () => {
     // }
   };
   return (
-    <section className="lg:-mt-64 mt-6 w-full lg:p-[180px] mx-auto">
+    <section className="py-10 md:py-20 container">
       <div className="flex flex-wrap">
         <div className="w-full px-4">
           <div className="mx-auto mb-12 max-w-[510px] text-center lg:mb-20">
@@ -38,60 +39,61 @@ const LatestNews = () => {
           </div>
         </div>
       </div>
-      <div className="w-full p-6 container mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3 md:gap-5">
         {isLoading ? (
-          <>
+          <div className="flex justify-center items-center">
             <Loading />
-          </>
+          </div>
         ) : (
           data?.map((blog: any) => (
-            <>
-              <div
-                onClick={() => handleBlog(blog?.id)}
-                className="rounded-md shadow-md "
-              >
-                <figure className=" ">
-                  <Image
-                    src={blog?.image}
-                    alt="Shoes"
-                    width={100}
-                    height={100}
-                    className="h-[330px] w-full"
-                  />
-                </figure>
-                <div className="card-body">
-                  <h2 className="card-title">{blog?.title}</h2>
-                  <p>
-                    {blog?.content.length > 100
-                      ? blog?.content.slice(0, 70)
-                      : blog?.content}
-                    ...
-                  </p>
-                  <div className="flex justify-between">
-                    <div>
-                      <div className="card-actions justify-start">
-                        <div className="avatar">
-                          <div className="w-14 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2">
-                            <Image
-                              src={blog?.author?.profileImage}
-                              width={20}
-                              height={20}
-                              alt=""
-                            />
-                          </div>
-                        </div>
-                        <div className=" mt-4 lg:ml-3">
-                          {blog?.author?.fullName}
-                        </div>
+            <div
+              key={blog.id}
+              onClick={() => handleBlog(blog?.id)}
+              className="rounded-md shadow-md mb-6 md:mb-0 lg:mb-0"
+            >
+              <figure className=" ">
+                <Image
+                  src={blog?.image}
+                  alt="Shoes"
+                  width={100}
+                  height={100}
+                  className="h-[330px] md:h-[250px] lg:h-[330px] w-full object-cover"
+                />
+              </figure>
+              <div className="card-body p-4">
+                <h2 className="card-title text-lg md:text-xl lg:text-2xl mb-2">
+                  {blog?.title}
+                </h2>
+                <p className="text-sm md:text-base lg:text-lg mb-4">
+                  {blog?.content.length > 100
+                    ? blog?.content.slice(0, 70)
+                    : blog?.content}
+                  ...
+                </p>
+                <div className="flex justify-between items-center">
+                  <div className="flex items-center">
+                    <div className="avatar mr-2">
+                      <div className="w-8 h-8 md:w-10 md:h-10 lg:w-12 lg:h-12 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2 overflow-hidden">
+                        <Image
+                          src={blog?.author?.profileImage}
+                          width={20}
+                          height={20}
+                          alt=""
+                        />
                       </div>
                     </div>
-                    <div>
-                      <button className="btn btn-outline">Read more...</button>
+                    <div className="text-xs md:text-sm lg:text-base">
+                      {blog?.author?.fullName}
                     </div>
+                  </div>
+                  <div>
+                    <button className="btn btn-outline text-xs md:text-sm lg:text-base">
+                      <GrLinkNext />
+                    </button>
                   </div>
                 </div>
               </div>
-            </>
+            </div>
           ))
         )}
       </div>

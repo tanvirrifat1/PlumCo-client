@@ -13,13 +13,13 @@ const Upcoming = () => {
   }
 
   return (
-    <div className="min-h-[550px]">
+    <div className="py-10 md:py-20 container">
       <div>
         <h1 className="text-5xl  text-black text-center font-semibold my-6">
           Upcoming Service
         </h1>
       </div>
-      <div className="w-full lg:w-[1300px] mx-auto grid grid-cols-1 mt-4 md:grid-cols-2 lg:grid-cols-4 gap-6">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-3 md:gap-5">
         {data?.map((service: any, i: string) => (
           <div
             key={i}

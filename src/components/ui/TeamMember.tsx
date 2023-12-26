@@ -38,7 +38,7 @@ const TeamMember = () => {
   ];
 
   return (
-    <section className="lg:-mt-56 mt-6 w-full lg:p-[180px] mx-auto">
+    <section className="py-10 md:py-20 container">
       <div className="flex flex-wrap">
         <div className="w-full px-4">
           <div className="mx-auto mb-12 max-w-[510px] text-center lg:mb-20">
@@ -52,7 +52,7 @@ const TeamMember = () => {
               field you are interested in.
             </p>
           </div>
-          <div className="w-full  container mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-3 md:gap-5">
             {member?.map((card: any) => (
               <div
                 key={card?.id}

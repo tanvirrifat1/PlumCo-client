@@ -14,6 +14,14 @@ import { AiOutlineReload } from "react-icons/ai";
 import { useDebounced } from "@/redux/hooks";
 import Link from "next/link";
 import { GrFormNext, GrLinkNext } from "react-icons/gr";
+import {
+  ArrowPathIcon,
+  ClipboardDocumentCheckIcon,
+  EyeIcon,
+  ShoppingBagIcon,
+} from "@heroicons/react/20/solid";
+import { ENUM_USER_ROLE } from "@/enum/user";
+import Loading from "@/app/loading";
 
 const Services = () => {
   const arg: Record<string, any> = {};
@@ -101,9 +109,9 @@ const Services = () => {
   };
 
   return (
-    <section className="lg:-mt-16 mt-6 w-full lg:p-[180px] mx-auto">
+    <section className="py-10 md:py-20 container">
       <div className="flex flex-wrap">
-        <div className="w-full px-2">
+        <div className="w-full px-4">
           <div className="mx-auto mb-12 max-w-[510px] text-center lg:mb-20">
             <span className="block mb-2 text-lg font-semibold text-primary">
               Our Services
@@ -112,96 +120,98 @@ const Services = () => {
               What We Offer
             </h2>
             <p className="text-base text-body-color">
-              A pipe service offer generally refers to the products or services
-              offered by a company or organization in the context of pipes or
-              plumbing. These services may include
+              There are many variations of passages of Lorem Ipsum available but
+              the majority have suffered alteration in some form
             </p>
           </div>
         </div>
       </div>
-      <div className="m-6 flex justify-center py-5">
-        <input
-          type="text"
-          placeholder="Type here"
-          className="input input-primary w-full max-w-xs"
-          onChange={(e) => setSearchTerm(e.target.value)}
-        />
+      <div className="flex flex-col md:flex-row gap-3 justify-between my-5">
+        <div className="flex gap-x-4"></div>
+        <div className="m-6 flex justify-center py-5">
+          <input
+            type="text"
+            placeholder="Type here"
+            className="input input-primary w-full max-w-xs"
+            onChange={(e) => setSearchTerm(e.target.value)}
+          />
 
-        <div className="ml-2">
-          {searchTerm && (
-            <button onClick={reseatFilters} className="btn btn-primary">
-              <AiOutlineReload className=" text-2xl mr-2 " />
-            </button>
-          )}
+          <div className="ml-2">
+            {searchTerm && (
+              <button onClick={reseatFilters} className="btn btn-primary">
+                <AiOutlineReload className=" text-2xl mr-2 " />
+              </button>
+            )}
+          </div>
         </div>
       </div>
-      <div className="w-full container mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
-        {data?.map((service: any) => (
-          <div
-            key={service?.id}
-            className=" rounded-md shadow-md group relative"
-          >
-            <Image
-              src={service?.image}
-              alt={service?.title}
-              className="object-cover object-center w-full rounded-t-md h-72 dark-bg-gray-500"
-              height={350}
-              width={300}
-            />
-            <div className="flex flex-col justify-between p-6 space-y-8">
-              <div className="space-y-2">
-                <h2 className="text-xl font-semibold tracking-tighter">
-                  {service?.title}
-                </h2>
-                <p className="text-black">
-                  {service?.description.slice(0, 32)}
-                </p>
-              </div>
-              <div className="flex justify-center absolute bottom-0 left-0 w-full h-0 flex-col  items-center opacity-0 group-hover:h-full group-hover:opacity-90 duration-1000">
-                <div className="flex gap-2 ">
-                  <button
-                    onClick={() => handleAddToCart(service?.id)}
-                    disabled={role === "admin" || role === "super_admin"}
-                    className="btn btn-outline  w-24 h-6 bg-slate-600 text-white hover:bg-white  hover:text-black hover:shadow-lg"
-                  >
-                    <CiSaveUp2 className="text-2xl" /> Add
-                  </button>
-                  <button
-                    onClick={() => handleBook(service?.id)}
-                    disabled={role === "admin" || role === "super_admin"}
-                    className="btn  btn-outline  w-24 h-6 bg-slate-600 text-white hover:bg-white hover:text-black hover:shadow-lg"
-                  >
-                    <BiSolidCartAdd className="text-2xl" /> Book
-                  </button>
-                  <button
-                    onClick={() =>
-                      window.location.assign(`/service/${service?.id}`)
-                    }
-                    className="btn btn-outline  w-24 h-6 bg-slate-600 text-white hover:bg-white hover:text-black hover:shadow-lg"
-                  >
-                    <Link href={""}>
-                      <div className="flex ">
-                        <p className="">READ MORE</p>
-                        <GrLinkNext className="text-xl hover:text-purple-800 mt-1" />
-                      </div>
-                    </Link>
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3 md:gap-5">
+        {isLoading ? (
+          <>
+            <Loading />
+          </>
+        ) : (
+          data?.map((service: any) => (
+            <div
+              key={service?.id}
+              className="border overflow-hidden group border-gray-200 rounded p-3 shadow hover:shadow hover:shadow-primaryColor text-center relative"
+            >
+              <div className="relative rounded overflow-hidden inline-block w-full">
+                <span className="absolute top-0 left-0 flex w-full h-0 mb-0 transition-all duration-300 ease-out transform translate-y-0 bg-gray-900 group-hover:h-[50%] opacity-80"></span>
+                <Image
+                  width={250}
+                  height={250}
+                  className="h-[200px] md:h-[250px] lg:h-[300px] w-full object-cover object-top rounded"
+                  src={service?.image}
+                  alt={service?.title}
+                />
+                <span className="absolute bottom-0 left-0 flex w-full h-0 mb-0 transition-all duration-300 ease-out transform translate-y-0 bg-gray-900 group-hover:h-[50%] opacity-80"></span>
+                <div
+                  onClick={() =>
+                    window.location.assign(`/service/${service?.id}`)
+                  }
+                  className="absolute mx-44 top-[42%] scale-0 group-hover:scale-100 transition-all duration-500 ease-in-out"
+                >
+                  <button className="btn inline-block rounded bg-secondary px-4 py-2 text-xs font-medium text-white hover:bg-accent">
+                    <EyeIcon className="w-5 h-5" />
                   </button>
                 </div>
               </div>
+              <div className="p-1 md:p-2 lg:p-4 mt-1 md:mt-3 space-y-2">
+                <h2 className="text-xl md:text-2xl lg:text-3xl sm:text-sm font-bold text-gray-800">
+                  {service?.title}
+                </h2>
+                <p className="text-xs md:text-base">
+                  {service?.description.slice(0, 100)}
+                </p>
+              </div>
+              <div className="flex flex-col md:flex-row justify-center gap-3">
+                <button
+                  onClick={() => handleAddToCart(service?.id)}
+                  className="btn btn-outline btn-accent"
+                  disabled={
+                    role === ENUM_USER_ROLE.ADMIN ||
+                    role === ENUM_USER_ROLE.SUPER_ADMIN
+                  }
+                >
+                  <ShoppingBagIcon className="w-6 h-6 inline-block" /> Add To
+                  Cart
+                </button>
+                <button
+                  onClick={() => handleBook(service?.id)}
+                  className="btn btn-secondary"
+                  disabled={
+                    role === ENUM_USER_ROLE.ADMIN ||
+                    role === ENUM_USER_ROLE.SUPER_ADMIN
+                  }
+                >
+                  <ClipboardDocumentCheckIcon className="w-6 h-6 inline-block" />{" "}
+                  Book now
+                </button>
+              </div>
             </div>
-          </div>
-        ))}
-      </div>
-      <div className="lg:ml-5">
-        <div className="join my-2 ">
-          <button onClick={handlePrev} className="join-item btn">
-            «
-          </button>
-          <button className="join-item btn">{page}</button>
-          <button onClick={handleNext} className="join-item btn">
-            »
-          </button>
-        </div>
+          ))
+        )}
       </div>
     </section>
   );
