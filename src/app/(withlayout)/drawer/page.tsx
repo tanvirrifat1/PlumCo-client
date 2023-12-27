@@ -64,7 +64,7 @@ const Drawer = () => {
   };
 
   return (
-    <div className="drawer drawer-end ">
+    <div className="drawer drawer-button">
       <input id="my-drawer-4" type="checkbox" className="drawer-toggle" />
       <div className="drawer-content">
         {/* Page content here */}
