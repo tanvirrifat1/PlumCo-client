@@ -1,170 +1,241 @@
 "use client";
 
-import Link from "next/link";
-import React from "react";
-import { AiOutlineMail } from "react-icons/ai";
-import { BiPhoneCall } from "react-icons/bi";
-import { BsSmartwatch } from "react-icons/bs";
-import { FaCcMastercard, FaCcStripe, FaCcVisa } from "react-icons/fa6";
-import { FcCallback } from "react-icons/fc";
+import { BiSolidMap } from "react-icons/bi";
+import { IoCallSharp } from "react-icons/io5";
+import { SiMinutemailer } from "react-icons/si";
+import {
+  FaBriefcase,
+  FaFacebookF,
+  FaGithub,
+  FaLinkedinIn,
+  FaMapMarkedAlt,
+} from "react-icons/fa";
 
-import { IoLocationOutline } from "react-icons/io5";
+import { BsArrowRightShort } from "react-icons/bs";
+import Link from "next/link";
+
+const portfilioLinks = [
+  { path: "#", label: "School Management" },
+  { path: "#", label: "Pharmacy" },
+  { path: "#", label: "Point Of Sales (POS)" },
+  { path: "#", label: "Publication" },
+  { path: "#", label: "Courier" },
+  { path: "#", label: "Tailor" },
+];
+
+const quickLinks = [
+  { path: "/ClinetFeedBack", label: "Client-FeedBack" },
+  { path: "/faq", label: "Faq" },
+  { path: "/Contacts", label: "Contact" },
+  { path: "/team", label: "Our Team" },
+];
+
+const helpfulLinks = [
+  { path: "#", label: "Terms & Condition" },
+  { path: "#", label: "Cookie Policy" },
+  { path: "#", label: "Privacy Policy" },
+  { path: "#", label: "Career" },
+];
 
 const Footer = () => {
-  const currentDate = new Date();
-  const formattedDate = currentDate.toLocaleDateString("en-US", {
-    year: "numeric",
-    month: "long",
-    day: "numeric",
-  });
+  const year = new Date().getFullYear();
+  const handleEmailClick = () => {
+    window.location.href = `mailto:rifatmiah373@gmail.com`;
+  };
   return (
-    <div>
-      <footer className="footer p-10 text-white mt-16 bg-slate-700">
-        <nav>
-          <header className=" text-white font-semibold">Company</header>
-          <a className="text-slate-300 text-xs">Pricing</a>
-          <a className="text-slate-300 text-xs">Portfolio</a>
-          <a className="text-slate-300 text-xs">Career</a>
-          <a className="text-slate-300 text-xs">FAQ</a>
-          <a className="text-slate-300 text-xs">404 Page</a>
-        </nav>
-        <nav>
-          <header className="text-white font-semibold">Services</header>
-          <a className="text-slate-300 text-xs ">Drain Cleaning</a>
-          <a className="text-slate-300 text-xs">Gasoline Service</a>
-          <a className="text-slate-300 text-xs">Kitchen Plumbing</a>
-          <a className="text-slate-300 text-xs">Pipe Leaking</a>
-          <a className="text-slate-300 text-xs">Bathroom</a>
-        </nav>
-        <nav>
-          <header className="text-white font-semibold">Useful Links</header>
-          <Link href={"/Contacts"} className="text-slate-300 text-xs">
-            Contact Us
-          </Link>
-          <Link href={"/team"} className="text-slate-300 text-xs">
-            Our Team
-          </Link>
-          <Link href={"/ClinetFeedBack"} className="text-slate-300 text-xs">
-            Clients Feedback
-          </Link>
-          <Link href={"/upcoming"} className="text-slate-300 text-xs">
-            Coming Soon
-          </Link>
-        </nav>
-        <nav>
-          <header className="text-white font-semibold">Contact Info</header>
-          <div className="flex gap-1">
-            <p>
-              <IoLocationOutline />
+    <footer className="bg-slate-100 text-black border-t-[5px] border-primaryColor">
+      <div className="container pt-10">
+        {/* footerhrefp */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-5">
+          <div className="md:col-span-2 pr-10">
+            <Link
+              className="mb-6 font-bold text-[#0861F2]"
+              style={{ fontSize: "22px" }}
+              href={"/"}
+            >
+              PLUMCO
+            </Link>
+            <p className="text-[16px] leading-7 font-[400] mt-4">
+              We specialize in converting your Vision about your website into
+              Reality. Welcomehref Classic It.
             </p>
-            <p>Manikganj,Dhaka,Bangladesh</p>
+            <ul className="flex flex-col leading-8 cursor-pointer ml-0 mb-0 list-none mt-5">
+              <li className="flex items-center gap-3 mb-2">
+                <span>
+                  <BiSolidMap className="w-[2rem] h-9  text-black bg-primaryColor rounded-md" />
+                </span>
+                <address className="text-[16px] leading-7 font-[400] hover:decoration-primaryColor">
+                  Manikganj Limited <br /> Road 07, House 115, Dhaka-1207 <br />{" "}
+                  Dhaka, Bangladesh
+                </address>
+              </li>
+              <li className="flex items-center gap-3 mb-2">
+                <span>
+                  <IoCallSharp className="w-7 h-7  text-black bg-primaryColor rounded-md" />
+                </span>
+                <h3 className="text-[16px] leading-7 font-[400] hover:underline hover:decoration-primaryColor">
+                  +8801633912193
+                </h3>
+              </li>
+              <li className="flex items-center gap-3 mb-2">
+                <span>
+                  <SiMinutemailer className="w-[2rem] h-9 text-black bg-primaryColor rounded-md" />
+                </span>
+                <h3
+                  onClick={handleEmailClick}
+                  className="text-[16px] leading-7 font-[400] hover:underline hover:decoration-primaryColor"
+                >
+                  rifatmiah373@gmail.com
+                </h3>
+              </li>
+              <li className="flex items-center gap-3">
+                <span>
+                  <FaMapMarkedAlt className="w-[2rem] h-9 text-black bg-primaryColor rounded-md" />
+                </span>
+                <h3 className="text-[16px] leading-7 font-[400]">
+                  <a
+                    href="https://maps.app.goo.gl/L8eh17N5tLfQ7HTW7"
+                    target="_blank"
+                    className="hover:underline hover:decoration-primaryColor "
+                  >
+                    Find us in Google
+                  </a>
+                </h3>
+              </li>
+            </ul>
           </div>
-          <div className="flex gap-1">
-            <p>
-              <BsSmartwatch />
-            </p>
-            <p>Work time: Sun - Fri 09am - 8pm</p>
-          </div>
-        </nav>
-        <nav>
-          <header className="text-white font-semibold">Payment</header>
-          <div className="flex gap-1">
-            <p>
-              <FaCcMastercard className="text-4xl" />
-            </p>
-            <p>
-              <FaCcVisa className="text-4xl" />
-            </p>
-            <p>
-              <FaCcStripe className="text-4xl" />
-            </p>
-          </div>
-        </nav>
-      </footer>
-    </div>
+
+          {/* Latest Portfolio */}
+          <ul className="list-none ml-0 mb-0">
+            <li className="leading-[30px] font-[500]">
+              <h2 className="mb-6 text-[#0861F2]" style={{ fontSize: "22px" }}>
+                Latest Portfolio
+              </h2>
+            </li>
+            {portfilioLinks.map((item, index) => (
+              <li
+                key={index}
+                className="flex items-center mt-3 transition-all duration-300 hover:text-[#0861F2] hover:translate-x-1"
+              >
+                <BsArrowRightShort className="w-5 h-5 mr-1 inline-block" />
+                <Link
+                  href={item.path}
+                  className="flex flex-col text-[15px] hover:decoration-primaryColor"
+                >
+                  {item.label}
+                </Link>
+              </li>
+            ))}
+          </ul>
+
+          {/* quick links */}
+          <ul className="list-none ml-0 mb-0">
+            <li className="leading-[30px] font-[500]">
+              <h2 className="mb-6 text-[#0861F2]" style={{ fontSize: "22px" }}>
+                Quick Link
+              </h2>
+            </li>
+            {quickLinks.map((item, index) => (
+              <li
+                key={index}
+                className="flex items-center mt-3 transition-all duration-300 hover:text-[#0861F2] hover:translate-x-1"
+              >
+                <BsArrowRightShort className="w-5 h-5 mr-1 inline-block" />
+                <Link
+                  href={item.path}
+                  className="flex flex-col  text-[15px] hover:decoration-primaryColor"
+                >
+                  {item.label}
+                </Link>
+              </li>
+            ))}
+          </ul>
+
+          {/* helpful links */}
+          <ul className="list-none ml-0 mb-0">
+            <li className="leading-[30px] font-[500]">
+              <h2 className="mb-6 text-[#0861F2]" style={{ fontSize: "22px" }}>
+                Helpful Links
+              </h2>
+            </li>
+            {helpfulLinks.map((item, index) => (
+              <li
+                key={index}
+                className="flex items-center mt-3 transition-all duration-300 hover:text-[#0861F2] hover:translate-x-1"
+              >
+                <BsArrowRightShort className="w-5 h-5 mr-1 inline-block" />
+                <Link
+                  href={item.path}
+                  className="flex flex-col text-[15px] hover:decoration-primaryColor"
+                >
+                  {item.label}
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </div>
+
+        {/* footer bottom */}
+        <div className="border-t mt-5 border-bgray-900 flex flex-col md:flex-row justify-between items-center pt-5 md:pb-16 lg:pb-5 gap-3">
+          <p className="text-[16px] text-center md:text-left leading-7 font-[400]">
+            copyright @ {year} developed by
+            <strong>
+              <a
+                href="hhttps://rifat-portfolio.vercel.app/"
+                target="_blank"
+                className="text-[#0861F2] hover:underline hover:decoration-primaryColor"
+              >
+                <span> MRTECHGIANT</span>
+              </a>
+            </strong>{" "}
+            || All right reserved
+          </p>
+          <nav className="flex gap-x-1 pb-16 md:pb-0">
+            <a
+              href="https://www.facebook.com/rifat.khan7625"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group"
+            >
+              <span className="w-10 h-10 rounded-full bg-[#1877f2] transition-all duration-500 flex items-center justify-center group-hover:-translate-y-1">
+                <FaFacebookF className=" text-[#ffffff] transition-all duration-500" />
+              </span>
+            </a>
+            <a
+              href="https://www.linkedin.com/in/md-rifat-miah-48555b257/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group"
+            >
+              <span className="w-10 h-10 rounded-full bg-[#1877f2] transition-all duration-500 flex items-center justify-center group-hover:-translate-y-1">
+                <FaLinkedinIn className=" text-[#ffffff] transition-all duration-500" />
+              </span>
+            </a>
+            <a
+              href="https://github.com/tanvirrifat1"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group"
+            >
+              <span className="w-10 h-10 rounded-full bg-[#1877f2] transition-all duration-500 flex items-center justify-center group-hover:-translate-y-1">
+                <FaGithub className=" text-[#ffffff] transition-all duration-500" />
+              </span>
+            </a>
+            <a
+              href="https://rifat-portfolio.vercel.app/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group"
+            >
+              <span className="w-10 h-10 rounded-full bg-[#1877f2] transition-all duration-500 flex items-center justify-center group-hover:-translate-y-1">
+                <FaBriefcase className=" text-[#ffffff] transition-all duration-500" />
+              </span>
+            </a>
+          </nav>
+        </div>
+      </div>
+    </footer>
   );
 };
 
 export default Footer;
-
-//  <footer className="footer p-10 text-white mt-16 bg-slate-700">
-//         <nav>
-//           <h1 className="text-xl  text-center">Contact Info</h1>
-//           <div className="flex gap-2 justify-center">
-//             <MdLocationPin className="text-xl" />
-//             <p className="text-slate-300 text-xs">Manikganj Dhaka</p>
-//           </div>
-//           <div className="flex gap-2 justify-center">
-//             <BiPhoneCall className="text-xl" />
-//             <p className="text-slate-300 text-xs">+88 01633912193</p>
-//           </div>
-//           <div className="flex gap-2 justify-center">
-//             <AiOutlineMail className="text-xl" />
-//             <p className="text-slate-300 text-xs">rifatkhan5567790@gmail.com</p>
-//           </div>
-//         </nav>
-//         <nav>
-//           <h1 className="text-xl  text-center">Services</h1>
-//           <p className="text-slate-300 text-xs">Gas Line Services</p>
-//           <p className="text-slate-300 text-xs">Water Line Repair</p>
-//           <p className="text-slate-300 text-xs">Bathroom Plumbing</p>
-//           <p className="text-slate-300 text-xs">Basement Plumbing</p>
-//         </nav>
-//         <nav>
-//           <header className="footer-title">Project</header>
-//           <p className="text-slate-300 text-xs">AC Repair</p>
-//           <p className="text-slate-300 text-xs">Condensate Drain Cleaning</p>
-//           <p className="text-slate-300 text-xs">Upgrades and Replacements</p>
-//         </nav>
-//       </footer>
-//       <footer className="footer flex justify-center items-center p-4 bg-slate-700  text-neutral-content">
-//         <aside className="items-center grid-flow-col">
-//           <svg
-//             width="36"
-//             height="36"
-//             viewBox="0 0 24 24"
-//             xmlns="http://www.w3.org/2000/svg"
-//             fillRule="evenodd"
-//             clipRule="evenodd"
-//             className="fill-current"
-//           >
-//             <path d="M22.672 15.226l-2.432.811.841 2.515c.33 1.019-.209 2.127-1.23 2.456-1.15.325-2.148-.321-2.463-1.226l-.84-2.518-5.013 1.677.84 2.517c.391 1.203-.434 2.542-1.831 2.542-.88 0-1.601-.564-1.86-1.314l-.842-2.516-2.431.809c-1.135.328-2.145-.317-2.463-1.229-.329-1.018.211-2.127 1.231-2.456l2.432-.809-1.621-4.823-2.432.808c-1.355.384-2.558-.59-2.558-1.839 0-.817.509-1.582 1.327-1.846l2.433-.809-.842-2.515c-.33-1.02.211-2.129 1.232-2.458 1.02-.329 2.13.209 2.461 1.229l.842 2.515 5.011-1.677-.839-2.517c-.403-1.238.484-2.553 1.843-2.553.819 0 1.585.509 1.85 1.326l.841 2.517 2.431-.81c1.02-.33 2.131.211 2.461 1.229.332 1.018-.21 2.126-1.23 2.456l-2.433.809 1.622 4.823 2.433-.809c1.242-.401 2.557.484 2.557 1.838 0 .819-.51 1.583-1.328 1.847m-8.992-6.428l-5.01 1.675 1.619 4.828 5.011-1.674-1.62-4.829z"></path>
-//           </svg>
-//           <p>Copyright {formattedDate} - All right reserved</p>
-//         </aside>
-//         <nav className="grid-flow-col gap-4 md:place-self-center md:justify-self-end">
-//           <a>
-//             <svg
-//               xmlns="http://www.w3.org/2000/svg"
-//               width="24"
-//               height="24"
-//               viewBox="0 0 24 24"
-//               className="fill-current"
-//             >
-//               <path d="M24 4.557c-.883.392-1.832.656-2.828.775 1.017-.609 1.798-1.574 2.165-2.724-.951.564-2.005.974-3.127 1.195-.897-.957-2.178-1.555-3.594-1.555-3.179 0-5.515 2.966-4.797 6.045-4.091-.205-7.719-2.165-10.148-5.144-1.29 2.213-.669 5.108 1.523 6.574-.806-.026-1.566-.247-2.229-.616-.054 2.281 1.581 4.415 3.949 4.89-.693.188-1.452.232-2.224.084.626 1.956 2.444 3.379 4.6 3.419-2.07 1.623-4.678 2.348-7.29 2.04 2.179 1.397 4.768 2.212 7.548 2.212 9.142 0 14.307-7.721 13.995-14.646.962-.695 1.797-1.562 2.457-2.549z"></path>
-//             </svg>
-//           </a>
-//           <a>
-//             <svg
-//               xmlns="http://www.w3.org/2000/svg"
-//               width="24"
-//               height="24"
-//               viewBox="0 0 24 24"
-//               className="fill-current"
-//             >
-//               <path d="M19.615 3.184c-3.604-.246-11.631-.245-15.23 0-3.897.266-4.356 2.62-4.385 8.816.029 6.185.484 8.549 4.385 8.816 3.6.245 11.626.246 15.23 0 3.897-.266 4.356-2.62 4.385-8.816-.029-6.185-.484-8.549-4.385-8.816zm-10.615 12.816v-8l8 3.993-8 4.007z"></path>
-//             </svg>
-//           </a>
-//           <a>
-//             <svg
-//               xmlns="http://www.w3.org/2000/svg"
-//               width="24"
-//               height="24"
-//               viewBox="0 0 24 24"
-//               className="fill-current"
-//             >
-//               <path d="M9 8h-3v4h3v12h5v-12h3.642l.358-4h-4v-1.667c0-.955.192-1.333 1.115-1.333h2.885v-5h-3.808c-3.596 0-5.192 1.583-5.192 4.615v3.385z"></path>
-//             </svg>
-//           </a>
-//         </nav>
-//       </footer>

@@ -15,7 +15,7 @@ const ProfilePage = () => {
   const profile = data?.profile as IUserProfile;
 
   return (
-    <div className="min-h-[45vh]">
+    <div className="min-h-[50vh]">
       <div className="md:w-[700px] hero-content  flex-col lg:flex-row mx-auto flex space-x-10 my-10 border-4 border-indigo-700 p-5 rounded ">
         <div className="rounded-xl">
           <Image

@@ -37,7 +37,7 @@ const DetailsBlog = ({ params }: { params: any }) => {
     <div className="container mx-auto min-h-[70vh] py-12 ">
       <div className="grid grid-cols-12 gap-5 ">
         {/* left side section */}
-        <div className="col-span-8 bg-slate-50 p-5 rounded">
+        <div className="col-span-8 bg-slate-50 p-5 rounded ">
           <figure className="mb-7">
             <Image
               src={data?.image}
@@ -61,14 +61,13 @@ const DetailsBlog = ({ params }: { params: any }) => {
           <h1 className="text-4xl font-bold leading-5 my-8">{data.title}</h1>
           <div dangerouslySetInnerHTML={{ __html: data.content }} />
           {/* comments section */}
-          <section></section>
         </div>
         {/* right section */}
         <aside className="col-span-4 bg-slate-50 rounded ">
           {/* profile or author section */}
           <div className="m-5 bg-slate-200 rounded ">
-            <div className="avatar flex flex-col items-center justify-center py-10">
-              <div className="w-[150px] rounded-full ring ring-slate-50 focus:ring-2">
+            <div className="avatar flex flex-col items-center justify-center py-10 ">
+              <div className="lg:w-[150px] lg:h-[150px]  rounded-full ring ring-slate-50 focus:ring-2  sm:w-5 sm:h-6">
                 <Image
                   src={data?.author?.profileImage as string}
                   alt="Shoes"
@@ -76,9 +75,11 @@ const DetailsBlog = ({ params }: { params: any }) => {
                   height={150}
                 />
               </div>
-              <h2 className="text-3xl font-semibold mt-5">
+
+              <h2 className="text-3xl font-semibold mt-5 ">
                 {data?.author?.fullName}
               </h2>
+
               <p className="px-4 text-justify mt-3">
                 I am Rifat Miah. as a full stact developer. I am from
                 bangladesh. I love coding very much. I Looing for a job for my

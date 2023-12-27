@@ -61,7 +61,7 @@ const SignupPage = () => {
     );
   }
   return (
-    <div>
+    <div className="my-6">
       <Link href={"/home"}>
         <div className="ml-36 ">
           <BiArrowBack className="text-4xl" />

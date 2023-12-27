@@ -210,7 +210,7 @@ const Navbar = () => {
                     </>
                   ) : (
                     <>
-                      <p className="text-black lg:mt-2 text-2xl flex justify-center">
+                      <p className="text-black lg:mt-2 mt-1 text-2xl flex justify-center">
                         <FaUserLarge />
                       </p>
                     </>
@@ -223,6 +223,13 @@ const Navbar = () => {
                   tabIndex={0}
                   className="dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-52 font-semibold"
                 >
+                  <p className=" text-lg p-4 flex gap-2">
+                    <p>welcome</p>
+                    <p className="text-primary">
+                      {" "}
+                      {data?.profile?.fullName as string}
+                    </p>
+                  </p>
                   <li>
                     <Link href="/profile">Profile</Link>
                   </li>
@@ -236,7 +243,7 @@ const Navbar = () => {
                   {userloggedIn ? (
                     <>
                       <li
-                        className="lg:ml-4 ml-4 cursor-pointer mt-[7px]"
+                        className="lg:ml-4 ml-4 hover:bg-slate-300 hover:p-1 hover:rounded-md cursor-pointer mt-[7px]"
                         onClick={logOut}
                       >
                         Logout
@@ -255,13 +262,6 @@ const Navbar = () => {
                       </li>
                     </>
                   )}
-                  <p className="m-2 p-4 flex gap-2">
-                    <p>welcome</p>
-                    <p className="text-primary">
-                      {" "}
-                      {data?.profile?.fullName as string}
-                    </p>
-                  </p>
                 </ul>
               </div>
             </div>

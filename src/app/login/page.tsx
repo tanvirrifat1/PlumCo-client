@@ -4,7 +4,7 @@ import FormInput from "@/components/forms/FormIntput";
 import LoadingButton from "@/components/ui/LoginSpinner";
 import SmallSpinner from "@/components/ui/SmallSpinner";
 import { useUserLoginMutation } from "@/redux/api/authApi";
-import { storeUserInfo } from "@/service/auth.service";
+import { getUserInfo, storeUserInfo } from "@/service/auth.service";
 import { BiArrowBack } from "react-icons/bi";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
@@ -20,6 +20,8 @@ const LoginPage = () => {
   const [error, setError] = useState<string>("");
   const [check, setCheck] = useState<boolean>(true);
 
+  let { role } = getUserInfo() as any;
+
   const handleSubmit = async (data: any) => {
     try {
       setLoading(true);
@@ -34,7 +36,7 @@ const LoginPage = () => {
       if (res?.data?.accessToken) {
         router.push("/profile");
         Swal.fire({
-          title: "user login successfully",
+          title: `User login successfully`,
           showClass: {
             popup: "animate__animated animate__fadeInDown",
           },
@@ -98,7 +100,8 @@ const LoginPage = () => {
                 <div className="border px-2 py-4 mt-6 rounded ">
                   <p className="">For Super-Admin</p>
                   <p>
-                    email: jhonkar@gmail.com <br /> Password: 123456
+                    email: helen@gmail.com
+                    <br /> Password: 123456
                   </p>
                 </div>
                 <div className="border px-2 py-4 mt-3 rounded">
