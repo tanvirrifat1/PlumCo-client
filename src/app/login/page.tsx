@@ -100,7 +100,7 @@ const LoginPage = () => {
                 <div className="border px-2 py-4 mt-6 rounded ">
                   <p className="">For Super-Admin</p>
                   <p>
-                    email: helen@gmail.com
+                    email: abesh@gmail.com
                     <br /> Password: 123456
                   </p>
                 </div>

@@ -30,7 +30,7 @@ const Services = () => {
 
   arg["page"] = page;
 
-  arg["size"] = 8;
+  arg["size"] = 6;
 
   const [searchTerm, setSearchTerm] = useState<string>("");
   const debouncedTerm = useDebounced({
@@ -47,7 +47,7 @@ const Services = () => {
   const { data: totalData } = useGetAllServicesQuery(undefined);
 
   //@ts-ignore
-  const pageCount = Math.ceil(totalData?.length / 8);
+  const pageCount = Math.ceil(totalData?.length / 6);
 
   const handlePrev = async () => {
     if (page > 1) {
@@ -188,7 +188,7 @@ const Services = () => {
               <div className="flex flex-col md:flex-row justify-center gap-3">
                 <button
                   onClick={() => handleAddToCart(service?.id)}
-                  className="btn btn-outline btn-accent"
+                  className="btn btn-outline "
                   disabled={
                     role === ENUM_USER_ROLE.ADMIN ||
                     role === ENUM_USER_ROLE.SUPER_ADMIN
@@ -199,7 +199,7 @@ const Services = () => {
                 </button>
                 <button
                   onClick={() => handleBook(service?.id)}
-                  className="btn btn-secondary"
+                  className="btn btn-neutral"
                   disabled={
                     role === ENUM_USER_ROLE.ADMIN ||
                     role === ENUM_USER_ROLE.SUPER_ADMIN
@@ -212,6 +212,15 @@ const Services = () => {
             </div>
           ))
         )}
+      </div>
+      <div className="join m-3">
+        <button onClick={handlePrev} className="join-item btn">
+          «
+        </button>
+        <button className="join-item btn">{page}</button>
+        <button onClick={handleNext} className="join-item btn">
+          »
+        </button>
       </div>
     </section>
   );

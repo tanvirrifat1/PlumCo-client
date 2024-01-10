@@ -20,21 +20,21 @@ const Header = () => {
       title: "Residential Plumbing",
       descripttion:
         "The residential plumbing system starts with the supply of clean, potable water. This water is delivered to your home from a municipal water source or a well. It is essential that this water is free from contaminants and safe for consumption.",
-      image: "https://i.ibb.co/KycWfQf/gas1.jpg",
+      image: "https://i.ibb.co/VTDZzYY/motor.jpg",
     },
     {
       id: 2,
       title: "Basement Plumbing",
       descripttion:
         "Water heaters are another critical component of residential plumbing. They ensure you have hot water for bathing, washing dishes, and doing laundry. Common types include tankless water heaters and traditional storage tanks.",
-      image: "https://i.ibb.co/SPXCfy0/motor.jpg",
+      image: "https://i.ibb.co/RSQJLds/pipes.jpg",
     },
     {
       id: 3,
       title: "Commercial Plumbing",
       descripttion:
         "Plumbing emergencies, such as burst pipes, need immediate attention to prevent water damage to your home. Knowing how to shut off the main water supply and having a reliable plumber's contact information are essential in such situations.",
-      image: "https://i.ibb.co/6XbQvdT/gas.jpg",
+      image: "https://i.ibb.co/j4SCzD9/motors.jpg",
     },
   ];
   return (

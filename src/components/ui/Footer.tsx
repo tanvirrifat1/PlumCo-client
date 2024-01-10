@@ -176,7 +176,7 @@ const Footer = () => {
         </div>
 
         {/* footer bottom */}
-        <div className="border-t mt-5 border-bgray-900 flex flex-col md:flex-row justify-between items-center pt-5 md:pb-16 lg:pb-5 gap-3">
+        <div className="border-t mt-5 border-bg-gray-900 flex flex-col md:flex-row justify-between items-center pt-5 md:pb-16 lg:pb-5 gap-3">
           <p className="text-[16px] text-center md:text-left leading-7 font-[400]">
             copyright @ {year} developed by
             <strong>
