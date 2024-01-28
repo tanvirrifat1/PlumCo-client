@@ -38,7 +38,7 @@ const TeamMember = () => {
   ];
 
   return (
-    <section className="py-10 md:py-20 container">
+    <section className="py-10 lg:-mt-[60px] md:py-20 container">
       <div className="flex flex-wrap">
         <div className="w-full px-4">
           <div className="mx-auto mb-12 max-w-[510px] text-center lg:mb-20">

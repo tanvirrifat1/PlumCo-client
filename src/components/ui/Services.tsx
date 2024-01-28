@@ -112,7 +112,7 @@ const Services = () => {
     <section className="py-10 md:py-20 container">
       <div className="flex flex-wrap">
         <div className="w-full px-4">
-          <div className="mx-auto mb-12 max-w-[510px] text-center lg:mb-20">
+          <div className="mx-auto mb-12 max-w-[510px] text-center lg:-mb-10">
             <span className="block mb-2 text-lg font-semibold text-primary">
               Our Services
             </span>

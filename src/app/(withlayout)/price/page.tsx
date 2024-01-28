@@ -6,7 +6,7 @@ import { MdArrowOutward } from "react-icons/md";
 
 const Price = () => {
   return (
-    <section className="py-10 md:py-20 container">
+    <section className="py-10 lg:-mt-[60px] md:py-20 container">
       <div className="container px-4 mx-auto">
         <div className="max-w-2xl mx-auto mb-16 text-center">
           <span className="font-bold uppercase ">OUR PRICING</span>

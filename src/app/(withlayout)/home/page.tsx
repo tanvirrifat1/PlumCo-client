@@ -21,10 +21,10 @@ const page = () => {
       <Header />
       <CategoryPage />
       <Services />
-      <Reviews />
       <LatestNews />
       <TeamMember />
       <Price />
+      <Reviews />
       <AddServiceCart />
     </div>
   );

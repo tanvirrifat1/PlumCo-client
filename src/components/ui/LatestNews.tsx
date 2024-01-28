@@ -22,10 +22,10 @@ const LatestNews = () => {
     // }
   };
   return (
-    <section className="py-10 md:py-20 container">
+    <section className="py-10 lg:-mt-[90px] md:py-20 container">
       <div className="flex flex-wrap">
         <div className="w-full px-4">
-          <div className="mx-auto mb-12 max-w-[510px] text-center lg:mb-20">
+          <div className="mx-auto mb-12 max-w-[510px] text-center lg:mb-11">
             <h2 className="mb-4 text-3xl font-bold text-dark sm:text-4xl md:text-[40px]">
               Latest News & Blog
             </h2>

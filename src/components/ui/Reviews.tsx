@@ -44,11 +44,11 @@ const Reviews = () => {
   };
 
   return (
-    <div className="bg-[#F5F8FE]">
+    <div className=" my-4">
       <div className="container relative py-8 m:py-20">
         <div className="flex flex-wrap">
           <div className="w-full px-4">
-            <div className="mx-auto mb-12 max-w-[510px] text-center lg:mb-20">
+            <div className="mx-auto  max-w-[510px] text-center ">
               <span className="block mb-2 text-lg font-semibold text-primary">
                 Read trusted reviews from our customers
               </span>
