@@ -9,7 +9,7 @@ const Price = () => {
     <section className="py-10 md:py-20 container">
       <div className="container px-4 mx-auto">
         <div className="max-w-2xl mx-auto mb-16 text-center">
-          <span className="font-bold  uppercase ">OUR PRICING</span>
+          <span className="font-bold uppercase ">OUR PRICING</span>
           <h2 className="text-4xl font-bold lg:text-4xl">Flexible Pricing</h2>
         </div>
         <div className="flex flex-wrap items-stretch -mx-4">

@@ -49,9 +49,6 @@ const FormContact = () => {
         <div className="flex flex-col justify-between">
           <div className="space-y-2">
             <h2 className="text-4xl font-bold leadi lg:text-5xl">Lets talk!</h2>
-            <div className="text-gray-400">
-              Vivamus in nisl metus? Phasellus.
-            </div>
           </div>
           <Image
             src={img}

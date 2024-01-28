@@ -97,7 +97,12 @@ const page = ({ params }: { params: any }) => {
           data?.map((service: any) => (
             <>
               <div key={service.id} className="">
-                <div className="card card-compact  bg-base-100 shadow-xl">
+                <div
+                  onClick={() =>
+                    window.location.assign(`/service/${service?.id}`)
+                  }
+                  className="card card-compact  bg-base-100 shadow-xl"
+                >
                   <Image
                     width={250}
                     height={250}
@@ -112,14 +117,7 @@ const page = ({ params }: { params: any }) => {
                       {service?.description.slice(0, 50)}...
                     </p>
                     <p className="text-[20px]">Price: {service?.price} $</p>
-                    <div className="flex hover:text-purple-800 my-2">
-                      <Link href={`/service/${service?.id}`}>
-                        <div className="flex">
-                          <p className="text-xl">READ MORE</p>
-                          <GrLinkNext className="text-xl hover:text-purple-800 mt-1" />
-                        </div>
-                      </Link>
-                    </div>
+
                     <div className="flex justify-center gap-3">
                       <button
                         onClick={() => handleAddToCart(service?.id)}
