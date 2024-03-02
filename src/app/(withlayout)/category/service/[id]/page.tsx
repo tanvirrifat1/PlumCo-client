@@ -27,6 +27,7 @@ const page = ({ params }: { params: any }) => {
   const isLoggedIn = isLoggedin();
 
   const { data, isLoading } = useGetServicesByCategoryIdQuery(id);
+
   const [addToCart] = useAddToCartMutation();
 
   const handleAddToCart = async (id: string) => {
