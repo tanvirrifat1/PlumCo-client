@@ -80,7 +80,6 @@ const page = () => {
           <title>Plumbing | Blog</title>
         </Helmet>
       </div>
-      ;
     </div>
   );
 };

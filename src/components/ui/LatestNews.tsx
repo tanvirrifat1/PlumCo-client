@@ -21,6 +21,8 @@ const LatestNews = () => {
     //   router.push(`/blog/${id}`);
     // }
   };
+
+  console.log(data);
   return (
     <section className="py-10 lg:-mt-[90px] md:py-20 container">
       <div className="flex flex-wrap">

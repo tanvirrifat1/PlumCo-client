@@ -2,16 +2,22 @@
 
 import Loading from "@/app/loading";
 import { useGetUpcomingServiceQuery } from "@/redux/api/upcomingServiceApi";
-import { id } from "date-fns/locale";
+// import { id } from "date-fns/locale";
 import Image from "next/image";
+import Link from "next/link";
+import { useRouter } from "next/navigation";
 
 const Upcoming = () => {
+  const router = useRouter();
   const { data, isLoading } = useGetUpcomingServiceQuery(undefined);
 
   if (isLoading) {
     return <Loading />;
   }
-
+  const handleNextPage = (id: string) => {
+    router.push(`/upcoming/${id}`);
+  };
+  console.log(data);
   return (
     <div className="py-10 md:py-20 container">
       <div>
@@ -23,6 +29,7 @@ const Upcoming = () => {
         {data?.map((service: any, i: string) => (
           <div
             key={i}
+            onClick={() => handleNextPage(service?.id)}
             className="max-w-xs p-6 rounded-md shadow-xl  bg-base-100"
           >
             <Image
@@ -41,6 +48,9 @@ const Upcoming = () => {
               </p>
             </div>
             <p className="">{service?.description.slice(0, 150)}...</p>
+            <Link href={`/upcoming/${service?.id}`}>
+              <button>hello</button>
+            </Link>
           </div>
         ))}
       </div>
