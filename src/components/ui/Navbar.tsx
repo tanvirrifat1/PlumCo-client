@@ -230,9 +230,13 @@ const Navbar = () => {
                       {data?.profile?.fullName as string}
                     </p>
                   </p>
-                  <li>
-                    <Link href="/profile">Profile</Link>
-                  </li>
+
+                  {userloggedIn === true && (
+                    <li>
+                      <Link href="/profile">Profile</Link>
+                    </li>
+                  )}
+
                   {role === "user" && (
                     <li>
                       <Link className="mt-1" href="/dashBoard/booking">

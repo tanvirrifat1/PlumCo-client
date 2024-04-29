@@ -17,7 +17,7 @@ const Upcoming = () => {
   const handleNextPage = (id: string) => {
     router.push(`/upcoming/${id}`);
   };
-  console.log(data);
+
   return (
     <div className="py-10 md:py-20 container">
       <div>
@@ -48,9 +48,6 @@ const Upcoming = () => {
               </p>
             </div>
             <p className="">{service?.description.slice(0, 150)}...</p>
-            <Link href={`/upcoming/${service?.id}`}>
-              <button>hello</button>
-            </Link>
           </div>
         ))}
       </div>

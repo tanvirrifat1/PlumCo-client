@@ -172,7 +172,7 @@ const Services = () => {
               className="border overflow-hidden group border-gray-200 rounded p-3 shadow hover:shadow hover:shadow-primaryColor text-center relative"
             >
               <div className="relative rounded overflow-hidden inline-block w-full">
-                <span className="absolute top-0 left-0 flex w-full h-0 mb-0 transition-all duration-300 ease-out transform translate-y-0 bg-gray-900 group-hover:h-[50%] opacity-80"></span>
+                {/* <span className="absolute top-0 left-0 flex w-full h-0 mb-0 transition-all duration-300 ease-out transform translate-y-0 bg-gray-900 group-hover:h-[50%] opacity-80"></span> */}
                 <Image
                   width={250}
                   height={250}
@@ -180,7 +180,7 @@ const Services = () => {
                   src={service?.image}
                   alt={service?.title}
                 />
-                <span className="absolute bottom-0 left-0 flex w-full h-0 mb-0 transition-all duration-300 ease-out transform translate-y-0 bg-gray-900 group-hover:h-[50%] opacity-80"></span>
+                {/* <span className="absolute bottom-0 left-0 flex w-full h-0 mb-0 transition-all duration-300 ease-out transform translate-y-0 bg-gray-900 group-hover:h-[50%] opacity-80"></span> */}
                 <div
                   onClick={() =>
                     window.location.assign(`/service/${service?.id}`)
@@ -242,126 +242,3 @@ const Services = () => {
 };
 
 export default Services;
-
-// {
-//   <div className="w-[250px] rounded min-h-screen bg-base-200 px-3 py-5">
-//     <h1 className="text-xl font-bold text-black">Plumbing-Dashboard</h1>
-//     <ul className="menu ">
-//       {role === ENUM_USER_ROLE.USER ? (
-//         <>
-//           <li>
-//             <Link
-//               className="hover:text-white hover:bg-gray-600 hover:rounded-lg my-1"
-//               href="/home"
-//             >
-//               <HomeIcon className="w-5 h-5 inline-block " />
-//               Home
-//             </Link>
-//           </li>
-//           <li>
-//             <Link
-//               className="hover:text-white hover:bg-gray-600 hover:rounded-lg my-1"
-//               href="/dashBoard/booking"
-//             >
-//               <RiReservedFill className="w-5 h-5 inline-block " /> Booking
-//             </Link>
-//           </li>
-//         </>
-//       ) : (
-//         <>
-//           <li>
-//             <Link
-//               className="hover:text-white hover:bg-gray-600 hover:rounded-lg my-1"
-//               href="/home"
-//             >
-//               <HomeIcon className="w-5 h-5 inline-block " />
-//               Home
-//             </Link>
-//           </li>
-//           <li>
-//             <Link
-//               className="hover:text-white hover:bg-gray-600 hover:rounded-lg my-1"
-//               href="/dashBoard/service"
-//             >
-//               <WrenchScrewdriverIcon className="w-5 h-5 inline-block font-semibold" />{" "}
-//               Service
-//             </Link>
-//           </li>
-
-//           <li>
-//             <Link
-//               className="hover:text-white hover:bg-gray-600 hover:rounded-lg my-1"
-//               href="/dashBoard/blog"
-//             >
-//               <FaBlogger className="w-5 h-5 inline-block " />
-//               Blog
-//             </Link>
-//           </li>
-//           <li>
-//             <Link
-//               className="hover:text-white hover:bg-gray-600 hover:rounded-lg my-1"
-//               href="/dashBoard/faq"
-//             >
-//               <QuestionMarkCircleIcon className="w-5 h-5 inline-block " />
-//               FAQ
-//             </Link>
-//           </li>
-//           <li>
-//             <Link
-//               className="hover:text-white hover:bg-gray-600 hover:rounded-lg my-1"
-//               href="/dashBoard/feedback"
-//             >
-//               <FcFeedback className="w-5 h-5 inline-block " /> Feedback
-//             </Link>
-//           </li>
-
-//           <li>
-//             <Link
-//               className="hover:text-white hover:bg-gray-600 hover:rounded-lg my-1"
-//               href="/dashBoard/user"
-//             >
-//               <AiOutlineUser className="w-5 h-5 inline-block " /> Add Admin
-//             </Link>
-//           </li>
-//           <li>
-//             <Link
-//               className="hover:text-white hover:bg-gray-600 hover:rounded-lg my-1"
-//               href="/dashBoard/booking"
-//             >
-//               <RiReservedFill className="w-5 h-5 inline-block " /> Booking
-//             </Link>
-//           </li>
-//           <li>
-//             <Link
-//               className="hover:text-white hover:bg-gray-600 hover:rounded-lg my-1"
-//               href="/dashBoard/category"
-//             >
-//               {" "}
-//               <Square3Stack3DIcon className="w-5 h-5 inline-block " />
-//               Category
-//             </Link>
-//           </li>
-//           <li>
-//             <Link
-//               className="hover:text-white hover:bg-gray-600 hover:rounded-lg my-1"
-//               href="/dashBoard/review"
-//             >
-//               {" "}
-//               <MdReviews className="w-5 h-5 inline-block " />
-//               Review
-//             </Link>
-//           </li>
-//           <li>
-//             <Link
-//               className="hover:text-white hover:bg-gray-600 hover:rounded-lg my-1"
-//               href="/dashBoard/upcomingService"
-//             >
-//               <MdUpcoming className="w-5 h-5 inline-block " />
-//               Upcoming service
-//             </Link>
-//           </li>
-//         </>
-//       )}
-//     </ul>
-//   </div>;
-// }
