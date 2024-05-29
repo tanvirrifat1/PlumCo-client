@@ -172,15 +172,15 @@ const Services = () => {
               className="border overflow-hidden group border-gray-200 rounded p-3 shadow hover:shadow hover:shadow-primaryColor text-center relative"
             >
               <div className="relative rounded overflow-hidden inline-block w-full">
-                {/* <span className="absolute top-0 left-0 flex w-full h-0 mb-0 transition-all duration-300 ease-out transform translate-y-0 bg-gray-900 group-hover:h-[50%] opacity-80"></span> */}
+                <span className="absolute top-0 left-0 flex w-full h-0 mb-0 transition-all duration-300 ease-out transform translate-y-0 bg-gray-900 group-hover:h-[50%] opacity-80"></span>
                 <Image
                   width={250}
                   height={250}
-                  className="h-[200px] md:h-[250px] lg:h-[300px] w-full object-cover object-top rounded"
+                  className="h-[200px] md:h-[250px] lg:h-[301px] w-full object-cover object-top rounded"
                   src={service?.image}
                   alt={service?.title}
                 />
-                {/* <span className="absolute bottom-0 left-0 flex w-full h-0 mb-0 transition-all duration-300 ease-out transform translate-y-0 bg-gray-900 group-hover:h-[50%] opacity-80"></span> */}
+                <span className="absolute bottom-0 left-0 flex w-full h-0 mb-0 transition-all duration-300 ease-out transform translate-y-0 bg-gray-900 group-hover:h-[50%] opacity-80"></span>
                 <div
                   onClick={() =>
                     window.location.assign(`/service/${service?.id}`)
